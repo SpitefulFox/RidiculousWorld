@@ -1,0 +1,16 @@
+[
+{
+  "modid": "RidWorld",
+  "name": "Ridiculous World",
+  "description": "A mod to make the Minecraft world a little more ridiculous.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SpitefulFox"],
+  "credits": "xaero and Kihira",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

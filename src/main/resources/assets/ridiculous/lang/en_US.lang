@@ -1,0 +1,19 @@
+# Blocks
+tile.ridiculous_log_spooky.name=Spooky Wood
+tile.ridiculous_leaves_spooky.name=Spooky Leaves
+tile.ridiculous_sapling_spooky.name=Spooky Sapling
+tile.ridiculous_planks_spooky.name=Spooky Planks
+tile.bonedust.name=Crushed Bone
+# Items
+item.CandyCorn.name=Candy Corn
+item.RustySickle.name=Rusty Sickle
+item.ChocoEgg.name=Chocolate Egg
+item.UnicornRaw.name=Raw Unicorn Meat
+item.UnicornCooked.name=Unicorn Steak
+# Entities
+entity.RidWorlds.Frankenstein.name=Frankenstein's Monster
+entity.RidWorlds.Warhorse.name=Skeleton Horse
+entity.RidWorlds.Peep.name=Marshmallow Peep
+entity.RidWorlds.Unicorn.name=Unicorn
+# Misc
+itemGroup.ridiculous=Ridiculous World
