@@ -23,6 +23,7 @@ public class Crafter {
         GameRegistry.addShapelessRecipe(new ItemStack(RidiculousBlocks.treePlanks, 4, 0), new Object[] {new ItemStack(RidiculousBlocks.spookyLog,1,0)});
 
         GameRegistry.addSmelting(new ItemStack(RidiculousItems.unicornRaw, 1), new ItemStack(RidiculousItems.unicornCooked, 1), 0.35F);
+        GameRegistry.addSmelting(new ItemStack(RidiculousItems.peepRaw, 1), new ItemStack(RidiculousItems.peepCooked, 1), 0.35F);
 
         for(int x = 0;x < BlockFantasyLog.types.length;x++) {
             GameRegistry.addSmelting(new ItemStack(RidiculousBlocks.treeLogs, 1, x), new ItemStack(Items.coal, 1, 1), 0.15F);

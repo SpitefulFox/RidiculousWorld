@@ -10,6 +10,8 @@ item.RustySickle.name=Rusty Sickle
 item.ChocoEgg.name=Chocolate Egg
 item.UnicornRaw.name=Raw Unicorn Meat
 item.UnicornCooked.name=Unicorn Steak
+item.PeepRaw.name=Marshmallow Peep
+item.PeepCooked.name=Toasted Peep
 # Entities
 entity.RidWorlds.Frankenstein.name=Frankenstein's Monster
 entity.RidWorlds.Warhorse.name=Skeleton Horse

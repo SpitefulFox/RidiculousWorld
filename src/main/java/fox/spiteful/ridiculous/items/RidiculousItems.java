@@ -10,6 +10,8 @@ public class RidiculousItems {
     public static Item chocoEgg;
     public static Item unicornRaw;
     public static Item unicornCooked;
+    public static Item peepRaw;
+    public static Item peepCooked;
 
     public static void itemize(){
         candyCorn = new ItemRidiculousFood(2, 0.1F, false, "candycorn").setUnlocalizedName("CandyCorn");
@@ -22,5 +24,9 @@ public class RidiculousItems {
         GameRegistry.registerItem(unicornRaw, "UnicornRaw");
         unicornCooked = new ItemRidiculousFood(8, 0.8F, true, "unicorn_cooked").setUnlocalizedName("UnicornCooked");
         GameRegistry.registerItem(unicornCooked, "UnicornCooked");
+        peepRaw = new ItemRidiculousFood(2, 0.3F, false, "marshmallow_peep").setUnlocalizedName("PeepRaw");
+        GameRegistry.registerItem(peepRaw, "PeepRaw");
+        peepCooked = new ItemRidiculousFood(6, 0.6F, false, "roasted_peep").setUnlocalizedName("PeepCooked");
+        GameRegistry.registerItem(peepCooked, "PeepCooked");
     }
 }
