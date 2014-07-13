@@ -43,6 +43,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
         BiomeManager.desertBiomes.add(new BiomeManager.BiomeEntry(this, 8));
+        BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.DRY, BiomeDictionary.Type.HOT);
         setBiomeName("Ossuary");

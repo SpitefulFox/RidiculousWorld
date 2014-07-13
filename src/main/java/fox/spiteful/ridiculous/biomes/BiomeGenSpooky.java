@@ -37,6 +37,7 @@ public class BiomeGenSpooky extends BiomeGenBase {
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityFrankenstein.class, 90, 4, 4));
         BiomeManager.coolBiomes.add(new BiomeEntry(this, 8));
+        BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, Type.SPOOKY, Type.MAGICAL, Type.FOREST);
         setBiomeName("Spooky Woods");
         setTemperatureRainfall(0.25F, 0.5F);
