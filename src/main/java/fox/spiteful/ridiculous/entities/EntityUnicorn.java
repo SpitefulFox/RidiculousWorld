@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.entities;
 
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.command.IEntitySelector;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -9,6 +10,7 @@ import net.minecraft.entity.ai.attributes.IAttribute;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
@@ -64,7 +66,7 @@ public class EntityUnicorn extends EntityHorse {
         if (this.hasCustomNameTag())
             return this.getCustomNameTag();
         else
-            return StatCollector.translateToLocal("entity.RidWorlds.Unicorn.name");
+            return StatCollector.translateToLocal("entity.RidiculousWorld.Unicorn.name");
     }
 
     /**
@@ -118,6 +120,12 @@ public class EntityUnicorn extends EntityHorse {
             {
                 this.dropItem(RidiculousItems.unicornRaw, 1);
             }
+        }
+
+        if(looting > 0 && rand.nextInt(100) >= looting){
+            ItemStack horn = new ItemStack(RidiculousItems.unicornHorn);
+            horn.addEnchantment(Enchantment.smite, 4);
+            this.entityDropItem(horn, 0.0F);
         }
     }
 

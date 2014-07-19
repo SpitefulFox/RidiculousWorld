@@ -1,6 +1,7 @@
 package fox.spiteful.ridiculous;
 
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
@@ -11,6 +12,6 @@ public class RidiculousTab extends CreativeTabs {
 
     @Override
     public Item getTabIconItem() {
-        return Item.getItemFromBlock(RidiculousBlocks.treeLogs);
+        return RidiculousItems.peepRaw;
     }
 }

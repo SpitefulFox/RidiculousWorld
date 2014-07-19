@@ -65,7 +65,7 @@ public class EntityWarhorse extends EntityMob {
                     ridden = true;
                     if(rand.nextInt(3) == 0)
                         skelly.setCurrentItemOrArmor(0, new ItemStack(Items.iron_sword));
-                    continue;
+                    break;
                 }
             }
             if(riddenByEntity == null)

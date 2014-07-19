@@ -3,6 +3,7 @@ package fox.spiteful.ridiculous.biomes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.entities.EntityFrankenstein;
+import fox.spiteful.ridiculous.entities.EntityMummy;
 import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
 import fox.spiteful.ridiculous.world.WorldGenSpookyTree;
 import net.minecraft.entity.monster.EntityWitch;
@@ -39,7 +40,7 @@ public class BiomeGenSpooky extends BiomeGenBase {
         BiomeManager.coolBiomes.add(new BiomeEntry(this, 8));
         BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, Type.SPOOKY, Type.MAGICAL, Type.FOREST);
-        setBiomeName("Spooky Woods");
+        setBiomeName("Spooky Forest");
         setTemperatureRainfall(0.25F, 0.5F);
         setColor(0xF2A100);
         this.waterColorMultiplier = 0x970E0E;

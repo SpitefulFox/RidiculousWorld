@@ -1,5 +1,6 @@
 package fox.spiteful.ridiculous.blocks;
 
+import fox.spiteful.ridiculous.Ridiculous;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.material.Material;
@@ -14,6 +15,7 @@ public class BlockBoneDust extends BlockFalling {
         setHardness(0.5F);
         setStepSound(Block.soundTypeGravel);
         setBlockName("bonedust");
+        setCreativeTab(Ridiculous.tab);
 
     }
 

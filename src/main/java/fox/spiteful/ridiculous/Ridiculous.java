@@ -15,7 +15,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
-        modid = "RidWorlds",
+        modid = "RidiculousWorld",
         name = "Ridiculous Worlds",
         version = "0.1"
         //dependencies = "required-after:Thaumcraft;after:ThaumicTinkerer"

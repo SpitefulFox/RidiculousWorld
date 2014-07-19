@@ -7,9 +7,7 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
-import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,10 +17,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeModContainer;
 
-public class EntityFrankenstein extends EntityMob {
-    public EntityFrankenstein(World world){
+public class EntityMummy extends EntityMob {
+    public EntityMummy(World world){
         super(world);
         this.getNavigator().setBreakDoors(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -35,16 +32,14 @@ public class EntityFrankenstein extends EntityMob {
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityVillager.class, 0, false));
-        this.targetTasks.addTask(1, new EntityAIBreakDoor(this));
-        //this.setSize(0.6F, 1.8F);
-        this.setSize(0.9F, 2.1F);
+        this.setSize(0.6F, 1.8F);
     }
 
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.15D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(5.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.23000000417232513D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(3.0D);
     }
 
     /**
@@ -104,18 +99,6 @@ public class EntityFrankenstein extends EntityMob {
         super.onLivingUpdate();
     }
 
-    /**
-     * Called when a lightning bolt hits the entity.
-     */
-    public void onStruckByLightning(EntityLightningBolt p_70077_1_)
-    {
-        if (!this.worldObj.isRemote)
-        {
-            this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.8D);
-            this.isImmuneToFire = true;
-        }
-    }
-
     public boolean attackEntityAsMob(Entity p_70652_1_)
     {
         boolean flag = super.attackEntityAsMob(p_70652_1_);
@@ -164,7 +147,7 @@ public class EntityFrankenstein extends EntityMob {
 
     protected Item getDropItem()
     {
-        return RidiculousItems.candyCorn;
+        return Items.rotten_flesh;
     }
 
     /**
@@ -183,7 +166,7 @@ public class EntityFrankenstein extends EntityMob {
                 this.dropItem(Items.iron_ingot, 1);
                 break;
             case 1:
-                this.dropItem(Items.leather, 1);
+                this.dropItem(Item.getItemFromBlock(Blocks.wool), 1);
                 break;
             case 2:
                 this.dropItem(Items.cookie, 1);

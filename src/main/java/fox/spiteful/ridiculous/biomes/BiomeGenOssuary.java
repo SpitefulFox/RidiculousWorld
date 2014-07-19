@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.entities.EntityMummy;
 import fox.spiteful.ridiculous.entities.EntityWarhorse;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
@@ -24,7 +25,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph", "mDiyo", "KirinDave",
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
-        "chylex", "Mithion", "MHF_Villager", "Pahimar", "Flaxbeard", "maxpowa", "iEdyn", "RoffleToys"};
+        "chylex", "Mithion", "MHF_Villager", "Pahimar", "Flaxbeard", "maxpowa", "iEdyn", "RoffleToys", "DylanGK"};
 
     public BiomeGenOssuary(int id)
     {
@@ -43,6 +44,8 @@ public class BiomeGenOssuary extends BiomeGenBase {
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
         BiomeManager.desertBiomes.add(new BiomeManager.BiomeEntry(this, 8));
+        //BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 900));
+        //BiomeManager.addSpawnBiome(this);
         BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.DRY, BiomeDictionary.Type.HOT);

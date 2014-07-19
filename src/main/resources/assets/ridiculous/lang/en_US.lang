@@ -4,6 +4,7 @@ tile.ridiculous_leaves_spooky.name=Spooky Leaves
 tile.ridiculous_sapling_spooky.name=Spooky Sapling
 tile.ridiculous_planks_spooky.name=Spooky Planks
 tile.bonedust.name=Crushed Bone
+tile.rockcandy.name=Rock Candy
 # Items
 item.CandyCorn.name=Candy Corn
 item.RustySickle.name=Rusty Sickle
@@ -12,10 +13,14 @@ item.UnicornRaw.name=Raw Unicorn Meat
 item.UnicornCooked.name=Unicorn Steak
 item.PeepRaw.name=Marshmallow Peep
 item.PeepCooked.name=Toasted Peep
+item.UnicornHorn.name=Unicorn Horn
 # Entities
-entity.RidWorlds.Frankenstein.name=Frankenstein's Monster
-entity.RidWorlds.Warhorse.name=Skeleton Horse
-entity.RidWorlds.Peep.name=Marshmallow Peep
-entity.RidWorlds.Unicorn.name=Unicorn
+entity.RidiculousWorld.Frankenstein.name=Frankenstein's Monster
+entity.RidiculousWorld.Warhorse.name=Skeleton Horse
+entity.RidiculousWorld.Peep.name=Marshmallow Peep
+entity.RidiculousWorld.Unicorn.name=Unicorn
+entity.RidiculousWorld.Mummy.name=Mummy
+entity.RidiculousWorld.Calavera.name=Calavera
+entity.RidiculousWorld.Gingerbread.name=Gingerbread Man
 # Misc
 itemGroup.ridiculous=Ridiculous World

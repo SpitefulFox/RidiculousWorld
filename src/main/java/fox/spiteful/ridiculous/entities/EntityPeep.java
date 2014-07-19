@@ -22,7 +22,7 @@ public class EntityPeep extends EntityChicken {
             EntityAITasks.EntityAITaskEntry ai = (EntityAITasks.EntityAITaskEntry)thingy;
             if(ai.action instanceof EntityAITempt) {
                 tempt = ai.action;
-                continue;
+                break;
             }
         }
         if(tempt !=null)

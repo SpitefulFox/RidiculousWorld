@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 version = "0.1"
 group= "fox.spiteful.ridiculous" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "RidiculousWorlds"
+archivesBaseName = "RidiculousWorld"
 
 minecraft {
     version = "1.7.10-10.13.0.1177"
