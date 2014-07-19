@@ -122,7 +122,7 @@ public class EntityUnicorn extends EntityHorse {
             }
         }
 
-        if(looting > 0 && rand.nextInt(100) >= looting){
+        if(looting > 0 && rand.nextInt(100) <= looting){
             ItemStack horn = new ItemStack(RidiculousItems.unicornHorn);
             horn.addEnchantment(Enchantment.smite, 4);
             this.entityDropItem(horn, 0.0F);
