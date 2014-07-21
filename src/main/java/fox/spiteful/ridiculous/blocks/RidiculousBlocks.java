@@ -12,6 +12,7 @@ public class RidiculousBlocks {
     public static Block treePlanks;
     public static Block boneDust;
     public static Block rockCandy;
+    public static Block candyCane;
 
     public static void blockBlockity(){
         treeLogs = new BlockFantasyLog();
@@ -28,5 +29,7 @@ public class RidiculousBlocks {
         GameRegistry.registerBlock(boneDust, "BoneDust");
         rockCandy = new BlockRockCandy();
         GameRegistry.registerBlock(rockCandy, "RockCandy");
+        candyCane = new BlockCandyCane();
+        GameRegistry.registerBlock(candyCane, "CandyCane");
     }
 }
