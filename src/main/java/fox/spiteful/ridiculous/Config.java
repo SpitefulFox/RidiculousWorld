@@ -12,6 +12,7 @@ public class Config {
     public static int spookyID;
     public static int ossuaryID;
     public static int candyID;
+    public static int muricaID;
 
     public static boolean heads = true;
 
@@ -28,6 +29,7 @@ public class Config {
             spookyID = conf.get("biomes", "Spooky Woods", biome).getInt(biome++);
             ossuaryID = conf.get("biomes", "Ossuary", biome).getInt(biome++);
             candyID = conf.get("biomes", "Rock Candy Mountain", biome).getInt(biome++);
+            muricaID = conf.get("biomes", "Murica", biome).getInt(biome++);
         }
         catch (Exception e)
         {

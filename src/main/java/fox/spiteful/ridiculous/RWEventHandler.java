@@ -14,6 +14,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -48,6 +49,19 @@ public class RWEventHandler {
                 EntityWarhorse steed = new EntityWarhorse(event.world);
                 steed.setLocationAndAngles(event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, event.entityLiving.rotationYaw, event.entityLiving.rotationPitch);
                 event.world.spawnEntityInWorld(steed);
+            }
+        }
+        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.murica) {
+            if(event.entityLiving instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.entityLiving;
+                int freedom = randy.nextInt(3);
+                if(freedom == 0)
+                    freedom = 0;
+                else if(freedom == 1)
+                    freedom = 11;
+                else if(freedom == 2)
+                    freedom = 14;
+                sheepy.setFleeceColor(freedom);
             }
         }
     }

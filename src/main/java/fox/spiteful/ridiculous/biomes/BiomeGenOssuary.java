@@ -25,7 +25,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph", "mDiyo", "KirinDave",
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
-        "chylex", "Mithion", "MHF_Villager", "Pahimar", "Flaxbeard", "maxpowa", "iEdyn", "RoffleToys", "DylanGK"};
+        "chylex", "Mithion", "MHF_Villager", "Pahimar", "Flaxbeard", "iEdyn", "RoffleToys", "DylanGK"};
 
     public BiomeGenOssuary(int id)
     {

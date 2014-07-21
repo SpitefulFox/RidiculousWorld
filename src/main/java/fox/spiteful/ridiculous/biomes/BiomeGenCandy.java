@@ -27,7 +27,6 @@ public class BiomeGenCandy extends BiomeGenBase{
 
     public BiomeGenCandy(int id){
         super(id);
-        this.spawnableCreatureList.clear();
         this.theBiomeDecorator.treesPerChunk = 6;
         this.theBiomeDecorator.grassPerChunk = 2;
         this.theBiomeDecorator.mushroomsPerChunk = 1;
@@ -43,8 +42,8 @@ public class BiomeGenCandy extends BiomeGenBase{
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 900));
-        BiomeManager.addSpawnBiome(this);
+        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 10));
+        //BiomeManager.addSpawnBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
         setBiomeName("Rock Candy Mountain");
         setColor(0x8AFFF0);
