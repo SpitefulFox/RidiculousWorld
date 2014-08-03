@@ -6,6 +6,8 @@ tile.ridiculous_planks_spooky.name=Spooky Planks
 tile.bonedust.name=Crushed Bone
 tile.rockcandy.name=Rock Candy
 tile.candycane.name=Candy Cane
+tile.serpent.name=Serpentinite
+tile.serpent_rune.name=Runed Serpentinite
 # Items
 item.CandyCorn.name=Candy Corn
 item.RustySickle.name=Rusty Sickle

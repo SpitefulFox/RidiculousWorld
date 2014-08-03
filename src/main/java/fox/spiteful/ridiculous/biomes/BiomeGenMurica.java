@@ -27,10 +27,9 @@ public class BiomeGenMurica extends BiomeGenBase {
         this.theBiomeDecorator.treesPerChunk = 6;
         this.theBiomeDecorator.grassPerChunk = 2;
         this.theBiomeDecorator.mushroomsPerChunk = 0;
-        setDisableRain();
         setHeight(height_MidPlains);
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 900));
-        BiomeManager.addSpawnBiome(this);
+        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 9));
+        //BiomeManager.addSpawnBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
         setBiomeName("Murica");
         setColor(0x0000FF);

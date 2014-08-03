@@ -42,7 +42,7 @@ public class BiomeGenCandy extends BiomeGenBase{
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 10));
+        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 20));
         //BiomeManager.addSpawnBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
         setBiomeName("Rock Candy Mountain");

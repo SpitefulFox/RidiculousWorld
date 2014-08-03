@@ -43,7 +43,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
         this.spawnableMonsterList.clear();
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
-        BiomeManager.desertBiomes.add(new BiomeManager.BiomeEntry(this, 8));
+        BiomeManager.desertBiomes.add(new BiomeManager.BiomeEntry(this, 6));
         //BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 900));
         //BiomeManager.addSpawnBiome(this);
         BiomeManager.addStrongholdBiome(this);
@@ -98,7 +98,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
 
                         if(world.getTileEntity(i1, j1 + 2, k1) != null && world.getTileEntity(i1, j1 + 2, k1) instanceof TileEntitySkull){
                             TileEntitySkull skull = (TileEntitySkull)(world.getTileEntity(i1, j1 + 2, k1));
-                            if(rand.nextInt(16) == 0)
+                            if(rand.nextInt(10) == 0)
                                 skull.func_152106_a(new GameProfile((UUID)null, heads[rand.nextInt(heads.length)]));
                             skull.func_145903_a(rand.nextInt(16));
                         }
