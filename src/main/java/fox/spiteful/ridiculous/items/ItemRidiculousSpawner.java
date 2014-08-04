@@ -22,9 +22,9 @@ import java.util.List;
 public class ItemRidiculousSpawner extends Item
 {
     private IIcon easter;
-    private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1};
-    private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125};
-    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep", "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread"};
+    private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1, 0xFFFFFF};
+    private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125, 0x110054};
+    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep", "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread", "RidiculousWorld.Starspawn"};
 
     public ItemRidiculousSpawner()
     {
@@ -136,6 +136,10 @@ public class ItemRidiculousSpawner extends Item
                 break;
             case 4:
                 entity = new EntityGingerbread(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+                break;
+            case 5:
+                entity = new EntityStarspawn(world);
                 spawnEntity(posX, posY, posZ, entity, world);
                 break;
         }

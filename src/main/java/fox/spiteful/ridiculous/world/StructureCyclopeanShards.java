@@ -1,15 +1,18 @@
 package fox.spiteful.ridiculous.world;
 
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.compat.Compat;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityMobSpawner;
-import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraftforge.common.ChestGenHooks;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -34,6 +37,8 @@ public class StructureCyclopeanShards {
         new StructureCyclopeanShards.PieceWeight(StructureCyclopeanShards.NetherStalkRoom.class, 5, 2)
     };
 
+    private static Random randy = new Random();
+
     public static void registerCyclopeanShards()
     {
         MapGenStructureIO.func_143031_a(StructureCyclopeanShards.Crossing3.class, "CyBCr");
@@ -51,6 +56,14 @@ public class StructureCyclopeanShards {
         MapGenStructureIO.func_143031_a(StructureCyclopeanShards.Crossing.class, "CyRC");
         MapGenStructureIO.func_143031_a(StructureCyclopeanShards.Stairs.class, "CySR");
         MapGenStructureIO.func_143031_a(StructureCyclopeanShards.Start.class, "CyStart");
+    }
+
+    public static Block getMaterial()
+    {
+        if(randy.nextInt(100) < 3)
+            return RidiculousBlocks.serpentRune;
+        else
+            return RidiculousBlocks.serpent;
     }
 
     private static StructureCyclopeanShards.Piece createNextComponentRandom(StructureCyclopeanShards.PieceWeight weight, List list, Random rand, int wat1, int wat2, int wat3, int wat4, int wat5)
@@ -187,7 +200,7 @@ public class StructureCyclopeanShards {
                 if (p_74875_3_.isVecInside(j, i, k))
                 {
                     this.field_111021_b = false;
-                    this.generateStructureChestContents(p_74875_1_, p_74875_3_, p_74875_2_, 3, 2, 3, field_111019_a, 2 + p_74875_2_.nextInt(4));
+                    this.generateStructureChestContents(p_74875_1_, p_74875_3_, p_74875_2_, 3, 2, 3, ChestGenHooks.getInfo("cyclopeanRuins").getItems(randy), 3 + p_74875_2_.nextInt(5));
                 }
             }
 
@@ -278,7 +291,7 @@ public class StructureCyclopeanShards {
                 if (p_74875_3_.isVecInside(j, i, k))
                 {
                     this.field_111020_b = false;
-                    this.generateStructureChestContents(p_74875_1_, p_74875_3_, p_74875_2_, 1, 2, 3, field_111019_a, 2 + p_74875_2_.nextInt(4));
+                    this.generateStructureChestContents(p_74875_1_, p_74875_3_, p_74875_2_, 1, 2, 3, ChestGenHooks.getInfo("cyclopeanRuins").getItems(randy), 3 + p_74875_2_.nextInt(5));
                 }
             }
 
@@ -334,7 +347,7 @@ public class StructureCyclopeanShards {
          */
         public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_)
         {
-            int i = this.getMetadataWithOffset(Blocks.nether_brick_stairs, 2);
+            int i = this.getMetadataWithOffset(RidiculousBlocks.serpent, 2);
 
             for (int j = 0; j <= 9; ++j)
             {
@@ -346,9 +359,9 @@ public class StructureCyclopeanShards {
 
                 if (j <= 6)
                 {
-                    this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, i, 1, k + 1, j, p_74875_3_);
-                    this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, i, 2, k + 1, j, p_74875_3_);
-                    this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, i, 3, k + 1, j, p_74875_3_);
+                    this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, i, 1, k + 1, j, p_74875_3_);
+                    this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, i, 2, k + 1, j, p_74875_3_);
+                    this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, i, 3, k + 1, j, p_74875_3_);
                 }
 
                 this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, l, j, 4, l, j, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
@@ -928,15 +941,18 @@ public class StructureCyclopeanShards {
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 5, 5, 5, 7, 5, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 6, 1, 6, 6, 4, 6, Blocks.air, Blocks.air, false);
             this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, 0, 6, 0, 6, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.flowing_lava, 0, 6, 5, 6, p_74875_3_);
+            if(Compat.teehee)
+                this.placeBlockAtCurrentPosition(p_74875_1_, Compat.enderGoo, 0, 6, 5, 6, p_74875_3_);
+            else
+                this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.end_stone, 0, 6, 5, 6, p_74875_3_);
             i = this.getXWithOffset(6, 6);
             j = this.getYWithOffset(5);
             int k = this.getZWithOffset(6, 6);
 
-            if (p_74875_3_.isVecInside(i, j, k))
+            if (Compat.teehee && p_74875_3_.isVecInside(i, j, k))
             {
                 p_74875_1_.scheduledUpdatesAreImmediate = true;
-                Blocks.flowing_lava.updateTick(p_74875_1_, i, j, k, p_74875_2_);
+                Compat.enderGoo.updateTick(p_74875_1_, i, j, k, p_74875_2_);
                 p_74875_1_.scheduledUpdatesAreImmediate = false;
             }
 
@@ -1023,7 +1039,7 @@ public class StructureCyclopeanShards {
                 this.fillWithBlocks(p_74875_1_, p_74875_3_, 11, 7, i, 11, 8, i, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
             }
 
-            i = this.getMetadataWithOffset(Blocks.nether_brick_stairs, 3);
+            i = this.getMetadataWithOffset(RidiculousBlocks.serpent, 3);
             int j;
             int k;
             int l;
@@ -1034,7 +1050,7 @@ public class StructureCyclopeanShards {
 
                 for (l = 5; l <= 7; ++l)
                 {
-                    this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, i, l, 5 + j, k, p_74875_3_);
+                    this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, i, l, 5 + j, k, p_74875_3_);
                 }
 
                 if (k >= 5 && k <= 8)
@@ -1054,7 +1070,7 @@ public class StructureCyclopeanShards {
 
             for (j = 5; j <= 7; ++j)
             {
-                this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, i, j, 12, 11, p_74875_3_);
+                this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, i, j, 12, 11, p_74875_3_);
             }
 
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 5, 6, 7, 5, 7, 7, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
@@ -1066,20 +1082,20 @@ public class StructureCyclopeanShards {
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 9, 5, 2, 10, 5, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 9, 5, 9, 10, 5, 10, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 10, 5, 4, 10, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            j = this.getMetadataWithOffset(Blocks.nether_brick_stairs, 0);
-            k = this.getMetadataWithOffset(Blocks.nether_brick_stairs, 1);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, k, 4, 5, 2, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, k, 4, 5, 3, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, k, 4, 5, 9, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, k, 4, 5, 10, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, j, 8, 5, 2, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, j, 8, 5, 3, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, j, 8, 5, 9, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, Blocks.nether_brick_stairs, j, 8, 5, 10, p_74875_3_);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 3, 4, 4, 4, 4, 8, Blocks.soul_sand, Blocks.soul_sand, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 8, 4, 4, 9, 4, 8, Blocks.soul_sand, Blocks.soul_sand, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 3, 5, 4, 4, 5, 8, Blocks.nether_wart, Blocks.nether_wart, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 8, 5, 4, 9, 5, 8, Blocks.nether_wart, Blocks.nether_wart, false);
+            j = this.getMetadataWithOffset(RidiculousBlocks.serpent, 0);
+            k = this.getMetadataWithOffset(RidiculousBlocks.serpent, 1);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), k, 4, 5, 2, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), k, 4, 5, 3, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), k, 4, 5, 9, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), k, 4, 5, 10, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), j, 8, 5, 2, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), j, 8, 5, 3, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), j, 8, 5, 9, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), j, 8, 5, 10, p_74875_3_);
+            this.fillWithBlocks(p_74875_1_, p_74875_3_, 3, 4, 4, 4, 4, 8, Blocks.end_stone, Blocks.end_stone, false);
+            this.fillWithBlocks(p_74875_1_, p_74875_3_, 8, 4, 4, 9, 4, 8, Blocks.end_stone, Blocks.end_stone, false);
+            //this.fillWithBlocks(p_74875_1_, p_74875_3_, 3, 5, 4, 4, 5, 8, Blocks.nether_wart, Blocks.nether_wart, false);
+            //this.fillWithBlocks(p_74875_1_, p_74875_3_, 8, 5, 4, 9, 5, 8, Blocks.nether_wart, Blocks.nether_wart, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 4, 2, 0, 8, 2, 12, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 2, 4, 12, 2, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 4, 0, 0, 8, 1, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
@@ -1112,8 +1128,6 @@ public class StructureCyclopeanShards {
 
     abstract static class Piece extends StructureComponent
     {
-        protected static final WeightedRandomChestContent[] field_111019_a = new WeightedRandomChestContent[] {new WeightedRandomChestContent(Items.diamond, 0, 1, 3, 5), new WeightedRandomChestContent(Items.iron_ingot, 0, 1, 5, 5), new WeightedRandomChestContent(Items.gold_ingot, 0, 1, 3, 15), new WeightedRandomChestContent(Items.golden_sword, 0, 1, 1, 5), new WeightedRandomChestContent(Items.golden_chestplate, 0, 1, 1, 5), new WeightedRandomChestContent(Items.flint_and_steel, 0, 1, 1, 5), new WeightedRandomChestContent(Items.nether_wart, 0, 3, 7, 5), new WeightedRandomChestContent(Items.saddle, 0, 1, 1, 10), new WeightedRandomChestContent(Items.golden_horse_armor, 0, 1, 1, 8), new WeightedRandomChestContent(Items.iron_horse_armor, 0, 1, 1, 5), new WeightedRandomChestContent(Items.diamond_horse_armor, 0, 1, 1, 3)};
-
         public Piece() {}
 
         protected Piece(int p_i2054_1_)
@@ -1286,6 +1300,60 @@ public class StructureCyclopeanShards {
         {
             return p_74964_0_ != null && p_74964_0_.minY > 10;
         }
+
+        /**
+         * arguments: (World worldObj, StructureBoundingBox structBB, int minX, int minY, int minZ, int maxX, int maxY, int
+         * maxZ, int placeBlock, int replaceBlock, boolean alwaysreplace)
+         */
+        protected void fillWithBlocks(World world, StructureBoundingBox structBB, int minX, int minY, int minZ, int maxX, int maxY, int maxZ, Block block, Block block2, boolean alwaysReplace)
+        {
+            for (int k1 = minY; k1 <= maxY; ++k1)
+            {
+                for (int l1 = minX; l1 <= maxX; ++l1)
+                {
+                    for (int i2 = minZ; i2 <= maxZ; ++i2)
+                    {
+                        if (!alwaysReplace || this.getBlockAtCurrentPosition(world, l1, k1, i2, structBB).getMaterial() != Material.air)
+                        {
+                            if (k1 != minY && k1 != maxY && l1 != minX && l1 != maxX && i2 != minZ && i2 != maxZ)
+                            {
+                                if(block2 == RidiculousBlocks.serpent)
+                                    this.placeBlockAtCurrentPosition(world, getMaterial(), 0, l1, k1, i2, structBB);
+                                else
+                                    this.placeBlockAtCurrentPosition(world, block2, 0, l1, k1, i2, structBB);
+                            }
+                            else
+                            {
+                                if(block == RidiculousBlocks.serpent)
+                                    this.placeBlockAtCurrentPosition(world, getMaterial(), 0, l1, k1, i2, structBB);
+                                else
+                                    this.placeBlockAtCurrentPosition(world, block, 0, l1, k1, i2, structBB);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @Override
+        protected void func_151554_b(World world, Block block, int p_151554_3_, int p_151554_4_, int p_151554_5_, int p_151554_6_, StructureBoundingBox box)
+        {
+            int i1 = this.getXWithOffset(p_151554_4_, p_151554_6_);
+            int j1 = this.getYWithOffset(p_151554_5_);
+            int k1 = this.getZWithOffset(p_151554_4_, p_151554_6_);
+
+            if (box.isVecInside(i1, j1, k1))
+            {
+                while ((world.isAirBlock(i1, j1, k1) || world.getBlock(i1, j1, k1).getMaterial().isLiquid()) && j1 > 1)
+                {
+                    if(block == RidiculousBlocks.serpent)
+                        world.setBlock(i1, j1, k1, getMaterial(), p_151554_3_, 2);
+                    else
+                        world.setBlock(i1, j1, k1, block, p_151554_3_, 2);
+                    --j1;
+                }
+            }
+        }
     }
 
     static class PieceWeight
@@ -1369,7 +1437,7 @@ public class StructureCyclopeanShards {
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 3, 2, 0, 5, 4, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 6, 3, 2, 6, 5, 2, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 6, 3, 4, 6, 5, 4, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
-            this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpent, 0, 5, 2, 5, p_74875_3_);
+            this.placeBlockAtCurrentPosition(p_74875_1_, getMaterial(), 0, 5, 2, 5, p_74875_3_);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 4, 2, 5, 4, 3, 5, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 3, 2, 5, 3, 4, 5, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
             this.fillWithBlocks(p_74875_1_, p_74875_3_, 2, 2, 5, 2, 5, 5, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
@@ -1555,40 +1623,59 @@ public class StructureCyclopeanShards {
          * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes
          * Mineshafts at the end, it adds Fences...
          */
-        public boolean addComponentParts(World p_74875_1_, Random p_74875_2_, StructureBoundingBox p_74875_3_)
+        public boolean addComponentParts(World world, Random p_74875_2_, StructureBoundingBox structBB)
         {
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 2, 0, 6, 7, 7, Blocks.air, Blocks.air, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 0, 0, 5, 1, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 2, 1, 5, 2, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 3, 2, 5, 3, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 4, 3, 5, 4, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 2, 0, 1, 4, 2, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 5, 2, 0, 5, 4, 2, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 5, 2, 1, 5, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 5, 5, 2, 5, 5, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 5, 3, 0, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 6, 5, 3, 6, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 5, 8, 5, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
-            this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpentRune, 0, 1, 6, 3, p_74875_3_);
-            this.placeBlockAtCurrentPosition(p_74875_1_, RidiculousBlocks.serpentRune, 0, 5, 6, 3, p_74875_3_);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 0, 6, 3, 0, 6, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 6, 6, 3, 6, 6, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 1, 6, 8, 5, 7, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
-            this.fillWithBlocks(p_74875_1_, p_74875_3_, 2, 8, 8, 4, 8, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
+            this.fillWithBlocks(world, structBB, 0, 2, 0, 6, 7, 7, Blocks.air, Blocks.air, false);
+            this.fillWithBlocks(world, structBB, 1, 0, 0, 5, 1, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 2, 1, 5, 2, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 3, 2, 5, 3, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 4, 3, 5, 4, 7, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 2, 0, 1, 4, 2, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 5, 2, 0, 5, 4, 2, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 5, 2, 1, 5, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 5, 5, 2, 5, 5, 3, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 0, 5, 3, 0, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 6, 5, 3, 6, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.fillWithBlocks(world, structBB, 1, 5, 8, 5, 5, 8, RidiculousBlocks.serpent, RidiculousBlocks.serpent, false);
+            this.placeBlockAtCurrentPosition(world, RidiculousBlocks.serpentRune, 0, 1, 6, 3, structBB);
+            this.placeBlockAtCurrentPosition(world, RidiculousBlocks.serpentRune, 0, 5, 6, 3, structBB);
+            this.fillWithBlocks(world, structBB, 0, 6, 3, 0, 6, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
+            this.fillWithBlocks(world, structBB, 6, 6, 3, 6, 6, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
+            this.fillWithBlocks(world, structBB, 1, 6, 8, 5, 7, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
+            this.fillWithBlocks(world, structBB, 2, 8, 8, 4, 8, 8, RidiculousBlocks.serpentRune, RidiculousBlocks.serpentRune, false);
             int i;
             int j;
 
-            if (!this.hasSpawner)
+            if(Compat.pb){
+                this.fillWithBlocks(world, structBB, 2, 5, 4, 4, 5, 6, Compat.defiled, Compat.defiled, false);
+                i = this.getYWithOffset(6);
+                j = this.getXWithOffset(3, 5);
+                int k = this.getZWithOffset(3, 5);
+
+                if (structBB.isVecInside(j, i, k))
+                {
+                    this.hasSpawner = true;
+                    world.setBlock(j, i, k, Blocks.mob_spawner, 0, 2);
+                    TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getTileEntity(j, i, k);
+
+                    if (tileentitymobspawner != null)
+                    {
+                        tileentitymobspawner.func_145881_a().setEntityName("Enderman");
+                    }
+                }
+            }
+
+            else if (!this.hasSpawner)
             {
                 i = this.getYWithOffset(5);
                 j = this.getXWithOffset(3, 5);
                 int k = this.getZWithOffset(3, 5);
 
-                if (p_74875_3_.isVecInside(j, i, k))
+                if (structBB.isVecInside(j, i, k))
                 {
                     this.hasSpawner = true;
-                    p_74875_1_.setBlock(j, i, k, Blocks.mob_spawner, 0, 2);
-                    TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)p_74875_1_.getTileEntity(j, i, k);
+                    world.setBlock(j, i, k, Blocks.mob_spawner, 0, 2);
+                    TileEntityMobSpawner tileentitymobspawner = (TileEntityMobSpawner)world.getTileEntity(j, i, k);
 
                     if (tileentitymobspawner != null)
                     {
@@ -1601,7 +1688,7 @@ public class StructureCyclopeanShards {
             {
                 for (j = 0; j <= 6; ++j)
                 {
-                    this.func_151554_b(p_74875_1_, RidiculousBlocks.serpent, 0, i, -1, j, p_74875_3_);
+                    this.func_151554_b(world, RidiculousBlocks.serpent, 0, i, -1, j, structBB);
                 }
             }
 

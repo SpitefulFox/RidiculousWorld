@@ -2,16 +2,22 @@ package fox.spiteful.ridiculous.biomes;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.entities.EntityStarspawn;
+import fox.spiteful.ridiculous.world.WorldGenDullSpikes;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenSpikes;
+import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 
 import java.util.Random;
 
 public class BiomeGenMadness extends BiomeGenBase {
+
+    protected WorldGenerator spikeGen = new WorldGenDullSpikes(Blocks.packed_ice);
 
     public BiomeGenMadness(int id)
     {
@@ -23,6 +29,7 @@ public class BiomeGenMadness extends BiomeGenBase {
         this.topBlock = Blocks.packed_ice;
         this.fillerBlock = Blocks.packed_ice;
         this.spawnableCreatureList.clear();
+        //this.spawnableMonsterList.add(new SpawnListEntry(EntityStarspawn.class, 90, 4, 4));
         BiomeManager.coolBiomes.add(new BiomeManager.BiomeEntry(this, 9000));
         BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 9000));
         BiomeManager.addSpawnBiome(this);
@@ -58,6 +65,14 @@ public class BiomeGenMadness extends BiomeGenBase {
 
     public void decorate(World world, Random rand, int chunkX, int chunkZ)
     {
+        if (rand.nextInt(5) == 0)
+        {
+            int i = chunkX + rand.nextInt(16) + 8;
+            int j = chunkZ + rand.nextInt(16) + 8;
+            int k = world.getTopSolidOrLiquidBlock(i, j);
+            this.spikeGen.generate(world, rand, i, k, j);
+        }
+
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
     }
 

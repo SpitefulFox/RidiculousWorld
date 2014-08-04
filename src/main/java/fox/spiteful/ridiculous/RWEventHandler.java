@@ -64,6 +64,23 @@ public class RWEventHandler {
                 sheepy.setFleeceColor(freedom);
             }
         }
+        /*if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {
+            if (event.entityLiving instanceof EntityZombie) {
+                EntityZombie entityZombie = (EntityZombie) event.entity;
+                if (!entityZombie.isVillager()) {
+                    if (entityZombie.worldObj.playerEntities.size() > 0) {
+                        int i = randy.nextInt(entityZombie.worldObj.playerEntities.size());
+                        EntityPlayer player = (EntityPlayer) entityZombie.worldObj.playerEntities.get(i);
+                        ItemStack head = new ItemStack(Items.skull, 1, 3);
+                        NBTTagCompound nametag = new NBTTagCompound();
+                        nametag.setString("SkullOwner", player.getDisplayName());
+                        head.setTagCompound(nametag);
+                        entityZombie.setCurrentItemOrArmor(4, head);
+                        entityZombie.setEquipmentDropChance(4, 100);
+                    }
+                }
+            }
+        }*/
     }
 
     @SubscribeEvent

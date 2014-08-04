@@ -18,6 +18,7 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityUnicorn.class, new RenderUnicorn());
         RenderingRegistry.registerEntityRenderingHandler(EntityCalavera.class, new RenderCalavera());
         RenderingRegistry.registerEntityRenderingHandler(EntityGingerbread.class, new RenderGingerbread());
+        RenderingRegistry.registerEntityRenderingHandler(EntityStarspawn.class, new RenderStarspawn());
 
         if(Config.heads && !Loader.isModLoaded("PlayerBeacons")){
             TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);

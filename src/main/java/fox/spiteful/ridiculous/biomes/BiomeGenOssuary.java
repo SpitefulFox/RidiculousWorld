@@ -20,12 +20,12 @@ import java.util.Random;
 import java.util.UUID;
 
 public class BiomeGenOssuary extends BiomeGenBase {
-    private final String[] heads = new String[] {"SpitefulFox", "Kihira", "Succubism", "LycaonX", "joshiejack", "Vazkii",
+    private final String[] heads = new String[] {"SpitefulFox", "Kihira", "LycaonX", "joshiejack", "Vazkii",
         "nekosune", "tyguy21g", "Traxus_Co", "killajoke", "apuent", "Pokefenn", "direwolf20", "Mrvideogame101", "Azanor",
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph", "mDiyo", "KirinDave",
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
-        "chylex", "Mithion", "MHF_Villager", "Pahimar", "Flaxbeard", "iEdyn", "RoffleToys", "DylanGK"};
+        "chylex", "Mithion", "MHF_Villager", "Pahimar", "iEdyn", "RoffleToys", "DylanGK"};
 
     public BiomeGenOssuary(int id)
     {
@@ -98,7 +98,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
 
                         if(world.getTileEntity(i1, j1 + 2, k1) != null && world.getTileEntity(i1, j1 + 2, k1) instanceof TileEntitySkull){
                             TileEntitySkull skull = (TileEntitySkull)(world.getTileEntity(i1, j1 + 2, k1));
-                            if(rand.nextInt(10) == 0)
+                            if(rand.nextInt(9) == 0)
                                 skull.func_152106_a(new GameProfile((UUID)null, heads[rand.nextInt(heads.length)]));
                             skull.func_145903_a(rand.nextInt(16));
                         }

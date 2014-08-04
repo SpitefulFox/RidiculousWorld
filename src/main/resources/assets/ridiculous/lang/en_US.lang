@@ -25,5 +25,6 @@ entity.RidiculousWorld.Unicorn.name=Unicorn
 entity.RidiculousWorld.Mummy.name=Mummy
 entity.RidiculousWorld.Calavera.name=Calavera
 entity.RidiculousWorld.Gingerbread.name=Gingerbread Man
+entity.RidiculousWorld.Starspawn.name=Starspawn
 # Misc
 itemGroup.ridiculous=Ridiculous World

@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.compat.Compat;
 import fox.spiteful.ridiculous.entities.RidiculousMobs;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import fox.spiteful.ridiculous.world.RidiculousWorldGenerator;
@@ -41,6 +42,7 @@ public class Ridiculous {
         proxy.doTheRenderThing();
         RidiculousItems.itemize();
         RidiculousBlocks.blockBlockity();
+        Compat.preparatoryCompatification();
     }
 
     @EventHandler
@@ -55,6 +57,6 @@ public class Ridiculous {
     @EventHandler
     public void conclusion(FMLPostInitializationEvent event)
     {
-
+        Compat.compatify();
     }
 }

@@ -1,5 +1,6 @@
 package fox.spiteful.ridiculous.world;
 
+import fox.spiteful.ridiculous.biomes.UnrealBiomes;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.structure.MapGenStructure;
@@ -13,6 +14,7 @@ import java.util.Random;
 public class MapGenCyclopean extends MapGenStructure
 {
     private static int fuck = 0;
+    private static Random help = new Random();
 
     public MapGenCyclopean()
     {
@@ -26,19 +28,20 @@ public class MapGenCyclopean extends MapGenStructure
 
     protected boolean canSpawnStructureAtCoords(int x, int z)
     {
-        int k = x >> 4;
-        int l = z >> 4;
-        this.rand.setSeed((long)(k ^ l << 4) ^ this.worldObj.getSeed());
+        //int k = x >> 4;
+        //int l = z >> 4;
+        //this.rand.setSeed((long)(k ^ l << 4) ^ this.worldObj.getSeed());
         //return this.rand.nextInt(3) != 0 ? false : (x != (k << 4) + 4 + this.rand.nextInt(8) ? false : z == (l << 4) + 4 + this.rand.nextInt(8));
-        //return true;
-        return x % 2 == 0 && z % 2 == 0;
+        if(this.worldObj.getBiomeGenForCoords(x, z) == UnrealBiomes.madness)
+            return soFuckingRandom(1800) < 15;
+        else
+            return false;
     }
 
     private int soFuckingRandom(int max){
-        Random help = new Random();
         if(++fuck >= 100)
             fuck = 1;
-        return ((help.nextInt(rand.nextBoolean() ? 87 : 32) + help.nextInt(rand.nextBoolean() ? 96 : 24) + help.nextInt(rand.nextBoolean() ? 12 : 42)) + rand.nextInt(Math.abs(fuck))) % max;
+        return ((help.nextInt(rand.nextBoolean() ? 870 : 320) + help.nextInt(rand.nextBoolean() ? 960 : 240) + help.nextInt(rand.nextBoolean() ? 300000 : 42000)) + rand.nextInt(Math.abs(fuck))) % max;
     }
 
     protected StructureStart getStructureStart(int x, int z)
@@ -66,7 +69,7 @@ public class MapGenCyclopean extends MapGenStructure
             }
 
             this.updateBoundingBox();
-            this.setRandomHeight(world, rand, 100, 200);
+            this.setRandomHeight(world, rand, 100, 180);
         }
     }
 }
