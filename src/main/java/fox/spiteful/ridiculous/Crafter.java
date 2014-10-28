@@ -34,6 +34,8 @@ public class Crafter {
     public static void lexify(){
         OreDictionary.registerOre("logWood", new ItemStack(RidiculousBlocks.treeLogs, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("logWood", new ItemStack(RidiculousBlocks.spookyLog, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("treeLeaves", new ItemStack(RidiculousBlocks.treeLeaves, 1, OreDictionary.WILDCARD_VALUE));
+        OreDictionary.registerOre("treeSapling", new ItemStack(RidiculousBlocks.treeSaplings, 1, OreDictionary.WILDCARD_VALUE));
         OreDictionary.registerOre("plankWood", new ItemStack(RidiculousBlocks.treePlanks, 1, OreDictionary.WILDCARD_VALUE));
     }
 

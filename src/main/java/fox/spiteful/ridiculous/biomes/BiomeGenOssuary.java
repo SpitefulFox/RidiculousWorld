@@ -3,6 +3,7 @@ package fox.spiteful.ridiculous.biomes;
 import com.mojang.authlib.GameProfile;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.entities.EntityMummy;
 import fox.spiteful.ridiculous.entities.EntityWarhorse;
@@ -25,7 +26,9 @@ public class BiomeGenOssuary extends BiomeGenBase {
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph", "mDiyo", "KirinDave",
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
-        "chylex", "Mithion", "MHF_Villager", "Pahimar", "iEdyn", "RoffleToys", "DylanGK"};
+        "chylex", "Mithion", "MHF_Villager", "Pahimar", "iEdyn", "RoffleToys", "DylanGK", "Othlon", "Rorax", "tlovetech",
+        "OndraSter", "eyamaz"
+    };
 
     public BiomeGenOssuary(int id)
     {
@@ -43,9 +46,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
         this.spawnableMonsterList.clear();
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySkeleton.class, 100, 4, 4));
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
-        BiomeManager.desertBiomes.add(new BiomeManager.BiomeEntry(this, 6));
-        //BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 900));
-        //BiomeManager.addSpawnBiome(this);
+        BiomeManager.addBiome(BiomeManager.BiomeType.DESERT, new BiomeManager.BiomeEntry(this, Config.ossuaryWeight));
         BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.WASTELAND,
                 BiomeDictionary.Type.DRY, BiomeDictionary.Type.HOT);

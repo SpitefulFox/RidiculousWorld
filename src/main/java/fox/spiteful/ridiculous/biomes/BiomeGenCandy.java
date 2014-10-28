@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.biomes;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.entities.EntityCalavera;
 import fox.spiteful.ridiculous.entities.EntityGingerbread;
@@ -42,8 +43,7 @@ public class BiomeGenCandy extends BiomeGenBase{
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntitySpider.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 20));
-        //BiomeManager.addSpawnBiome(this);
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(this, Config.candyWeight));
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.LUSH);
         setBiomeName("Rock Candy Mountain");
         setColor(0x8AFFF0);

@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.biomes;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.entities.EntityStarspawn;
 import fox.spiteful.ridiculous.world.WorldGenDullSpikes;
 import net.minecraft.init.Blocks;
@@ -30,10 +31,8 @@ public class BiomeGenMadness extends BiomeGenBase {
         this.fillerBlock = Blocks.packed_ice;
         this.spawnableCreatureList.clear();
         //this.spawnableMonsterList.add(new SpawnListEntry(EntityStarspawn.class, 90, 4, 4));
-        BiomeManager.coolBiomes.add(new BiomeManager.BiomeEntry(this, 9000));
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 9000));
-        BiomeManager.addSpawnBiome(this);
-        //BiomeManager.addStrongholdBiome(this);
+        BiomeManager.addBiome(BiomeManager.BiomeType.ICY, new BiomeManager.BiomeEntry(this, Config.madnessWeight));
+        BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.COLD, BiomeDictionary.Type.DEAD, BiomeDictionary.Type.MOUNTAIN, BiomeDictionary.Type.SNOWY);
         setBiomeName("Mountain of Madness");
         setTemperatureRainfall(0.05F, 0.5F);
@@ -60,7 +59,7 @@ public class BiomeGenMadness extends BiomeGenBase {
     @SideOnly(Side.CLIENT)
     public int getSkyColorByTemp(float wat)
     {
-        return 0x059100;
+        return 0x6B00D7;
     }
 
     public void decorate(World world, Random rand, int chunkX, int chunkZ)

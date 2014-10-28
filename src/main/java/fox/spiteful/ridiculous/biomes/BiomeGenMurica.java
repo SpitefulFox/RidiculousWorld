@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.biomes;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.entities.EntityCalavera;
 import fox.spiteful.ridiculous.entities.EntityGingerbread;
@@ -28,9 +29,8 @@ public class BiomeGenMurica extends BiomeGenBase {
         this.theBiomeDecorator.grassPerChunk = 2;
         this.theBiomeDecorator.mushroomsPerChunk = 0;
         setHeight(height_MidPlains);
-        BiomeManager.warmBiomes.add(new BiomeManager.BiomeEntry(this, 9));
-        //BiomeManager.addSpawnBiome(this);
-        BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(this, Config.muricaWeight));
+        BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.FOREST, BiomeDictionary.Type.PLAINS);
         setBiomeName("Murica");
         setColor(0x0000FF);
         waterColorMultiplier = 0x0000FF;

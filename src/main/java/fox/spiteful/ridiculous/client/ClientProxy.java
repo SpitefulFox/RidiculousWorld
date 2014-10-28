@@ -20,7 +20,7 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityGingerbread.class, new RenderGingerbread());
         RenderingRegistry.registerEntityRenderingHandler(EntityStarspawn.class, new RenderStarspawn());
 
-        if(Config.heads && !Loader.isModLoaded("PlayerBeacons")){
+        if(Config.heads && !Loader.isModLoaded("foxlib")){
             TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);
             BlockSkullRenderer blockSkullRenderer = new BlockSkullRenderer();
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkull.class, blockSkullRenderer);

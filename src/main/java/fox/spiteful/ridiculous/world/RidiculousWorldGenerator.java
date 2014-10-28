@@ -18,20 +18,8 @@ import java.util.logging.Logger;
 
 public class RidiculousWorldGenerator implements IWorldGenerator {
 
-    private MapGenCyclopean cyclopean;
-    //private double[] noiseField;
-
     public RidiculousWorldGenerator(){
-        MapGenStructureIO.registerStructure(MapGenCyclopean.Start.class, "Cyclopean Ruins");
-        cyclopean = new MapGenCyclopean();
-        StructureCyclopeanShards.registerCyclopeanShards();
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.diamond, 0, 1, 3, 5));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.iron_ingot, 0, 1, 5, 5));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.gold_ingot, 0, 1, 3, 5));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.ender_eye, 0, 2, 5, 7));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.ender_pearl, 0, 2, 5, 7));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.record_11, 0, 1, 1, 4));
-        ChestGenHooks.addItem("cyclopeanRuins", new WeightedRandomChestContent(Items.emerald, 0, 1, 2, 4));
+
     }
 
     /**
@@ -46,13 +34,13 @@ public class RidiculousWorldGenerator implements IWorldGenerator {
      *
      */
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider){
-        if(world.getBiomeGenForCoords(chunkX, chunkZ) == UnrealBiomes.madness) {
+        /*if(world.getBiomeGenForCoords(chunkX, chunkZ) == UnrealBiomes.madness) {
             cyclopean.generateStructuresInChunk(world, world.rand, chunkX, chunkZ);
         }
         if(world.getBiomeGenForCoords(chunkX, chunkZ) == UnrealBiomes.madness && chunkX % 8 == 0 && chunkZ % 8 == 0) {
             Block[] ablock = new Block[32768];
             cyclopean.func_151539_a(chunkGenerator, world, chunkX, chunkZ, ablock);
-        }
+        }*/
     }
 
 }

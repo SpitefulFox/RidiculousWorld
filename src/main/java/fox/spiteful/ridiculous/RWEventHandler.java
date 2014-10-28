@@ -1,5 +1,6 @@
 package fox.spiteful.ridiculous;
 
+import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
@@ -43,15 +44,22 @@ public class RWEventHandler {
             else if(event.entityLiving instanceof EntityWolf && randy.nextInt(4) != 1)
                 ((EntityWolf)event.entityLiving).setAngry(true);
         }
-        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.ossuary) {
+        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.ossuary) {
             if(event.entityLiving instanceof EntitySkeleton && randy.nextInt(5) <= 3 &&
-                    ((EntityLiving)event.entityLiving).getCanSpawnHere() && event.world.canBlockSeeTheSky(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ))){
+                    ((EntityLiving)event.entityLiving).getCanSpawnHere() &&
+                    event.world.canBlockSeeTheSky(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ))){
                 EntityWarhorse steed = new EntityWarhorse(event.world);
                 steed.setLocationAndAngles(event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, event.entityLiving.rotationYaw, event.entityLiving.rotationPitch);
                 event.world.spawnEntityInWorld(steed);
             }
+            if((event.entityLiving instanceof EntitySkeleton || event.entityLiving instanceof EntityZombie) &&
+                    event.world.canBlockSeeTheSky(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ))
+                    && event.world.isDaytime()) {
+                event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(Items.golden_helmet, 1, 0));
+                event.setResult(Event.Result.ALLOW);
+            }
         }
-        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.murica) {
+        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.murica) {
             if(event.entityLiving instanceof EntitySheep){
                 EntitySheep sheepy = (EntitySheep)event.entityLiving;
                 int freedom = randy.nextInt(3);
@@ -62,6 +70,12 @@ public class RWEventHandler {
                 else if(freedom == 2)
                     freedom = 14;
                 sheepy.setFleeceColor(freedom);
+            }
+        }
+        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.candy) {
+            if(event.entityLiving instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.entityLiving;
+                sheepy.setFleeceColor(randy.nextInt(16));
             }
         }
         /*if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {

@@ -19,12 +19,12 @@ import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
         modid = "RidiculousWorld",
-        name = "Ridiculous Worlds",
+        name = "Ridiculous World",
         version = "0.1"
         //dependencies = "required-after:Thaumcraft;after:ThaumicTinkerer"
 )
 public class Ridiculous {
-    @Instance("RidWorlds")
+    @Instance("RidiculousWorld")
     public static Ridiculous instance;
     @SidedProxy(
             clientSide = "fox.spiteful.ridiculous.client.ClientProxy",

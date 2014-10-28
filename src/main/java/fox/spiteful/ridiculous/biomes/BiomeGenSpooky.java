@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.biomes;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.entities.EntityFrankenstein;
 import fox.spiteful.ridiculous.entities.EntityMummy;
 import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
@@ -37,7 +38,7 @@ public class BiomeGenSpooky extends BiomeGenBase {
         this.spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityFrankenstein.class, 90, 4, 4));
-        BiomeManager.coolBiomes.add(new BiomeEntry(this, 20));
+        BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeEntry(this, Config.spookyWeight));
         BiomeManager.addStrongholdBiome(this);
         BiomeDictionary.registerBiomeType(this, Type.SPOOKY, Type.MAGICAL, Type.FOREST);
         setBiomeName("Spooky Forest");
