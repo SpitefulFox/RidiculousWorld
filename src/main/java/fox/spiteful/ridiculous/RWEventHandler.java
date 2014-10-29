@@ -10,10 +10,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityCreeper;
-import net.minecraft.entity.monster.EntityPigZombie;
-import net.minecraft.entity.monster.EntitySkeleton;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityWolf;
@@ -27,11 +24,21 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 
+import java.lang.reflect.Field;
+import java.util.Calendar;
 import java.util.Random;
 
 public class RWEventHandler {
 
     Random randy = new Random();
+    boolean halloween = false;
+
+    public RWEventHandler(){
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(System.currentTimeMillis());
+        if(cal.get(2) + 1 == 10)
+            halloween = true;
+    }
 
     @SubscribeEvent
     public void onSpawn(LivingSpawnEvent event){
@@ -51,12 +58,6 @@ public class RWEventHandler {
                 EntityWarhorse steed = new EntityWarhorse(event.world);
                 steed.setLocationAndAngles(event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, event.entityLiving.rotationYaw, event.entityLiving.rotationPitch);
                 event.world.spawnEntityInWorld(steed);
-            }
-            if((event.entityLiving instanceof EntitySkeleton || event.entityLiving instanceof EntityZombie) &&
-                    event.world.canBlockSeeTheSky(MathHelper.floor_double(event.entityLiving.posX), MathHelper.floor_double(event.entityLiving.posY), MathHelper.floor_double(event.entityLiving.posZ))
-                    && event.world.isDaytime()) {
-                event.entityLiving.setCurrentItemOrArmor(4, new ItemStack(Items.golden_helmet, 1, 0));
-                event.setResult(Event.Result.ALLOW);
             }
         }
         else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.murica) {
@@ -78,28 +79,29 @@ public class RWEventHandler {
                 sheepy.setFleeceColor(randy.nextInt(16));
             }
         }
-        /*if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {
-            if (event.entityLiving instanceof EntityZombie) {
-                EntityZombie entityZombie = (EntityZombie) event.entity;
-                if (!entityZombie.isVillager()) {
-                    if (entityZombie.worldObj.playerEntities.size() > 0) {
-                        int i = randy.nextInt(entityZombie.worldObj.playerEntities.size());
-                        EntityPlayer player = (EntityPlayer) entityZombie.worldObj.playerEntities.get(i);
-                        ItemStack head = new ItemStack(Items.skull, 1, 3);
-                        NBTTagCompound nametag = new NBTTagCompound();
-                        nametag.setString("SkullOwner", player.getDisplayName());
-                        head.setTagCompound(nametag);
-                        entityZombie.setCurrentItemOrArmor(4, head);
-                        entityZombie.setEquipmentDropChance(4, 100);
-                    }
+        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {
+            if (event.entityLiving instanceof EntityEnderman && ((EntityEnderman)event.entityLiving).getCanSpawnHere()
+                && event.world.rand.nextInt(20) < 1) {
+                EntityEnderman enderman = (EntityEnderman)event.entityLiving;
+                try {
+                    Field aggro = EntityEnderman.class.getDeclaredField("isAggressive");
+                    aggro.setAccessible(true);
+                    aggro.setBoolean(enderman, true);
                 }
+                catch(Exception e){}
+
             }
-        }*/
+        }
     }
 
     @SubscribeEvent
     public void onLivingDrops(LivingDropsEvent event)
     {
+        if(event.entityLiving instanceof IMob && halloween && event.recentlyHit && event.source.getEntity() != null
+            && event.source.getEntity() instanceof EntityPlayer && randy.nextInt(10) == 0){
+            addDrop(event, new ItemStack(RidiculousItems.candyCorn, 1));
+        }
+
         if (event.entityLiving.getClass() == EntitySkeleton.class && event.recentlyHit && event.source.getEntity() != null
                 && event.source.getEntity() instanceof EntityPlayer)
         {

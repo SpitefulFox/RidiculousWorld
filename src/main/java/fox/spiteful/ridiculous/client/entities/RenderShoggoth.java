@@ -2,6 +2,9 @@ package fox.spiteful.ridiculous.client.entities;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.client.shaders.ShaderHelper;
+import fox.spiteful.ridiculous.client.shaders.ShaderHelper.ShaderCallback;
+import fox.spiteful.ridiculous.entities.EntityShoggoth;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelSlime;
@@ -10,15 +13,34 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
 
 @SideOnly(Side.CLIENT)
-public class RenderStarspawn extends RenderLiving
+public class RenderShoggoth extends RenderLiving
 {
-    private static final ResourceLocation slimeTextures = new ResourceLocation("textures/entity/end_portal.png");
+    private static final ResourceLocation slimeTextures = new ResourceLocation("ridiculous", "textures/models/shoggoth.png");
     private ModelBase scaleAmount;
 
-    public RenderStarspawn()
+    float grainIntensity = 0.55F;
+    float disfiguration = 0.045F;
+    float pain = 0;
+
+    ShaderCallback callback = new ShaderCallback() {
+        @Override
+        public void call(int shader) {
+            // Vert Uniforms
+            int disfigurationUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "disfiguration");
+            ARBShaderObjects.glUniform1fARB(disfigurationUniform, disfiguration);
+            // Frag Uniforms
+            int grainIntensityUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "grainIntensity");
+            ARBShaderObjects.glUniform1fARB(grainIntensityUniform, grainIntensity);
+            int painUniform = ARBShaderObjects.glGetUniformLocationARB(shader, "pain");
+            ARBShaderObjects.glUniform1fARB(painUniform, pain);
+        }
+    };
+
+    public RenderShoggoth()
     {
         super(new ModelSlime(16), 0.25F);
         this.scaleAmount = new ModelSlime(0);
@@ -90,6 +112,22 @@ public class RenderStarspawn extends RenderLiving
     protected ResourceLocation getEntityTexture(Entity p_110775_1_)
     {
         return slimeTextures;
+    }
+
+    @Override
+    public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
+        if(!ShaderHelper.useShaders()){
+            super.doRender(par1Entity, par2, par4, par6, par8, par9);
+            return;
+        }
+
+        EntityShoggoth shoggoth = (EntityShoggoth) par1Entity;
+
+        pain = shoggoth.hurtResistantTime;
+
+        ShaderHelper.useShader(ShaderHelper.shoggoth, callback);
+        super.doRender(par1Entity, par2, par4, par6, par8, par9);
+        ShaderHelper.releaseShader();
     }
 
 }

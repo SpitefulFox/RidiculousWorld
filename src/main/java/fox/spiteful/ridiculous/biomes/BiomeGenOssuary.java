@@ -5,8 +5,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
-import fox.spiteful.ridiculous.entities.EntityMummy;
-import fox.spiteful.ridiculous.entities.EntityWarhorse;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.init.Blocks;

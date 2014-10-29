@@ -2,10 +2,8 @@ package fox.spiteful.ridiculous.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fox.spiteful.ridiculous.Ridiculous;
 import fox.spiteful.ridiculous.entities.*;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockLiquid;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.*;
@@ -16,7 +14,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class ItemRidiculousSpawner extends Item
@@ -24,7 +21,7 @@ public class ItemRidiculousSpawner extends Item
     private IIcon easter;
     private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1, 0xFFFFFF};
     private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125, 0x110054};
-    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep", "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread", "RidiculousWorld.Starspawn"};
+    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep", "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread", "RidiculousWorld.Shoggoth"};
 
     public ItemRidiculousSpawner()
     {
@@ -139,7 +136,7 @@ public class ItemRidiculousSpawner extends Item
                 spawnEntity(posX, posY, posZ, entity, world);
                 break;
             case 5:
-                entity = new EntityStarspawn(world);
+                entity = new EntityShoggoth(world);
                 spawnEntity(posX, posY, posZ, entity, world);
                 break;
         }

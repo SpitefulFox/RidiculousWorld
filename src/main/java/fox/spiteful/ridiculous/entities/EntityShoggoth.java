@@ -6,8 +6,8 @@ import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class EntityStarspawn extends EntitySlime {
-    public EntityStarspawn(World world){
+public class EntityShoggoth extends EntitySlime {
+    public EntityShoggoth(World world){
         super(world);
     }
 
@@ -64,6 +64,6 @@ public class EntityStarspawn extends EntitySlime {
 
     protected EntitySlime createInstance()
     {
-        return new EntityStarspawn(this.worldObj);
+        return new EntityShoggoth(this.worldObj);
     }
 }

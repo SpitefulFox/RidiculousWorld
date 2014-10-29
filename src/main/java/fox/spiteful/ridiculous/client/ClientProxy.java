@@ -6,6 +6,7 @@ import cpw.mods.fml.common.Loader;
 import fox.spiteful.ridiculous.CommonProxy;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.client.entities.*;
+import fox.spiteful.ridiculous.client.shaders.ShaderHelper;
 import fox.spiteful.ridiculous.entities.*;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.tileentity.TileEntitySkull;
@@ -18,12 +19,14 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityUnicorn.class, new RenderUnicorn());
         RenderingRegistry.registerEntityRenderingHandler(EntityCalavera.class, new RenderCalavera());
         RenderingRegistry.registerEntityRenderingHandler(EntityGingerbread.class, new RenderGingerbread());
-        RenderingRegistry.registerEntityRenderingHandler(EntityStarspawn.class, new RenderStarspawn());
+        RenderingRegistry.registerEntityRenderingHandler(EntityShoggoth.class, new RenderShoggoth());
 
         if(Config.heads && !Loader.isModLoaded("foxlib")){
             TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);
             BlockSkullRenderer blockSkullRenderer = new BlockSkullRenderer();
             ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkull.class, blockSkullRenderer);
         }
+
+        ShaderHelper.initShaders();
     }
 }
