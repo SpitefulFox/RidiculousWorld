@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.Lumberjack;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraftforge.common.MinecraftForge;
@@ -56,9 +57,11 @@ public final class ShaderHelper {
     public static void releaseShader() {
         useShader(0);
     }
+
     public static boolean useShaders() {
-        return OpenGlHelper.shadersSupported;
+        return Config.shaders && OpenGlHelper.shadersSupported;
     }
+
     // Most of the code taken from the LWJGL wiki
     // http://lwjgl.org/wiki/index.php?title=GLSL_Shaders_with_LWJGL
     private static int createProgram(String vert, String frag) {

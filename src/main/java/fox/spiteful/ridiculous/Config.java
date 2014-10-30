@@ -15,13 +15,14 @@ public class Config {
     public static int muricaID;
     public static int madnessID;
 
-    public static int spookyWeight = 15;
+    public static int spookyWeight = 10;
     public static int ossuaryWeight = 7;
-    public static int candyWeight = 10;
+    public static int candyWeight = 9;
     public static int muricaWeight = 0;
     public static int madnessWeight = 8;
 
     public static boolean heads = true;
+    public static boolean shaders = true;
 
     public static void configurate(File targ)
     {
@@ -30,7 +31,8 @@ public class Config {
         try
         {
             conf.load();
-            heads = conf.get("General", "Overwrite Head Render", heads, "Enable to make player heads render correctly").getBoolean(false);
+            heads = conf.get("General", "Overwrite Head Render", heads, "Enable to make player heads render correctly").getBoolean(true);
+            shaders = conf.get("General", "Shaders", shaders, "Disable to get rid of the fancy effects on the shoggoth").getBoolean(true);
 
             int biome = 175;
             spookyID = conf.get("Biome IDs", "Spooky Forest", biome).getInt(biome++);

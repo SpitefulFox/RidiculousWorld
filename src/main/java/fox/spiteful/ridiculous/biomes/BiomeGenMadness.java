@@ -78,6 +78,20 @@ public class BiomeGenMadness extends BiomeGenBase {
             this.spikeGen.generate(world, rand, i, k, j);
         }
 
+
+        int k = 3 + rand.nextInt(6);
+        for (int l = 0; l < k; ++l)
+        {
+            int i1 = chunkX + rand.nextInt(16);
+            int j1 = rand.nextInt(28) + 4;
+            int k1 = chunkZ + rand.nextInt(16);
+
+            if (world.getBlock(i1, j1, k1).isReplaceableOreGen(world, i1, j1, k1, Blocks.stone))
+            {
+                world.setBlock(i1, j1, k1, Blocks.emerald_ore, 0, 2);
+            }
+        }
+
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
     }
 

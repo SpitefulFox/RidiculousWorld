@@ -54,6 +54,7 @@ public class Compat {
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Frankenstein", (new AspectList()).add(Aspect.FLESH, 4).add(Aspect.MAN, 3).add(Aspect.ENERGY, 2).add(Aspect.WEATHER, 1), new ThaumcraftApi.EntityTagsNBT[0]);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Warhorse", (new AspectList()).add(Aspect.UNDEAD, 3).add(Aspect.BEAST, 1).add(Aspect.EARTH, 1), new ThaumcraftApi.EntityTagsNBT[0]);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Gingerbread", (new AspectList()).add(Aspect.HUNGER, 3).add(Aspect.MOTION, 4), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.Shoggoth", (new AspectList()).add(Aspect.SLIME, 2).add(Aspect.ELDRITCH, 2), new ThaumcraftApi.EntityTagsNBT[0]);
 
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.spookyLog), (new AspectList()).add(Aspect.TREE, 4).add(Aspect.SOUL, 1));
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.boneDust), (new AspectList()).add(Aspect.DEATH, 4));
