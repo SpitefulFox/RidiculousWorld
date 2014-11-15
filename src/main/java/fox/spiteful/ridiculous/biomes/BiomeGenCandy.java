@@ -48,6 +48,7 @@ public class BiomeGenCandy extends BiomeGenBase{
         setBiomeName("Rock Candy Mountain");
         setColor(0x8AFFF0);
         this.waterColorMultiplier = 0x899CFF;
+        //this.waterColorMultiplier = 0x95E7BF;
     }
 
     @Override
@@ -106,6 +107,19 @@ public class BiomeGenCandy extends BiomeGenBase{
                         }
                     }
                 }
+            }
+        }
+
+        int k = 3 + rand.nextInt(6);
+        for (int l = 0; l < k; ++l)
+        {
+            int i1 = chunkX + rand.nextInt(16);
+            int j1 = rand.nextInt(28) + 4;
+            int k1 = chunkZ + rand.nextInt(16);
+
+            if (world.getBlock(i1, j1, k1).isReplaceableOreGen(world, i1, j1, k1, Blocks.stone))
+            {
+                world.setBlock(i1, j1, k1, Blocks.emerald_ore, 0, 2);
             }
         }
 
