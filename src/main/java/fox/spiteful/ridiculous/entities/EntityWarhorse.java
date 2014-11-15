@@ -77,7 +77,7 @@ public class EntityWarhorse extends EntityMob {
             this.func_110210_cH();
         }
 
-        if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild())
+        if (this.worldObj.isDaytime() && !this.worldObj.isRemote && !this.isChild() && riddenByEntity == null)
         {
             float f = this.getBrightness(1.0F);
 

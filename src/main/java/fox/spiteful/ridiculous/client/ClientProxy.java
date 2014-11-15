@@ -8,6 +8,8 @@ import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.client.entities.*;
 import fox.spiteful.ridiculous.client.shaders.ShaderHelper;
 import fox.spiteful.ridiculous.entities.*;
+import net.minecraft.client.renderer.entity.RenderSkeleton;
+import net.minecraft.client.renderer.entity.RenderZombie;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.tileentity.TileEntitySkull;
 
@@ -20,6 +22,8 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityCalavera.class, new RenderCalavera());
         RenderingRegistry.registerEntityRenderingHandler(EntityGingerbread.class, new RenderGingerbread());
         RenderingRegistry.registerEntityRenderingHandler(EntityShoggoth.class, new RenderShoggoth());
+        RenderingRegistry.registerEntityRenderingHandler(EntityDaySkeleton.class, new RenderSkeleton());
+        RenderingRegistry.registerEntityRenderingHandler(EntityDayZombie.class, new RenderZombie());
 
         if(Config.heads && !Loader.isModLoaded("foxlib")){
             TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);

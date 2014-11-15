@@ -102,7 +102,7 @@ public class RWEventHandler {
             addDrop(event, new ItemStack(RidiculousItems.candyCorn, 1));
         }
 
-        if (event.entityLiving.getClass() == EntitySkeleton.class && event.recentlyHit && event.source.getEntity() != null
+        if (event.entityLiving instanceof EntitySkeleton && event.recentlyHit && event.source.getEntity() != null
                 && event.source.getEntity() instanceof EntityPlayer)
         {
             ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();
@@ -113,7 +113,7 @@ public class RWEventHandler {
             }
         }
 
-        if (event.entityLiving.getClass() == EntityZombie.class && event.recentlyHit && event.source.getEntity() != null
+        if (event.entityLiving instanceof EntityZombie && event.recentlyHit && event.source.getEntity() != null
                 && event.source.getEntity() instanceof EntityPlayer)
         {
             ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();
@@ -124,7 +124,7 @@ public class RWEventHandler {
             }
         }
 
-        if (event.entityLiving.getClass() == EntityCreeper.class && event.recentlyHit && event.source.getEntity() != null
+        if (event.entityLiving instanceof EntityCreeper && event.recentlyHit && event.source.getEntity() != null
                 && event.source.getEntity() instanceof EntityPlayer)
         {
             ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();

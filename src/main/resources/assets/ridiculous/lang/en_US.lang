@@ -26,5 +26,7 @@ entity.RidiculousWorld.Mummy.name=Mummy
 entity.RidiculousWorld.Calavera.name=Sugar Skull
 entity.RidiculousWorld.Gingerbread.name=Gingerbread Man
 entity.RidiculousWorld.Shoggoth.name=Shoggoth
+entity.RidiculousWorld.Skeleton.name=Skeleton
+entity.RidiculousWorld.Zombie.name=Zombie
 # Misc
 itemGroup.ridiculous=Ridiculous World
