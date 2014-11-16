@@ -16,7 +16,7 @@ public class Config {
     public static int madnessID;
     public static int shadowID;
 
-    public static int spookyWeight = 10;
+    public static int spookyWeight = 9;
     public static int ossuaryWeight = 7;
     public static int candyWeight = 9;
     public static int muricaWeight = 0;
