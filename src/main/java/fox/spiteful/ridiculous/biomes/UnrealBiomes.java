@@ -10,6 +10,7 @@ public class UnrealBiomes {
     public static BiomeGenBase candy;
     public static BiomeGenBase murica;
     public static BiomeGenBase madness;
+    public static BiomeGenBase shadow;
 
     public static void genesis(){
         if(Config.spookyWeight > 0)
@@ -22,5 +23,7 @@ public class UnrealBiomes {
             murica = new BiomeGenMurica(Config.muricaID);
         if(Config.madnessWeight > 0)
             madness = new BiomeGenMadness(Config.madnessID);
+        if(Config.shadowWeight > 0)
+            shadow = new BiomeGenShadow(Config.shadowID);
     }
 }

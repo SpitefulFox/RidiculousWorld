@@ -16,6 +16,7 @@ public class RidiculousBlocks {
     public static Block gingerbread;
     public static Block serpent;
     public static Block serpentRune;
+    public static Block gloom;
 
     public static void blockBlockity(){
         treeLogs = new BlockFantasyLog();
@@ -40,5 +41,7 @@ public class RidiculousBlocks {
         GameRegistry.registerBlock(serpent, "Serpent");
         serpentRune = new BlockSerpentRune();
         GameRegistry.registerBlock(serpentRune, "SerpentRune");
+        gloom = new BlockGloom();
+        GameRegistry.registerBlock(gloom, "Gloom");
     }
 }
