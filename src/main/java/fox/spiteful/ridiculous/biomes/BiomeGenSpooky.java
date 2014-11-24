@@ -90,6 +90,10 @@ public class BiomeGenSpooky extends BiomeGenBase {
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
     }
 
+    /**
+     *
+     * Returns tree for the BiomeDecorator to use
+     */
     public WorldGenAbstractTree func_150567_a(Random rand)
     {
         return (WorldGenAbstractTree)(rand.nextInt(10) == 0 ? this.bigSpookyTree : rand.nextInt(5) != 0 ? this.spookyTree : this.darkTree);

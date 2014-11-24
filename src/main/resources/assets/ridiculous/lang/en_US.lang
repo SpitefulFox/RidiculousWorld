@@ -28,5 +28,6 @@ entity.RidiculousWorld.Gingerbread.name=Gingerbread Man
 entity.RidiculousWorld.Shoggoth.name=Shoggoth
 entity.RidiculousWorld.Skeleton.name=Skeleton
 entity.RidiculousWorld.Zombie.name=Zombie
+entity.RidiculousWorld.ShadowSlime.name=Shadow Slime
 # Misc
 itemGroup.ridiculous=Ridiculous World

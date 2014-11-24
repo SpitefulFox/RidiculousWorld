@@ -32,6 +32,8 @@ public class Compat {
             thaumic = true;
         if(Loader.isModLoaded("Forbidden"))
             forbidden = true;
+        if(Loader.isModLoaded("foxlib"))
+            Lumberjack.log(Level.INFO, "#FuckTheSand");
     }
 
     public static void compatify()

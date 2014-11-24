@@ -1,13 +1,17 @@
 package fox.spiteful.ridiculous.entities;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class EntityShoggoth extends EntitySlime {
-    public EntityShoggoth(World world){
+public class EntityShadowSlime extends EntitySlime {
+    public EntityShadowSlime(World world){
         super(world);
     }
 
@@ -20,8 +24,8 @@ public class EntityShoggoth extends EntitySlime {
         int j = MathHelper.floor_double(this.boundingBox.minY);
         int k = MathHelper.floor_double(this.posZ);
         return this.worldObj.difficultySetting != EnumDifficulty.PEACEFUL && this.isValidLightLevel() && this.getBlockPathWeight(i, j, k) >= 0.0F
-            && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
-            && !this.worldObj.isAnyLiquid(this.boundingBox);
+                && this.worldObj.checkNoEntityCollision(this.boundingBox) && this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).isEmpty()
+                && !this.worldObj.isAnyLiquid(this.boundingBox);
     }
 
     /**
@@ -64,7 +68,7 @@ public class EntityShoggoth extends EntitySlime {
 
     protected EntitySlime createInstance()
     {
-        return new EntityShoggoth(this.worldObj);
+        return new EntityShadowSlime(this.worldObj);
     }
 
     /**
@@ -72,6 +76,6 @@ public class EntityShoggoth extends EntitySlime {
      */
     protected String getSlimeParticle()
     {
-        return "portal";
+        return "largesmoke";
     }
 }

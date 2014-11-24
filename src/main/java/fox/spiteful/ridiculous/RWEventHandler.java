@@ -79,7 +79,7 @@ public class RWEventHandler {
                 sheepy.setFleeceColor(randy.nextInt(16));
             }
         }
-        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {
+        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.madness) {
             if (event.entityLiving instanceof EntityEnderman && ((EntityEnderman)event.entityLiving).getCanSpawnHere()
                 && event.world.rand.nextInt(20) < 1) {
                 EntityEnderman enderman = (EntityEnderman)event.entityLiving;
@@ -90,6 +90,15 @@ public class RWEventHandler {
                 }
                 catch(Exception e){}
 
+            }
+        }
+        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.x), MathHelper.floor_double(event.z)) == UnrealBiomes.shadow) {
+            if(event.entityLiving instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.entityLiving;
+                if(randy.nextInt(20) <= 1)
+                    sheepy.setFleeceColor(10);
+                else
+                    sheepy.setFleeceColor(15);
             }
         }
     }
