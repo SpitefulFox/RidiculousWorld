@@ -10,6 +10,7 @@ public class RidiculousBlocks {
     public static Block spookyLog;
     public static Block treeSaplings;
     public static Block treePlanks;
+    public static Block craftBench;
     public static Block boneDust;
     public static Block rockCandy;
     public static Block candyCane;
@@ -29,6 +30,8 @@ public class RidiculousBlocks {
         GameRegistry.registerBlock(treeSaplings, ItemBlockSapling.class,"RidiculousSapling");
         treePlanks = new BlockFantasyPlanks();
         GameRegistry.registerBlock(treePlanks, ItemBlockPlanks.class, "RidiculousPlanks");
+        craftBench = new BlockFancyCrafting();
+        GameRegistry.registerBlock(craftBench, ItemBlockCrafting.class, "RidiculousCrafting");
         boneDust = new BlockBoneDust();
         GameRegistry.registerBlock(boneDust, "BoneDust");
         rockCandy = new BlockRockCandy();

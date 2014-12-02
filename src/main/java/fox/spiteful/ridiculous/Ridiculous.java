@@ -15,6 +15,7 @@ import fox.spiteful.ridiculous.entities.RidiculousMobs;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import fox.spiteful.ridiculous.world.RidiculousWorldGenerator;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(
@@ -31,7 +32,12 @@ public class Ridiculous {
             serverSide = "fox.spiteful.ridiculous.CommonProxy"
     )
     public static CommonProxy proxy;
-    public static final CreativeTabs tab = new RidiculousTab();
+    public static final CreativeTabs tab = new CreativeTabs("ridiculous"){
+        @Override
+        public Item getTabIconItem() {
+            return RidiculousItems.peepRaw;
+        }
+    };
 
     @EventHandler
     public void prologue(FMLPreInitializationEvent event)
