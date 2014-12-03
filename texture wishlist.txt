@@ -7,6 +7,7 @@ Wanted
 - Crystal Leaves
 - Crystal Wood Crafting Bench
 - Shadow Wood Crafting Bench
+- Bubblegum Wood Crafting Bench
 
 Would Be Nice to Replace
 - Candy Corn
@@ -15,5 +16,5 @@ Would Be Nice to Replace
 - Marshmallow Peep Item
 - Toasted Marshmallow Peep Item
 - Rock Candy
-- Bubblegum Leaves
-- Bubblegum Planks
+- Bubblegum Leaves (More bubble shaped!)
+- Bubblegum Planks (Bubblegum splattered across)
