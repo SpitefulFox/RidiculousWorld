@@ -15,3 +15,5 @@ Would Be Nice to Replace
 - Marshmallow Peep Item
 - Toasted Marshmallow Peep Item
 - Rock Candy
+- Bubblegum Leaves
+- Bubblegum Planks
