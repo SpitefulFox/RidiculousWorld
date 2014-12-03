@@ -7,8 +7,13 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockPlanks extends ItemBlock {
     public ItemBlockPlanks(Block block){
         super(block);
-        this.setMaxDamage(BlockFantasyPlanks.types.length - 1);
         this.setHasSubtypes(true);
+    }
+
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
     }
 
     @Override

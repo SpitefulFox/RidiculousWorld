@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockFantasyLeaves extends BlockLeaves {
-    public static final String[] types = new String[] {"spooky"};
+    public static final String[] types = new String[] {"spooky", "bubblegum"};
 
     public BlockFantasyLeaves(){
         super();
@@ -35,6 +35,8 @@ public class BlockFantasyLeaves extends BlockLeaves {
     {
         if((metadata & 3) == 0)
             return 0xF2A100;
+        else if((metadata & 3) == 1)
+            return 0xFF70F7;
         else
             return super.getRenderColor(metadata);
     }
@@ -49,6 +51,8 @@ public class BlockFantasyLeaves extends BlockLeaves {
         int l = world.getBlockMetadata(x, y, z);
         if((l & 3) == 0)
             return 0xF2A100;
+        else if((l & 3) == 1)
+            return 0xFF70F7;
         else
             return super.colorMultiplier(world, x, y, z);
     }
@@ -72,10 +76,10 @@ public class BlockFantasyLeaves extends BlockLeaves {
     {
         int j = super.func_150123_b(metadata);
 
-        if ((metadata & 3) == 3)
+        /*if ((metadata & 3) == 3)
         {
             j = 40;
-        }
+        }*/
 
         return j;
     }

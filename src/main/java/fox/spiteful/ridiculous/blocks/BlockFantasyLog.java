@@ -14,7 +14,7 @@ import net.minecraft.util.IIcon;
 import java.util.List;
 
 public class BlockFantasyLog extends BlockLog {
-    public static final String[] types = new String[] {"spooky"};
+    public static final String[] types = new String[] {"spooky", "bubblegum"};
 
     public BlockFantasyLog()
     {

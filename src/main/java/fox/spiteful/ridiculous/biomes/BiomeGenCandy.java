@@ -8,6 +8,7 @@ import fox.spiteful.ridiculous.entities.EntityCalavera;
 import fox.spiteful.ridiculous.entities.EntityGingerbread;
 import fox.spiteful.ridiculous.entities.EntityPeep;
 import fox.spiteful.ridiculous.entities.EntityUnicorn;
+import fox.spiteful.ridiculous.world.WorldGenBubblegumTree;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
@@ -25,6 +26,7 @@ import java.util.Random;
 
 public class BiomeGenCandy extends BiomeGenBase{
     private WorldGenAbstractTree pineTree = new WorldGenTaiga2(false);
+    private WorldGenAbstractTree bubblegum = new WorldGenBubblegumTree(false);
 
     public BiomeGenCandy(int id){
         super(id);
@@ -128,7 +130,10 @@ public class BiomeGenCandy extends BiomeGenBase{
 
     public WorldGenAbstractTree func_150567_a(Random rand)
     {
-        return pineTree;
+        if(rand.nextBoolean())
+            return pineTree;
+        else
+            return bubblegum;
     }
 
 }

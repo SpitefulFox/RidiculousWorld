@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockLeaves extends ItemBlock {
     public ItemBlockLeaves(Block block){
         super(block);
-        this.setMaxDamage(BlockFantasyLeaves.types.length - 1);
         this.setHasSubtypes(true);
     }
 

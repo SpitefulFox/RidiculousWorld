@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.blocks;
 
 import fox.spiteful.ridiculous.Ridiculous;
 import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
+import fox.spiteful.ridiculous.world.WorldGenBubblegumTree;
 import fox.spiteful.ridiculous.world.WorldGenSpookyTree;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -21,7 +22,7 @@ import java.util.Random;
 
 public class BlockFantasySapling extends BlockSapling
 {
-    public static final String[] types = new String[] {"spooky"};
+    public static final String[] types = new String[] {"spooky", "bubblegum"};
     private IIcon[] textures;
 
     public BlockFantasySapling()
@@ -45,11 +46,7 @@ public class BlockFantasySapling extends BlockSapling
     @Override
     public IIcon getIcon(int side, int metadata)
     {
-        if (metadata < 0 || metadata >= types.length) {
-            metadata = 0;
-        }
-
-        return textures[metadata];
+        return textures[metadata % types.length];
     }
 
     @Override
@@ -97,9 +94,9 @@ public class BlockFantasySapling extends BlockSapling
     /* Grow the tree */
     public void func_149878_d(World world, int x, int y, int z, Random rand)
     {
-        int meta = world.getBlockMetadata(x, y, z) & types.length;
+        int meta = world.getBlockMetadata(x, y, z) & (types.length - 1);
         Object obj = null;
-        int rnd = rand.nextInt(8);
+        //int rnd = rand.nextInt(8);
 
         if (obj == null)
         {
@@ -108,7 +105,9 @@ public class BlockFantasySapling extends BlockSapling
                 case 0:
                     obj = rand.nextInt(10) == 0 ? new WorldGenBigSpookyTree(true) : new WorldGenSpookyTree(true);
                     break;
-
+                case 1:
+                    obj = new WorldGenBubblegumTree(true);
+                    break;
             }
         }
 
@@ -126,12 +125,12 @@ public class BlockFantasySapling extends BlockSapling
     @Override
     public int damageDropped(int meta)
     {
-        return meta & types.length;
+        return meta & (types.length - 1);
     }
 
     @Override
     public int getDamageValue(World world, int x, int y, int z)
     {
-        return world.getBlockMetadata(x, y, z) & types.length;
+        return world.getBlockMetadata(x, y, z) & (types.length - 1);
     }
 }

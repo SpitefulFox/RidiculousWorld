@@ -7,7 +7,6 @@ import net.minecraft.item.ItemStack;
 public class ItemBlockLog extends ItemBlock {
     public ItemBlockLog(Block block){
         super(block);
-        this.setMaxDamage(BlockFantasyLog.types.length - 1);
         this.setHasSubtypes(true);
     }
 

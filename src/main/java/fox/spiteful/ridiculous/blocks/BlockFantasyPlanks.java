@@ -15,13 +15,16 @@ import net.minecraft.util.IIcon;
 import java.util.List;
 
 public class BlockFantasyPlanks extends Block {
-    public static final String[] types = new String[] {"spooky"};
+    public static final String[] types = new String[] {"spooky", "bubblegum"};
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 
     public BlockFantasyPlanks()
     {
         super(Material.wood);
+        setHardness(2.0F);
+        setResistance(5.0F);
+        setStepSound(soundTypeWood);
         this.setCreativeTab(Ridiculous.tab);
     }
 
