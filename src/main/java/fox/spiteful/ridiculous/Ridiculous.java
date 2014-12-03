@@ -7,11 +7,13 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.compat.Compat;
 import fox.spiteful.ridiculous.entities.RidiculousMobs;
+import fox.spiteful.ridiculous.gui.RidiculousGUI;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import fox.spiteful.ridiculous.world.RidiculousWorldGenerator;
 import net.minecraft.creativetab.CreativeTabs;
@@ -58,6 +60,7 @@ public class Ridiculous {
         RidiculousMobs.mobify();
         Crafter.artsAndCrafts();
         GameRegistry.registerWorldGenerator(new RidiculousWorldGenerator(), 5);
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new RidiculousGUI());
     }
 
     @EventHandler

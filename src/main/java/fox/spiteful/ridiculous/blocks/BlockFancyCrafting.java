@@ -6,12 +6,17 @@ import fox.spiteful.ridiculous.Ridiculous;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWorkbench;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import java.util.List;
+
 public class BlockFancyCrafting extends BlockWorkbench {
-    static final String[] types = {"spooky"};
+    static final String[] types = {"spooky", "bubblegum"};
     IIcon[] top;
     IIcon[] front;
     IIcon[] sides;
@@ -65,7 +70,16 @@ public class BlockFancyCrafting extends BlockWorkbench {
         return false;
     }
 
-    /*@Override
+    @Override
+    public void getSubBlocks(Item block, CreativeTabs creativeTabs, List list)
+    {
+        for (int x = 0; x < types.length;x++)
+        {
+            list.add(new ItemStack(block, 1, x));
+        }
+    }
+
+    @Override
     public boolean onBlockActivated (World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9)
     {
         if (world.isRemote)
@@ -74,10 +88,9 @@ public class BlockFancyCrafting extends BlockWorkbench {
         }
         else
         {
-            player.openGui(Natura.instance, NGuiHandler.craftingGui, world, x, y, z);
-//player.displayGUIWorkbench(par2, par3, par4);
+            player.openGui(Ridiculous.instance, 0, world, x, y, z);
             return true;
         }
-    }*/
+    }
 
 }

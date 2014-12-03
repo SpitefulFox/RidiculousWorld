@@ -10,4 +10,9 @@ public class ItemBlockCrafting extends ItemBlock{
         this.setHasSubtypes(true);
     }
 
+    @Override
+    public int getMetadata(int meta)
+    {
+        return meta;
+    }
 }
