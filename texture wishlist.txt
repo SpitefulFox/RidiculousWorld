@@ -7,7 +7,8 @@ Wanted
 - Crystal Leaves
 - Rainbow Planks
 - Disco Leaves (Rainbow)
-- Disco Wood Log (Rainbow inside, silvery outside)
+- Disco Wood Log (Silvery, non-directional bark)
+- Disco Sapling (Round, rainbowy)
 - Crystal Wood Crafting Bench
 - Shadow Wood Crafting Bench
 - Rainbow Wood Crafting Bench
