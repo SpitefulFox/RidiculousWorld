@@ -5,8 +5,12 @@ Wanted
 - Crystal Wood Log
 - Crystal Wood Planks
 - Crystal Leaves
+- Rainbow Planks
+- Disco Leaves (Rainbow)
+- Disco Wood Log (Rainbow inside, silvery outside)
 - Crystal Wood Crafting Bench
 - Shadow Wood Crafting Bench
+- Rainbow Wood Crafting Bench
 
 Would Be Nice to Replace
 - Candy Corn
