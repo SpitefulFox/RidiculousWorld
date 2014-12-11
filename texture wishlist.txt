@@ -1,17 +1,15 @@
 Wanted
 - Pile of Skulls/Bones block
+- Christmas Tree Leaves
+- Christmas Tree Sapling
+- Present
 - Shadow Wood Log
 - Shadow Wood Planks
 - Crystal Wood Log
 - Crystal Wood Planks
 - Crystal Leaves
-- Rainbow Planks
-- Disco Leaves (Rainbow)
-- Disco Wood Log (Silvery, non-directional bark)
-- Disco Sapling (Round, rainbowy)
 - Crystal Wood Crafting Bench
 - Shadow Wood Crafting Bench
-- Rainbow Wood Crafting Bench
 
 Would Be Nice to Replace
 - Candy Corn
