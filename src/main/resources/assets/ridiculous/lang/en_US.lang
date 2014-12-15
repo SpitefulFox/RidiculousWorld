@@ -1,12 +1,19 @@
 # Blocks
 tile.ridiculous_log_spooky.name=Spooky Wood
 tile.ridiculous_log_bubblegum.name=Bubblegum Wood
+tile.ridiculous_log_shadow.name=Shadow Wood
 tile.ridiculous_leaves_spooky.name=Spooky Leaves
 tile.ridiculous_leaves_bubblegum.name=Bubblegum Leaves
+tile.ridiculous_leaves_shadow.name=Shadow Leaves
 tile.ridiculous_sapling_spooky.name=Spooky Sapling
 tile.ridiculous_sapling_bubblegum.name=Bubblegum Sapling
+tile.ridiculous_sapling_shadow.name=Shadow Sapling
 tile.ridiculous_planks_spooky.name=Spooky Planks
 tile.ridiculous_planks_bubblegum.name=Bubblegum Planks
+tile.ridiculous_planks_shadow.name=Shadow Planks
+tile.stairs_spooky.name=Spooky Wood Stairs
+tile.stairs_bubblegum.name=Bubblegum Wood Stairs
+tile.stairs_shadow.name=Shadow Wood Stairs
 tile.bonedust.name=Crushed Bone
 tile.rockcandy.name=Rock Candy
 tile.candycane.name=Candy Cane
