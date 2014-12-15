@@ -4,13 +4,11 @@ import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.DarkAspects;
 import fox.spiteful.ridiculous.Lumberjack;
+import fox.spiteful.ridiculous.blocks.BlockFancyCrafting;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Level;
 import thaumcraft.api.ThaumcraftApi;
@@ -26,12 +24,9 @@ public class Compat {
     public static Block enderGoo;
 
     public static void preparatoryCompatification(){
-        if(Loader.isModLoaded("HardcoreEnderExpansion"))
-            teehee = true;
-        if(Loader.isModLoaded("Thaumcraft"))
-            thaumic = true;
-        if(Loader.isModLoaded("Forbidden"))
-            forbidden = true;
+        teehee = Loader.isModLoaded("HardcoreEnderExpansion");
+        thaumic = Loader.isModLoaded("Thaumcraft");
+        forbidden = Loader.isModLoaded("ForbiddenMagic");
         if(Loader.isModLoaded("foxlib"))
             Lumberjack.log(Level.INFO, "#FuckTheSand");
     }
@@ -83,6 +78,19 @@ public class Compat {
                 if(forbidden)
                     aspects.add(DarkAspects.GLUTTONY, 1);
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousItems.chocoEgg), aspects);
+
+                for(int x = 0;x < BlockFancyCrafting.types.length;x++){
+                    if(forbidden && x == 0)
+                        ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.craftBench, 1, x), (new AspectList()).add(Aspect.CRAFT, 4).add(DarkAspects.NETHER, 1));
+                    else if(forbidden && x == 1)
+                        ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.craftBench, 1, x), (new AspectList()).add(Aspect.CRAFT, 4).add(DarkAspects.GLUTTONY, 1));
+                    else if(x == 2)
+                        ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.craftBench, 1, x), (new AspectList()).add(Aspect.CRAFT, 4).add(Aspect.DARKNESS, 1));
+                    else
+                        ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.craftBench, 1, x), (new AspectList()).add(Aspect.CRAFT, 4));
+                }
+                ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.treeLogs, 1, 2), (new AspectList()).add(Aspect.TREE, 4).add(Aspect.DARKNESS, 1));
+                ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.treeLeaves, 1, 2), (new AspectList()).add(Aspect.PLANT, 1).add(Aspect.DARKNESS, 1));
             }
             catch(Throwable e){
                 Lumberjack.log(Level.INFO, e, "Ridiculous World accumulated too much Warp!");

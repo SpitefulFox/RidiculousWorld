@@ -15,7 +15,7 @@ import net.minecraft.util.IIcon;
 import java.util.List;
 
 public class BlockFantasyPlanks extends Block {
-    public static final String[] types = new String[] {"spooky", "bubblegum"};
+    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
     @SideOnly(Side.CLIENT)
     private IIcon[] icons;
 

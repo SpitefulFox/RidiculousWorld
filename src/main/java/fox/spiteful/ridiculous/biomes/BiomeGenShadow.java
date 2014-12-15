@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.entities.EntityShadowSlime;
+import fox.spiteful.ridiculous.world.WorldGenShadowTree;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
@@ -16,6 +17,8 @@ import net.minecraftforge.common.BiomeManager;
 import java.util.Random;
 
 public class BiomeGenShadow extends BiomeGenBase {
+
+    private WorldGenAbstractTree shadowTree = new WorldGenShadowTree(false, 4, 2, 2, true);
 
     BiomeGenShadow(int id){
         super(id);
@@ -34,7 +37,6 @@ public class BiomeGenShadow extends BiomeGenBase {
         this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityShadowSlime.class, 60, 1, 1));
         BiomeManager.addBiome(BiomeManager.BiomeType.COOL, new BiomeManager.BiomeEntry(this, Config.shadowWeight));
         BiomeManager.addStrongholdBiome(this);
-        BiomeManager.addSpawnBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.SPOOKY, BiomeDictionary.Type.WET, BiomeDictionary.Type.SWAMP,
                 BiomeDictionary.Type.COLD, BiomeDictionary.Type.MAGICAL);
         setBiomeName("Shadow Fen");
@@ -66,7 +68,7 @@ public class BiomeGenShadow extends BiomeGenBase {
     public void decorate(World world, Random rand, int chunkX, int chunkZ)
     {
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
-        for (int j = 0; j < 2; ++j)
+        for (int j = 0; j < 3; ++j)
         {
             int x = chunkX + rand.nextInt(16) + 8;
             int z = chunkZ + rand.nextInt(16) + 8;
@@ -77,7 +79,6 @@ public class BiomeGenShadow extends BiomeGenBase {
                     break;
                 }
             }
-            //Lumberjack.log(Level.INFO, "X:" + x + " Y:" + y + " Z:" + z);
             WorldGenAbstractTree worldgenabstracttree = func_150567_a(rand);
             worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
 
@@ -94,7 +95,7 @@ public class BiomeGenShadow extends BiomeGenBase {
      */
     public WorldGenAbstractTree func_150567_a(Random p_150567_1_)
     {
-        return this.worldGeneratorSwamp;
+        return shadowTree;
     }
 
     public void genTerrainBlocks(World world, Random rand, Block[] chunk, byte[] metadatamaybe, int xMaybe, int zMaybe, double wat)

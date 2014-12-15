@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class BlockFancyCrafting extends BlockWorkbench {
-    static final String[] types = {"spooky", "bubblegum"};
+    public static final String[] types = {"spooky", "bubblegum", "shadow"};
     IIcon[] top;
     IIcon[] front;
     IIcon[] sides;

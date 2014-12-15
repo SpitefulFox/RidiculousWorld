@@ -3,6 +3,7 @@ package fox.spiteful.ridiculous.blocks;
 import fox.spiteful.ridiculous.Ridiculous;
 import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
 import fox.spiteful.ridiculous.world.WorldGenBubblegumTree;
+import fox.spiteful.ridiculous.world.WorldGenShadowTree;
 import fox.spiteful.ridiculous.world.WorldGenSpookyTree;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
@@ -22,7 +23,7 @@ import java.util.Random;
 
 public class BlockFantasySapling extends BlockSapling
 {
-    public static final String[] types = new String[] {"spooky", "bubblegum"};
+    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
     private IIcon[] textures;
 
     public BlockFantasySapling()
@@ -46,7 +47,7 @@ public class BlockFantasySapling extends BlockSapling
     @Override
     public IIcon getIcon(int side, int metadata)
     {
-        return textures[metadata % types.length];
+        return textures[(metadata & (types.length - 1)) % types.length];
     }
 
     @Override
@@ -107,6 +108,9 @@ public class BlockFantasySapling extends BlockSapling
                     break;
                 case 1:
                     obj = new WorldGenBubblegumTree(true);
+                    break;
+                case 2:
+                    obj = new WorldGenShadowTree(true, 4, 2, 2, false);
                     break;
             }
         }
