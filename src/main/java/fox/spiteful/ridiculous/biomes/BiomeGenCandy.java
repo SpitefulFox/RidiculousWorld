@@ -13,6 +13,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -38,6 +39,7 @@ public class BiomeGenCandy extends BiomeGenBase{
         this.spawnableCreatureList.clear();
         this.spawnableCreatureList.add(new SpawnListEntry(EntityPeep.class, 10, 4, 4));
         this.spawnableCreatureList.add(new SpawnListEntry(EntityUnicorn.class, 10, 4, 4));
+        this.spawnableCreatureList.add(new SpawnListEntry(EntitySheep.class, 10, 4, 4));
         this.spawnableMonsterList.clear();
         this.spawnableMonsterList.add(new SpawnListEntry(EntityCalavera.class, 100, 4, 4));
         this.spawnableMonsterList.add(new SpawnListEntry(EntityZombie.class, 100, 4, 4));
@@ -50,7 +52,6 @@ public class BiomeGenCandy extends BiomeGenBase{
         setBiomeName("Rock Candy Mountain");
         setColor(0x8AFFF0);
         this.waterColorMultiplier = 0x899CFF;
-        //this.waterColorMultiplier = 0x95E7BF;
     }
 
     @Override
