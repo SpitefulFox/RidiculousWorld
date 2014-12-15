@@ -26,6 +26,7 @@ public class Crafter {
             GameRegistry.addSmelting(new ItemStack(RidiculousBlocks.treeLogs, 1, x), new ItemStack(Items.coal, 1, 1), 0.15F);
             GameRegistry.addShapelessRecipe(new ItemStack(RidiculousBlocks.treePlanks, 4, x), new Object[] {new ItemStack(RidiculousBlocks.treeLogs,1,x)});
             GameRegistry.addShapedRecipe(new ItemStack(RidiculousBlocks.craftBench, 1, x), new Object[] {"XX", "XX", 'X', new ItemStack(RidiculousBlocks.treePlanks, 1, x)});
+            GameRegistry.addShapedRecipe(new ItemStack(RidiculousBlocks.treeStairs[x], 4), new Object[] {"X__", "XX_", "XXX", 'X', new ItemStack(RidiculousBlocks.treePlanks, 1, x)});
         }
         GameRegistry.addShapelessRecipe(new ItemStack(RidiculousBlocks.treePlanks, 4, 0), new Object[] {new ItemStack(RidiculousBlocks.spookyLog,1,0)});
         GameRegistry.addSmelting(new ItemStack(RidiculousBlocks.spookyLog, 1), new ItemStack(Items.coal, 1, 1), 0.15F);

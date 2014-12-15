@@ -2,6 +2,7 @@ package fox.spiteful.ridiculous.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
 
 public class RidiculousBlocks {
 
@@ -10,6 +11,7 @@ public class RidiculousBlocks {
     public static Block spookyLog;
     public static Block treeSaplings;
     public static Block treePlanks;
+    public static Block[] treeStairs;
     public static Block craftBench;
     public static Block boneDust;
     public static Block rockCandy;
@@ -20,31 +22,22 @@ public class RidiculousBlocks {
     public static Block gloom;
 
     public static void blockBlockity(){
-        treeLogs = new BlockFantasyLog();
-        GameRegistry.registerBlock(treeLogs, ItemBlockLog.class, "RidiculousLog");
-        treeLeaves = new BlockFantasyLeaves();
-        GameRegistry.registerBlock(treeLeaves, ItemBlockLeaves.class, "RidiculousLeaves");
-        spookyLog = new BlockSpookyLog();
-        GameRegistry.registerBlock(spookyLog, "SpookyLog");
-        treeSaplings = new BlockFantasySapling();
-        GameRegistry.registerBlock(treeSaplings, ItemBlockSapling.class,"RidiculousSapling");
-        treePlanks = new BlockFantasyPlanks();
-        GameRegistry.registerBlock(treePlanks, ItemBlockPlanks.class, "RidiculousPlanks");
-        craftBench = new BlockFancyCrafting();
-        GameRegistry.registerBlock(craftBench, ItemBlockCrafting.class, "RidiculousCrafting");
-        boneDust = new BlockBoneDust();
-        GameRegistry.registerBlock(boneDust, "BoneDust");
-        rockCandy = new BlockRockCandy();
-        GameRegistry.registerBlock(rockCandy, "RockCandy");
-        candyCane = new BlockCandyCane();
-        GameRegistry.registerBlock(candyCane, "CandyCane");
-        gingerbread = new BlockGingerbread();
-        GameRegistry.registerBlock(gingerbread, "Gingerbread");
-        serpent = new BlockSerpent();
-        GameRegistry.registerBlock(serpent, "Serpent");
-        serpentRune = new BlockSerpentRune();
-        GameRegistry.registerBlock(serpentRune, "SerpentRune");
-        gloom = new BlockGloom();
-        GameRegistry.registerBlock(gloom, "Gloom");
+        treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
+        treeLeaves = GameRegistry.registerBlock(new BlockFantasyLeaves(), ItemBlockLeaves.class, "RidiculousLeaves");
+        spookyLog = GameRegistry.registerBlock(new BlockSpookyLog(), "SpookyLog");
+        treeSaplings = GameRegistry.registerBlock(new BlockFantasySapling(), ItemBlockSapling.class,"RidiculousSapling");
+        treePlanks = GameRegistry.registerBlock(new BlockFantasyPlanks(), ItemBlockPlanks.class, "RidiculousPlanks");
+        craftBench = GameRegistry.registerBlock(new BlockFancyCrafting(), ItemBlockCrafting.class, "RidiculousCrafting");
+        treeStairs = new Block[BlockFantasyPlanks.types.length];
+        for(int x = 0;x < treeStairs.length;x++){
+            treeStairs[x] = GameRegistry.registerBlock(new BlockWoodStairs(treePlanks, x).setBlockName("stairs_" + BlockFantasyPlanks.types[x]), "stairs" + BlockFantasyPlanks.types[x]);
+        }
+        boneDust = GameRegistry.registerBlock(new BlockBoneDust(), "BoneDust");
+        rockCandy = GameRegistry.registerBlock(new BlockRockCandy(), "RockCandy");
+        candyCane = GameRegistry.registerBlock(new BlockCandyCane(), "CandyCane");
+        gingerbread = GameRegistry.registerBlock(new BlockGingerbread(), "Gingerbread");
+        serpent = GameRegistry.registerBlock(new BlockSerpent(), "Serpent");
+        serpentRune = GameRegistry.registerBlock(new BlockSerpentRune(), "SerpentRune");
+        gloom = GameRegistry.registerBlock(new BlockGloom(), "Gloom");
     }
 }
