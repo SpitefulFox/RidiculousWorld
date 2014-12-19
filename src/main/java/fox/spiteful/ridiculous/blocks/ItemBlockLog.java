@@ -19,6 +19,6 @@ public class ItemBlockLog extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return "tile.ridiculous_log_" + BlockFantasyLog.types[itemStack.getItemDamage()];
+        return "tile.ridiculous_log_" + BlockFantasyLog.types[itemStack.getItemDamage() % BlockFantasyLog.types.length];
     }
 }

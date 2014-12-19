@@ -47,4 +47,5 @@ public class BlockFantasyLog extends BlockLog {
             this.field_150166_b[i] = iconRegister.registerIcon("ridiculous:" + "log" + "_" + types[i] + "_top");
         }
     }
+
 }

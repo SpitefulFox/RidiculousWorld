@@ -56,12 +56,12 @@ public class BlockFancyCrafting extends BlockWorkbench {
     public IIcon getIcon (int side, int metadata)
     {
         if (side == 0)
-            return bottom[metadata];
+            return bottom[metadata % types.length];
         if (side == 1)
-            return top[metadata];
+            return top[metadata % types.length];
         if (side == 2 || side == 4)
-            return front[metadata];
-        return sides[metadata];
+            return front[metadata % types.length];
+        return sides[metadata % types.length];
     }
 
     @Override

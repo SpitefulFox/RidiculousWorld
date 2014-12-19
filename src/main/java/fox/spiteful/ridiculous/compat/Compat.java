@@ -20,13 +20,18 @@ public class Compat {
     public static boolean teehee;
     public static boolean thaumic;
     public static boolean forbidden;
+    public static boolean botania;
 
     public static Block enderGoo;
+    public static Block flower;
+    public static Block livingrock;
+    public static Block livingwood;
 
     public static void preparatoryCompatification(){
         teehee = Loader.isModLoaded("HardcoreEnderExpansion");
         thaumic = Loader.isModLoaded("Thaumcraft");
         forbidden = Loader.isModLoaded("ForbiddenMagic");
+        botania = Loader.isModLoaded("Botania");
         if(Loader.isModLoaded("foxlib"))
             Lumberjack.log(Level.INFO, "#FuckTheSand");
     }
@@ -91,11 +96,24 @@ public class Compat {
                 }
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.treeLogs, 1, 2), (new AspectList()).add(Aspect.TREE, 4).add(Aspect.DARKNESS, 1));
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.treeLeaves, 1, 2), (new AspectList()).add(Aspect.PLANT, 1).add(Aspect.DARKNESS, 1));
+
             }
             catch(Throwable e){
                 Lumberjack.log(Level.INFO, e, "Ridiculous World accumulated too much Warp!");
                 thaumic = false;
             }
+        }
+
+        if(botania){
+            flower = GameRegistry.findBlock("Botania", "flower");
+            if(flower == null)
+                botania = false;
+            livingrock = GameRegistry.findBlock("Botania", "livingrock");
+            if(livingrock == null)
+                botania = false;
+            livingwood = GameRegistry.findBlock("Botania", "livingwood");
+            if(livingwood == null)
+                botania = false;
         }
     }
 }

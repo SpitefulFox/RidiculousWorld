@@ -19,6 +19,6 @@ public class ItemBlockPlanks extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return "tile.ridiculous_planks_" + BlockFantasyPlanks.types[itemStack.getItemDamage()];
+        return "tile.ridiculous_planks_" + BlockFantasyPlanks.types[itemStack.getItemDamage() % BlockFantasyPlanks.types.length];
     }
 }

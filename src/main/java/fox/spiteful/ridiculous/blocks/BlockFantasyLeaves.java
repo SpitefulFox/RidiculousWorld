@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BlockFantasyLeaves extends BlockLeaves {
-    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
+    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow", "livingwood"};
 
     public BlockFantasyLeaves(){
         super();
@@ -39,6 +39,8 @@ public class BlockFantasyLeaves extends BlockLeaves {
             return 0xFF70F7;
         else if ((metadata & 3) == 2)
             return 0xFFFFFF;
+        else if ((metadata & 3) == 3)
+            return 0x00E107;
         else
             return super.getRenderColor(metadata);
     }
@@ -94,7 +96,7 @@ public class BlockFantasyLeaves extends BlockLeaves {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        return this.field_150129_M[(!isOpaqueCube() ? 0 : 1)][metadata & 3];
+        return this.field_150129_M[(!isOpaqueCube() ? 0 : 1)][(metadata & 3) % types.length];
     }
 
     /**
@@ -134,5 +136,16 @@ public class BlockFantasyLeaves extends BlockLeaves {
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side)
     {
         return true;
+    }
+
+    /**
+     * Ticks the block if it's been scheduled
+     */
+    public void updateTick(World world, int x, int y, int z, Random rand)
+    {
+        if((world.getBlockMetadata(x, y, z) & 3) == 3)
+            return;
+        else
+            super.updateTick(world, x, y, z, rand);
     }
 }

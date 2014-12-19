@@ -1,10 +1,7 @@
 package fox.spiteful.ridiculous.blocks;
 
 import fox.spiteful.ridiculous.Ridiculous;
-import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
-import fox.spiteful.ridiculous.world.WorldGenBubblegumTree;
-import fox.spiteful.ridiculous.world.WorldGenShadowTree;
-import fox.spiteful.ridiculous.world.WorldGenSpookyTree;
+import fox.spiteful.ridiculous.world.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
@@ -23,7 +20,7 @@ import java.util.Random;
 
 public class BlockFantasySapling extends BlockSapling
 {
-    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
+    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow", "livingwood"};
     private IIcon[] textures;
 
     public BlockFantasySapling()
@@ -111,6 +108,9 @@ public class BlockFantasySapling extends BlockSapling
                     break;
                 case 2:
                     obj = new WorldGenShadowTree(true, 4, 2, 2, false);
+                    break;
+                case 3:
+                    obj = new WorldGenTsundereTree(true);
                     break;
             }
         }

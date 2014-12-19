@@ -22,7 +22,7 @@ public class ItemBlockSapling extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return "tile.ridiculous_sapling_" + BlockFantasySapling.types[itemStack.getItemDamage()];
+        return "tile.ridiculous_sapling_" + BlockFantasySapling.types[itemStack.getItemDamage() % BlockFantasySapling.types.length];
     }
 
     @Override

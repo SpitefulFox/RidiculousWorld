@@ -32,14 +32,9 @@ public class BlockFantasyPlanks extends Block {
      * Gets the block's texture. Args: side, meta
      */
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int data)
+    public IIcon getIcon(int side, int metadata)
     {
-        if (data < 0 || data >= this.icons.length)
-        {
-            data = 0;
-        }
-
-        return this.icons[data];
+        return this.icons[metadata % types.length];
     }
 
     /**

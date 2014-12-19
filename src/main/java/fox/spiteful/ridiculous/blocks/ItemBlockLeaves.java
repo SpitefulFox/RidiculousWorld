@@ -19,6 +19,6 @@ public class ItemBlockLeaves extends ItemBlock {
     @Override
     public String getUnlocalizedName(ItemStack itemStack)
     {
-        return "tile.ridiculous_leaves_" + BlockFantasyLeaves.types[itemStack.getItemDamage()];
+        return "tile.ridiculous_leaves_" + BlockFantasyLeaves.types[itemStack.getItemDamage() % BlockFantasyLeaves.types.length];
     }
 }
