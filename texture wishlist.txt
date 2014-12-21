@@ -1,15 +1,9 @@
 Wanted
 - Pile of Skulls/Bones block
-- Christmas Tree Leaves
-- Christmas Tree Sapling
-- Present
-- Shadow Wood Log
-- Shadow Wood Planks
 - Crystal Wood Log
 - Crystal Wood Planks
 - Crystal Leaves
 - Crystal Wood Crafting Bench
-- Shadow Wood Crafting Bench
 
 Would Be Nice to Replace
 - Candy Corn
@@ -18,5 +12,7 @@ Would Be Nice to Replace
 - Marshmallow Peep Item
 - Toasted Marshmallow Peep Item
 - Rock Candy
-- Bubblegum Leaves (More bubble shaped!)
+- Bubblegum Leaves (More bubble shaped!)(Or maybe splattered gum appearance)
 - Bubblegum Planks (Bubblegum splattered across)
+- Shadow Wood Log
+- Shadow Wood Planks
