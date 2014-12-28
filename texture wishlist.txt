@@ -1,5 +1,6 @@
 Wanted
 - Pile of Skulls/Bones block
+- Gingerbread Cookie
 - Crystal Wood Log
 - Crystal Wood Planks
 - Crystal Leaves
@@ -12,7 +13,3 @@ Would Be Nice to Replace
 - Marshmallow Peep Item
 - Toasted Marshmallow Peep Item
 - Rock Candy
-- Bubblegum Leaves (More bubble shaped!)(Or maybe splattered gum appearance) ✔️ (needs approval from SF)
-- Bubblegum Planks (Bubblegum splattered across) ✔️ (needs approval from SF)
-- Shadow Wood Log    ✔️
-- Shadow Wood Planks ✔️
