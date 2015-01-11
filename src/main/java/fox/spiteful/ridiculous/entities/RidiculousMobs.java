@@ -15,5 +15,6 @@ public class RidiculousMobs {
         EntityRegistry.registerModEntity(EntityDaySkeleton.class, "Skeleton", 8, Ridiculous.instance, 64, 3, true);
         EntityRegistry.registerModEntity(EntityDayZombie.class, "Zombie", 9, Ridiculous.instance, 64, 3, true);
         EntityRegistry.registerModEntity(EntityShadowSlime.class, "ShadowSlime", 10, Ridiculous.instance, 64, 3, true);
+        EntityRegistry.registerModEntity(EntityCandySheep.class, "CandySheep", 11, Ridiculous.instance, 64, 3, true);
     }
 }

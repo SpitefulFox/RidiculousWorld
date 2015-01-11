@@ -19,9 +19,12 @@ import java.util.List;
 public class ItemRidiculousSpawner extends Item
 {
     private IIcon easter;
-    private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1, 0xFFFFFF, 0x000000};
-    private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125, 0x110054, 0x3D3D3D};
-    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep", "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread", "RidiculousWorld.Shoggoth", "RidiculousWorld.ShadowSlime"};
+    private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1, 0xFFFFFF, 0x000000, 0xFFB2E9};
+    private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125, 0x110054, 0x3D3D3D, 0x51FFF4};
+    private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep",
+            "RidiculousWorld.Unicorn", "RidiculousWorld.Calavera", "RidiculousWorld.Gingerbread",
+            "RidiculousWorld.Shoggoth", "RidiculousWorld.ShadowSlime",
+            "RidiculousWorld.CandySheep"};
 
     public ItemRidiculousSpawner()
     {
@@ -141,6 +144,10 @@ public class ItemRidiculousSpawner extends Item
                 break;
             case 6:
                 entity = new EntityShadowSlime(world);
+                spawnEntity(posX, posY, posZ, entity, world);
+                break;
+            case 7:
+                entity = new EntityCandySheep(world);
                 spawnEntity(posX, posY, posZ, entity, world);
                 break;
         }

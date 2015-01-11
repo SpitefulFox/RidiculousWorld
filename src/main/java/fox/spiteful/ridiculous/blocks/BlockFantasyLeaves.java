@@ -36,9 +36,9 @@ public class BlockFantasyLeaves extends BlockLeaves {
         if((metadata & 3) == 0)
             return 0xF2A100;
         else if((metadata & 3) == 1)
-            return 0xFF70F7;
-        else if ((metadata & 3) == 2)
             return 0xFFFFFF;
+        else if ((metadata & 3) == 2)
+            return 0x200061;
         else if ((metadata & 3) == 3)
             return 0x00E107;
         else
@@ -56,9 +56,9 @@ public class BlockFantasyLeaves extends BlockLeaves {
         if((l & 3) == 0)
             return 0xF2A100;
         else if((l & 3) == 1)
-            return 0xFF70F7;
-        else if ((l & 3) == 2)
             return 0xFFFFFF;
+        else if ((l & 3) == 2)
+            return 0x200061;
         else
             return super.colorMultiplier(world, x, y, z);
     }
@@ -138,14 +138,4 @@ public class BlockFantasyLeaves extends BlockLeaves {
         return true;
     }
 
-    /**
-     * Ticks the block if it's been scheduled
-     */
-    public void updateTick(World world, int x, int y, int z, Random rand)
-    {
-        if((world.getBlockMetadata(x, y, z) & 3) == 3)
-            return;
-        else
-            super.updateTick(world, x, y, z, rand);
-    }
 }

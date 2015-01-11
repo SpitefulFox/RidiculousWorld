@@ -14,6 +14,7 @@ public class RidiculousItems {
     public static Item peepCooked;
     public static Item unicornHorn;
     public static Item spawner;
+    public static Item cottonCandy;
 
     public static void itemize(){
         candyCorn = new ItemRidiculousFood(2, 0.1F, false, "candycorn").setUnlocalizedName("CandyCorn");
@@ -34,5 +35,7 @@ public class RidiculousItems {
         GameRegistry.registerItem(unicornHorn, "UnicornHorn");
         spawner = new ItemRidiculousSpawner();
         GameRegistry.registerItem(spawner, "Spawner");
+        cottonCandy = new ItemRidiculousFood(2, 0.1F, false, "cotton_candy").setUnlocalizedName("CottonCandy");
+        GameRegistry.registerItem(cottonCandy, "CottonCandy");
     }
 }

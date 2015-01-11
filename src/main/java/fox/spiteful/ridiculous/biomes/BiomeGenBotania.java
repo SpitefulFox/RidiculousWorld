@@ -9,6 +9,7 @@ import fox.spiteful.ridiculous.world.WorldGenTsundereTree;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
+import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 
@@ -17,6 +18,7 @@ import java.util.Random;
 public class BiomeGenBotania extends BiomeGenBase {
 
     WorldGenAbstractTree livingwood = new WorldGenTsundereTree(false);
+    WorldGenMinable livingrock;
 
     public BiomeGenBotania(int id){
         super(id);
@@ -73,6 +75,17 @@ public class BiomeGenBotania extends BiomeGenBase {
                 if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
                     world.setBlock(x1, y1, z1, Compat.flower, color, 2);
             }
+        }
+
+        if(livingrock == null)
+            livingrock = new WorldGenMinable(Compat.livingrock, 7);
+
+        for(int l = 0; l < 32; ++l)
+        {
+            int i1 = chunkX + rand.nextInt(16);
+            int j1 = 20 + rand.nextInt(108);
+            int k1 = chunkZ + rand.nextInt(16);
+            livingrock.generate(world, rand, i1, j1, k1);
         }
     }
 

@@ -3,6 +3,7 @@ package fox.spiteful.ridiculous.compat;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.forbidden.DarkAspects;
+import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.Lumberjack;
 import fox.spiteful.ridiculous.blocks.BlockFancyCrafting;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
@@ -29,9 +30,9 @@ public class Compat {
 
     public static void preparatoryCompatification(){
         teehee = Loader.isModLoaded("HardcoreEnderExpansion");
-        thaumic = Loader.isModLoaded("Thaumcraft");
-        forbidden = Loader.isModLoaded("ForbiddenMagic");
-        botania = Loader.isModLoaded("Botania");
+        thaumic = Loader.isModLoaded("Thaumcraft") && Config.thaum;
+        forbidden = Loader.isModLoaded("ForbiddenMagic") && Config.fm;
+        botania = Loader.isModLoaded("Botania") && Config.botania;
         if(Loader.isModLoaded("foxlib"))
             Lumberjack.log(Level.INFO, "#FuckTheSand");
     }

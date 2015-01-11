@@ -30,6 +30,7 @@ item.UnicornCooked.name=Unicorn Steak
 item.PeepRaw.name=Marshmallow Peep
 item.PeepCooked.name=Toasted Peep
 item.UnicornHorn.name=Unicorn Horn
+item.CottonCandy.name=Cotton Candy
 # Entities
 entity.RidiculousWorld.Frankenstein.name=Frankenstein's Monster
 entity.RidiculousWorld.Warhorse.name=Skeleton Horse
@@ -42,5 +43,6 @@ entity.RidiculousWorld.Shoggoth.name=Shoggoth
 entity.RidiculousWorld.Skeleton.name=Skeleton
 entity.RidiculousWorld.Zombie.name=Zombie
 entity.RidiculousWorld.ShadowSlime.name=Shadow Slime
+entity.RidiculousWorld.CandySheep.name=Candy Sheep
 # Misc
 itemGroup.ridiculous=Ridiculous World

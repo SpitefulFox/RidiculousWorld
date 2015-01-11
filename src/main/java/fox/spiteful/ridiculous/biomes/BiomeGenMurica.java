@@ -1,9 +1,11 @@
 package fox.spiteful.ridiculous.biomes;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.compat.Compat;
 import fox.spiteful.ridiculous.entities.EntityCalavera;
 import fox.spiteful.ridiculous.entities.EntityGingerbread;
 import fox.spiteful.ridiculous.entities.EntityPeep;
@@ -18,10 +20,12 @@ import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.util.ForgeDirection;
+import vazkii.botania.api.item.IFlowerlessBiome;
 
 import java.util.Random;
 
-public class BiomeGenMurica extends BiomeGenBase {
+@Optional.Interface(iface = "vazkii.botania.api.item.IFlowerlessBiome", modid = "Botania")
+public class BiomeGenMurica extends BiomeGenBase implements IFlowerlessBiome {
 
     public BiomeGenMurica(int id){
         super(id);
@@ -36,33 +40,54 @@ public class BiomeGenMurica extends BiomeGenBase {
         waterColorMultiplier = 0x0000FF;
     }
 
-        @Override
-        public int getBiomeGrassColor(int x, int y, int z)
-        {
-            if((x / 5) % 2 == 0)
-                return 0xFF0000;
-            else
-                return 0xFFFFFF;
-        }
+    @Override
+    public int getBiomeGrassColor(int x, int y, int z)
+    {
+        if((x / 5) % 2 == 0)
+            return 0xFF0000;
+        else
+            return 0xFFFFFF;
+    }
 
-        @Override
-        public int getBiomeFoliageColor(int x, int y, int z)
-        {
-            return 0x0000FF;
-        }
+    @Override
+    public int getBiomeFoliageColor(int x, int y, int z)
+    {
+        return 0x0000FF;
+    }
 
-        /**
-         * takes temperature, returns color
-         */
-        @SideOnly(Side.CLIENT)
-        public int getSkyColorByTemp(float wat)
-        {
-            return 0x0000FF;
-        }
+    /**
+     * takes temperature, returns color
+     */
+    @SideOnly(Side.CLIENT)
+    public int getSkyColorByTemp(float wat)
+    {
+        return 0x0000FF;
+    }
 
-        public void decorate(World world, Random rand, int chunkX, int chunkZ)
-        {
-            this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
-        }
+    public void decorate(World world, Random rand, int chunkX, int chunkZ)
+    {
+        this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
+
+        /*if(Compat.botania && Compat.flower != null) {
+            for (int i = 0; i < 2; i++) {
+                int x = chunkX + rand.nextInt(16) + 8;
+                int z = chunkZ + rand.nextInt(16) + 8;
+                int y = world.getTopSolidOrLiquidBlock(x, z);
+                int color = rand.nextInt(3) == 0 ? 0 : rand.nextBoolean() ? 11 : 14;
+                for (int j = 0; j < 16; j++) {
+                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
+                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
+                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
+                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
+                }
+            }
+        }*/
+    }
+
+    @Optional.Method(modid = "Botania")
+    public boolean canGenerateFlowers(World world, int x, int z){
+        return false;
+    }
 
 }

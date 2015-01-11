@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
+import fox.spiteful.ridiculous.compat.Compat;
 import fox.spiteful.ridiculous.entities.EntityShadowSlime;
 import fox.spiteful.ridiculous.world.WorldGenShadowTree;
 import net.minecraft.block.Block;
@@ -13,10 +14,13 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
+import vazkii.botania.api.item.IFlowerlessBiome;
+import cpw.mods.fml.common.Optional;
 
 import java.util.Random;
 
-public class BiomeGenShadow extends BiomeGenBase {
+@Optional.Interface(iface = "vazkii.botania.api.item.IFlowerlessBiome", modid = "Botania")
+public class BiomeGenShadow extends BiomeGenBase implements IFlowerlessBiome {
 
     private WorldGenAbstractTree shadowTree = new WorldGenShadowTree(false, 4, 2, 2, true);
 
@@ -72,13 +76,15 @@ public class BiomeGenShadow extends BiomeGenBase {
         {
             int x = chunkX + rand.nextInt(16) + 8;
             int z = chunkZ + rand.nextInt(16) + 8;
-            int y = 70;
+            /*int y = 70;
             for(int wy = 80;wy > 30;wy--){
                 if(world.getBlock(x, wy, z) != Blocks.air){
                     y = wy;
                     break;
                 }
-            }
+            }*/
+            int y = world.getTopSolidOrLiquidBlock(x, z);
+
             WorldGenAbstractTree worldgenabstracttree = func_150567_a(rand);
             worldgenabstracttree.setScale(1.0D, 1.0D, 1.0D);
 
@@ -87,6 +93,22 @@ public class BiomeGenShadow extends BiomeGenBase {
                 worldgenabstracttree.func_150524_b(world, rand, x, y, z);
             }
         }
+
+        /*if(Compat.botania && Compat.flower != null) {
+            for (int i = 0; i < 2; i++) {
+                int x = chunkX + rand.nextInt(16) + 8;
+                int z = chunkZ + rand.nextInt(16) + 8;
+                int y = world.getTopSolidOrLiquidBlock(x, z);
+                int color = rand.nextBoolean() ? 15 : 10;
+                for (int j = 0; j < 16; j++) {
+                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
+                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
+                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
+                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
+                }
+            }
+        }*/
     }
 
     /**
@@ -106,5 +128,11 @@ public class BiomeGenShadow extends BiomeGenBase {
         }
 
         this.genBiomeTerrain(world, rand, chunk, metadatamaybe, xMaybe, zMaybe, wat);
+
+    }
+
+    @Optional.Method(modid = "Botania")
+    public boolean canGenerateFlowers(World world, int x, int z){
+        return false;
     }
 }

@@ -27,7 +27,8 @@ public class BiomeGenOssuary extends BiomeGenBase {
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
         "chylex", "Mithion", "MHF_Villager", "Pahimar", "iEdyn", "RoffleToys", "DylanGK", "Othlon", "Rorax", "tlovetech",
-        "OndraSter", "eyamaz", "TTFTCUTS", "bspkrs", "MysteriousAges", "PurpleMentat", "StoneWaves", "VikeStep"
+        "OndraSter", "eyamaz", "TTFTCUTS", "bspkrs", "MysteriousAges", "PurpleMentat", "StoneWaves", "VikeStep",
+        "KodaichiZero"
     };
 
     public BiomeGenOssuary(int id)
@@ -101,7 +102,7 @@ public class BiomeGenOssuary extends BiomeGenBase {
 
                         if(world.getTileEntity(i1, j1 + 2, k1) != null && world.getTileEntity(i1, j1 + 2, k1) instanceof TileEntitySkull){
                             TileEntitySkull skull = (TileEntitySkull)(world.getTileEntity(i1, j1 + 2, k1));
-                            if(rand.nextInt(9) == 0)
+                            if(rand.nextInt(9) <= 3)
                                 skull.func_152106_a(new GameProfile((UUID)null, heads[rand.nextInt(heads.length)]));
                             skull.func_145903_a(rand.nextInt(16));
                         }

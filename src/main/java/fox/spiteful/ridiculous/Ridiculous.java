@@ -23,8 +23,8 @@ import net.minecraftforge.common.MinecraftForge;
 @Mod(
         modid = "RidiculousWorld",
         name = "Ridiculous World",
-        version = "0.1"
-        //dependencies = "required-after:Thaumcraft;after:ThaumicTinkerer"
+        version = "0.1",
+        dependencies = "required-after:Forge@[10.13.2.1231,);after:Botania"
 )
 public class Ridiculous {
     @Instance("RidiculousWorld")

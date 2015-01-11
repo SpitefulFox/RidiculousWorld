@@ -28,6 +28,10 @@ public class Config {
     public static boolean heads = true;
     public static boolean shaders = true;
 
+    public static boolean botania = true;
+    public static boolean thaum = true;
+    public static boolean fm = true;
+
     public static void configurate(File targ)
     {
         Configuration conf = new Configuration(targ);
@@ -54,6 +58,10 @@ public class Config {
             madnessWeight = conf.get("Biome Weights", "Mountain of Madness", madnessWeight).getInt(madnessWeight);
             shadowWeight = conf.get("Biome Weights", "Shadow Fen", shadowWeight).getInt(shadowWeight);
             botaniaWeight = conf.get("Biome Weights", "Botanical Garden", botaniaWeight).getInt(botaniaWeight);
+
+            botania = conf.get("Compatibility", "Botania", botania).getBoolean(true);
+            thaum = conf.get("Compatibility", "Thaumcraft", thaum).getBoolean(true);
+            fm = conf.get("Compatibility", "Forbidden Magic", fm).getBoolean(true);
         }
         catch (Exception e)
         {

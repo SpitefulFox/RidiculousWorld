@@ -1,10 +1,11 @@
 package fox.spiteful.ridiculous.biomes;
 
+import cpw.mods.fml.common.Optional;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
+import fox.spiteful.ridiculous.compat.Compat;
 import fox.spiteful.ridiculous.entities.EntityFrankenstein;
-import fox.spiteful.ridiculous.entities.EntityMummy;
 import fox.spiteful.ridiculous.world.WorldGenBigSpookyTree;
 import fox.spiteful.ridiculous.world.WorldGenSpookyTree;
 import net.minecraft.entity.monster.EntityWitch;
@@ -18,10 +19,12 @@ import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
+import vazkii.botania.api.item.IFlowerlessBiome;
 
 import java.util.Random;
 
-public class BiomeGenSpooky extends BiomeGenBase {
+@Optional.Interface(iface = "vazkii.botania.api.item.IFlowerlessBiome", modid = "Botania")
+public class BiomeGenSpooky extends BiomeGenBase implements IFlowerlessBiome {
 
     protected final WorldGenCanopyTree darkTree = new WorldGenCanopyTree(false);
     protected final WorldGenSpookyTree spookyTree = new WorldGenSpookyTree(false, true);
@@ -87,6 +90,22 @@ public class BiomeGenSpooky extends BiomeGenBase {
              }
          }
 
+        /*if(Compat.botania && Compat.flower != null) {
+            for (int i = 0; i < 2; i++) {
+                int x = chunkX + rand.nextInt(16) + 8;
+                int z = chunkZ + rand.nextInt(16) + 8;
+                int y = world.getTopSolidOrLiquidBlock(x, z);
+                int color = rand.nextInt(4) == 0 ? 12 : rand.nextInt(3) == 0 ? 7 : rand.nextBoolean() ? 1 : 15;
+                for (int j = 0; j < 16; j++) {
+                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
+                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
+                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
+                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
+                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
+                }
+            }
+        }*/
+
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
     }
 
@@ -96,7 +115,12 @@ public class BiomeGenSpooky extends BiomeGenBase {
      */
     public WorldGenAbstractTree func_150567_a(Random rand)
     {
-        return (WorldGenAbstractTree)(rand.nextInt(10) == 0 ? this.bigSpookyTree : rand.nextInt(5) != 0 ? this.spookyTree : this.darkTree);
+        return rand.nextInt(10) == 0 ? this.bigSpookyTree : rand.nextInt(5) != 0 ? this.spookyTree : this.darkTree;
+    }
+
+    @Optional.Method(modid = "Botania")
+    public boolean canGenerateFlowers(World world, int x, int z){
+        return false;
     }
 
 }
