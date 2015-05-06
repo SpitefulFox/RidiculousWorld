@@ -14,6 +14,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
@@ -24,8 +25,7 @@ import vazkii.botania.api.item.IFlowerlessBiome;
 
 import java.util.Random;
 
-@Optional.Interface(iface = "vazkii.botania.api.item.IFlowerlessBiome", modid = "Botania")
-public class BiomeGenMurica extends BiomeGenBase implements IFlowerlessBiome {
+public class BiomeGenMurica extends BiomeGenBase {
 
     public BiomeGenMurica(int id){
         super(id);
@@ -64,30 +64,19 @@ public class BiomeGenMurica extends BiomeGenBase implements IFlowerlessBiome {
         return 0x0000FF;
     }
 
+    @Override
+    /**
+     * Adds the default flowers, as of 1.7, it is 2 yellow, and 1 red. I chose 10 to allow some wiggle room in the numbers.
+     */
+    public void addDefaultFlowers()
+    {
+        this.flowers.add(new FlowerEntry(Blocks.red_flower,    0, 20));
+    }
+
     public void decorate(World world, Random rand, int chunkX, int chunkZ)
     {
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
 
-        /*if(Compat.botania && Compat.flower != null) {
-            for (int i = 0; i < 2; i++) {
-                int x = chunkX + rand.nextInt(16) + 8;
-                int z = chunkZ + rand.nextInt(16) + 8;
-                int y = world.getTopSolidOrLiquidBlock(x, z);
-                int color = rand.nextInt(3) == 0 ? 0 : rand.nextBoolean() ? 11 : 14;
-                for (int j = 0; j < 16; j++) {
-                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
-                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
-                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
-                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
-                }
-            }
-        }*/
-    }
-
-    @Optional.Method(modid = "Botania")
-    public boolean canGenerateFlowers(World world, int x, int z){
-        return false;
     }
 
 }

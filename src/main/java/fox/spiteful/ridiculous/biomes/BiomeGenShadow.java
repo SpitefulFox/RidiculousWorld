@@ -94,21 +94,6 @@ public class BiomeGenShadow extends BiomeGenBase implements IFlowerlessBiome {
             }
         }
 
-        /*if(Compat.botania && Compat.flower != null) {
-            for (int i = 0; i < 2; i++) {
-                int x = chunkX + rand.nextInt(16) + 8;
-                int z = chunkZ + rand.nextInt(16) + 8;
-                int y = world.getTopSolidOrLiquidBlock(x, z);
-                int color = rand.nextBoolean() ? 15 : 10;
-                for (int j = 0; j < 16; j++) {
-                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
-                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
-                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
-                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
-                }
-            }
-        }*/
     }
 
     /**

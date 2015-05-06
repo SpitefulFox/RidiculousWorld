@@ -47,7 +47,6 @@ public class Ridiculous {
         instance = this;
         Config.configurate(event.getSuggestedConfigurationFile());
         MinecraftForge.EVENT_BUS.register(new RWEventHandler());
-        proxy.doTheRenderThing();
         RidiculousItems.itemize();
         RidiculousBlocks.blockBlockity();
         Compat.preparatoryCompatification();
@@ -56,6 +55,7 @@ public class Ridiculous {
     @EventHandler
     public void climax(FMLInitializationEvent event)
     {
+        proxy.doTheRenderThing();
         UnrealBiomes.genesis();
         RidiculousMobs.mobify();
         Crafter.artsAndCrafts();

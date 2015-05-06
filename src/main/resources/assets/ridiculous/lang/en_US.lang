@@ -21,6 +21,7 @@ tile.rockcandy.name=Rock Candy
 tile.candycane.name=Candy Cane
 tile.serpent.name=Serpentinite
 tile.serpent_rune.name=Runed Serpentinite
+tile.chestRidiculous.name=Botanical Chest
 # Items
 item.CandyCorn.name=Candy Corn
 item.RustySickle.name=Rusty Sickle
@@ -43,6 +44,6 @@ entity.RidiculousWorld.Shoggoth.name=Shoggoth
 entity.RidiculousWorld.Skeleton.name=Skeleton
 entity.RidiculousWorld.Zombie.name=Zombie
 entity.RidiculousWorld.ShadowSlime.name=Shadow Slime
-entity.RidiculousWorld.CandySheep.name=Candy Sheep
+entity.RidiculousWorld.CandySheep.name=Candy Fleece
 # Misc
 itemGroup.ridiculous=Ridiculous World

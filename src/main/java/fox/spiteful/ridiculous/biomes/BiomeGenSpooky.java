@@ -23,8 +23,7 @@ import vazkii.botania.api.item.IFlowerlessBiome;
 
 import java.util.Random;
 
-@Optional.Interface(iface = "vazkii.botania.api.item.IFlowerlessBiome", modid = "Botania")
-public class BiomeGenSpooky extends BiomeGenBase implements IFlowerlessBiome {
+public class BiomeGenSpooky extends BiomeGenBase {
 
     protected final WorldGenCanopyTree darkTree = new WorldGenCanopyTree(false);
     protected final WorldGenSpookyTree spookyTree = new WorldGenSpookyTree(false, true);
@@ -90,22 +89,6 @@ public class BiomeGenSpooky extends BiomeGenBase implements IFlowerlessBiome {
              }
          }
 
-        /*if(Compat.botania && Compat.flower != null) {
-            for (int i = 0; i < 2; i++) {
-                int x = chunkX + rand.nextInt(16) + 8;
-                int z = chunkZ + rand.nextInt(16) + 8;
-                int y = world.getTopSolidOrLiquidBlock(x, z);
-                int color = rand.nextInt(4) == 0 ? 12 : rand.nextInt(3) == 0 ? 7 : rand.nextBoolean() ? 1 : 15;
-                for (int j = 0; j < 16; j++) {
-                    int x1 = x + rand.nextInt(8) - rand.nextInt(8);
-                    int y1 = y + rand.nextInt(4) - rand.nextInt(4);
-                    int z1 = z + rand.nextInt(8) - rand.nextInt(8);
-                    if (world.isAirBlock(x1, y1, z1) && (!world.provider.hasNoSky || y1 < 127) && Compat.flower.canBlockStay(world, x1, y1, z1))
-                        world.setBlock(x1, y1, z1, Compat.flower, color, 2);
-                }
-            }
-        }*/
-
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
     }
 
@@ -116,11 +99,6 @@ public class BiomeGenSpooky extends BiomeGenBase implements IFlowerlessBiome {
     public WorldGenAbstractTree func_150567_a(Random rand)
     {
         return rand.nextInt(10) == 0 ? this.bigSpookyTree : rand.nextInt(5) != 0 ? this.spookyTree : this.darkTree;
-    }
-
-    @Optional.Method(modid = "Botania")
-    public boolean canGenerateFlowers(World world, int x, int z){
-        return false;
     }
 
 }

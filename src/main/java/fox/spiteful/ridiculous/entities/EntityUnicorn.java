@@ -1,5 +1,6 @@
 package fox.spiteful.ridiculous.entities;
 
+import cpw.mods.fml.relauncher.ReflectionHelper;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.command.IEntitySelector;
 import net.minecraft.enchantment.Enchantment;
@@ -21,7 +22,6 @@ import java.util.List;
 public class EntityUnicorn extends EntityHorse {
     private static final IEntitySelector unicornBreedingSelector = new IEntitySelector()
     {
-        private static final String __OBFID = "CL_00001642";
         /**
          * Return whether the specified entity is applicable to this filter.
          */
@@ -33,9 +33,9 @@ public class EntityUnicorn extends EntityHorse {
 
     static {
         try {
-            Field stupidMojangPrivateVariable = Class.forName("net.minecraft.entity.passive.EntityHorse").getField("horseJumpStrength");
+            Field stupidMojangPrivateVariable = ReflectionHelper.findField(EntityHorse.class, "horseJumpStrength", "field_110271_bv");
             stupidMojangPrivateVariable.setAccessible(true);
-            IAttribute horseJumpStrength = (IAttribute) (stupidMojangPrivateVariable.get(null));
+            horseJumpStrength = (IAttribute) (stupidMojangPrivateVariable.get(null));
         }
         catch(Exception e){
             horseJumpStrength = null;

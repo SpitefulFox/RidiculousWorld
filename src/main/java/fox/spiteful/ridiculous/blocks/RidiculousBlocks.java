@@ -1,8 +1,8 @@
 package fox.spiteful.ridiculous.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockStairs;
 
 public class RidiculousBlocks {
 
@@ -20,6 +20,7 @@ public class RidiculousBlocks {
     public static Block serpent;
     public static Block serpentRune;
     public static Block gloom;
+    public static Block chest;
 
     public static void blockBlockity(){
         treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
@@ -30,7 +31,7 @@ public class RidiculousBlocks {
         craftBench = GameRegistry.registerBlock(new BlockFancyCrafting(), ItemBlockCrafting.class, "RidiculousCrafting");
         treeStairs = new Block[BlockFantasyPlanks.types.length];
         for(int x = 0;x < treeStairs.length;x++){
-            treeStairs[x] = GameRegistry.registerBlock(new BlockWoodStairs(treePlanks, x).setBlockName("stairs_" + BlockFantasyPlanks.types[x]), "stairs" + BlockFantasyPlanks.types[x]);
+            treeStairs[x] = GameRegistry.registerBlock(new BlockModdedStairs(treePlanks, x).setBlockName("stairs_" + BlockFantasyPlanks.types[x]), "stairs" + BlockFantasyPlanks.types[x]);
         }
         boneDust = GameRegistry.registerBlock(new BlockBoneDust(), "BoneDust");
         rockCandy = GameRegistry.registerBlock(new BlockRockCandy(), "RockCandy");
@@ -39,5 +40,7 @@ public class RidiculousBlocks {
         serpent = GameRegistry.registerBlock(new BlockSerpent(), "Serpent");
         serpentRune = GameRegistry.registerBlock(new BlockSerpentRune(), "SerpentRune");
         gloom = GameRegistry.registerBlock(new BlockGloom(), "Gloom");
+        chest = GameRegistry.registerBlock(new BlockChestRidiculous(), "Chest");
+        GameRegistry.registerTileEntity(TileEntityChestRidiculous.class, "ChestRidiculous");
     }
 }

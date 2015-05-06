@@ -22,13 +22,13 @@ import java.util.UUID;
 
 public class BiomeGenOssuary extends BiomeGenBase {
     private final String[] heads = new String[] {"SpitefulFox", "Kihira", "LycaonX", "joshiejack", "Vazkii",
-        "nekosune", "tyguy21g", "Traxus_Co", "killajoke", "apuent", "Pokefenn", "direwolf20", "Mrvideogame101", "Azanor",
+        "nekosune", "tyguy21g", "Traxus_Co", "killajoke", "apuent", "direwolf20", "Mrvideogame101", "Azanor",
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph", "mDiyo", "KirinDave",
         "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
         "chylex", "Mithion", "MHF_Villager", "Pahimar", "iEdyn", "RoffleToys", "DylanGK", "Othlon", "Rorax", "tlovetech",
         "OndraSter", "eyamaz", "TTFTCUTS", "bspkrs", "MysteriousAges", "PurpleMentat", "StoneWaves", "VikeStep",
-        "KodaichiZero"
+        "KodaichiZero", "Rodger", "JasenTamiia"
     };
 
     public BiomeGenOssuary(int id)
