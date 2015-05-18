@@ -7,6 +7,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
@@ -67,5 +68,10 @@ public class Ridiculous {
     public void conclusion(FMLPostInitializationEvent event)
     {
         Compat.compatify();
+    }
+
+    @Mod.EventHandler
+    public void serverTheHappening(FMLServerStartingEvent event) {
+        event.registerServerCommand(new CommandPlayerHead());
     }
 }

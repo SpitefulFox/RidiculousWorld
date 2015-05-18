@@ -7,6 +7,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.Constants;
@@ -160,6 +162,7 @@ public class TileEntityChestRidiculous extends TileEntity implements IInventory{
             }
         }
         facing = nbttagcompound.getByte("facing");
+        numUsingPlayers = nbttagcompound.getInteger("players");
     }
     @Override
     public void writeToNBT(NBTTagCompound nbttagcompound)
@@ -178,6 +181,7 @@ public class TileEntityChestRidiculous extends TileEntity implements IInventory{
         }
         nbttagcompound.setTag("Items", nbttaglist);
         nbttagcompound.setByte("facing", (byte)facing);
+        nbttagcompound.setInteger("players", numUsingPlayers);
     }
 
     @Override
@@ -247,5 +251,12 @@ public class TileEntityChestRidiculous extends TileEntity implements IInventory{
     public void setFacing(int facing2)
     {
         this.facing = facing2;
+    }
+
+    @Override
+    public Packet getDescriptionPacket() {
+        NBTTagCompound nbttagcompound = new NBTTagCompound();
+        this.writeToNBT(nbttagcompound);
+        return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 0, nbttagcompound);
     }
 }

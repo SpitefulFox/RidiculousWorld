@@ -40,6 +40,8 @@ public class RWEventHandler {
     @SubscribeEvent
     public void onSpawn(EntityJoinWorldEvent event){
 
+        if(event.world.isRemote)
+            return;
         NBTTagCompound tag = event.entity.getEntityData();
         if(tag.getBoolean("ridiculous"))
             return;
@@ -61,6 +63,7 @@ public class RWEventHandler {
                 EntityWarhorse steed = new EntityWarhorse(event.world);
                 steed.setLocationAndAngles(event.entity.posX, event.entity.posY, event.entity.posZ, event.entity.rotationYaw, event.entity.rotationPitch);
                 event.world.spawnEntityInWorld(steed);
+                event.entity.mountEntity(steed);
             }
         }
         else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.murica) {

@@ -47,3 +47,5 @@ entity.RidiculousWorld.ShadowSlime.name=Shadow Slime
 entity.RidiculousWorld.CandySheep.name=Candy Fleece
 # Misc
 itemGroup.ridiculous=Ridiculous World
+commands.playerhead.usage=playerhead <playername> | Playername is case sensitive!
+commands.playerhead.success=Given a playerhead (%1$s) to %2$s

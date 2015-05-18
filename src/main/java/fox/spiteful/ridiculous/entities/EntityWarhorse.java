@@ -24,7 +24,7 @@ import java.util.List;
 
 public class EntityWarhorse extends EntityMob {
     public int field_110278_bp;
-    private boolean ridden = false;
+    //private boolean ridden = false;
 
     public EntityWarhorse(World world){
         super(world);
@@ -57,7 +57,7 @@ public class EntityWarhorse extends EntityMob {
 
     public void onLivingUpdate()
     {
-        if(!ridden && riddenByEntity == null) {
+        /*if(!ridden && riddenByEntity == null) {
             List<EntitySkeleton> skellies = worldObj.getEntitiesWithinAABB(EntitySkeleton.class, AxisAlignedBB.getBoundingBox(posX - 2, posY - 2, posZ - 2, posX + 2, posY + 2, posZ + 2));
             for(EntitySkeleton skelly : skellies){
                 if(riddenByEntity == null && skelly.ridingEntity == null) {
@@ -70,7 +70,7 @@ public class EntityWarhorse extends EntityMob {
             }
             if(riddenByEntity == null)
                 this.setDead();
-        }
+        }*/
 
         if (this.rand.nextInt(200) == 0)
         {

@@ -53,11 +53,19 @@ public class Compat {
                 if(forbidden)
                     aspects.add(DarkAspects.GLUTTONY, 2);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Peep", aspects, new ThaumcraftApi.EntityTagsNBT[0]);
-                ThaumcraftApi.registerEntityTag("RidiculousWorld.Calavera", (new AspectList()).add(Aspect.UNDEAD, 3).add(Aspect.MAN, 1).add(Aspect.HUNGER, 1), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.Calavera", (new AspectList()).add(Aspect.DEATH, 3).add(Aspect.MAN, 1).add(Aspect.HUNGER, 1), new ThaumcraftApi.EntityTagsNBT[0]);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Frankenstein", (new AspectList()).add(Aspect.FLESH, 4).add(Aspect.MAN, 3).add(Aspect.ENERGY, 2).add(Aspect.WEATHER, 1), new ThaumcraftApi.EntityTagsNBT[0]);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Warhorse", (new AspectList()).add(Aspect.UNDEAD, 3).add(Aspect.BEAST, 1).add(Aspect.EARTH, 1), new ThaumcraftApi.EntityTagsNBT[0]);
                 ThaumcraftApi.registerEntityTag("RidiculousWorld.Gingerbread", (new AspectList()).add(Aspect.HUNGER, 3).add(Aspect.MOTION, 4), new ThaumcraftApi.EntityTagsNBT[0]);
-                ThaumcraftApi.registerEntityTag("RidiculousWorld.Shoggoth", (new AspectList()).add(Aspect.SLIME, 2).add(Aspect.ELDRITCH, 2), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.Shoggoth", (new AspectList()).add(Aspect.SLIME, 2).add(Aspect.ELDRITCH, 4), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.Skeleton", (new AspectList()).add(Aspect.UNDEAD, 3).add(Aspect.MAN, 1).add(Aspect.EARTH, 1), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.Zombie", (new AspectList()).add(Aspect.UNDEAD, 2).add(Aspect.MAN, 1).add(Aspect.EARTH, 1), new ThaumcraftApi.EntityTagsNBT[0]);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.ShadowSlime", (new AspectList()).add(Aspect.SLIME, 2).add(Aspect.DARKNESS, 2), new ThaumcraftApi.EntityTagsNBT[0]);
+                if(forbidden)
+                    aspects = (new AspectList()).add(Aspect.BEAST, 2).add(DarkAspects.GLUTTONY, 2);
+                else
+                    aspects = (new AspectList()).add(Aspect.BEAST, 2).add(Aspect.HUNGER, 2);
+                ThaumcraftApi.registerEntityTag("RidiculousWorld.CandySheep", aspects, new ThaumcraftApi.EntityTagsNBT[0]);
 
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.spookyLog), (new AspectList()).add(Aspect.TREE, 4).add(Aspect.SOUL, 1));
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousBlocks.boneDust), (new AspectList()).add(Aspect.DEATH, 4));
@@ -84,6 +92,7 @@ public class Compat {
                 if(forbidden)
                     aspects.add(DarkAspects.GLUTTONY, 1);
                 ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousItems.chocoEgg), aspects);
+                ThaumcraftApi.registerObjectTag(new ItemStack(RidiculousItems.cottonCandy), aspects);
 
                 for(int x = 0;x < BlockFancyCrafting.types.length;x++){
                     if(forbidden && x == 0)
