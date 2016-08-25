@@ -1,20 +1,13 @@
 package fox.spiteful.ridiculous.world;
 
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.IWorldGenerator;
-import fox.spiteful.ridiculous.biomes.UnrealBiomes;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.util.WeightedRandomChestContent;
+
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkGenerator;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.structure.MapGenStructureIO;
-import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.fml.common.IWorldGenerator;
+
 
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class RidiculousWorldGenerator implements IWorldGenerator {
 
@@ -33,7 +26,8 @@ public class RidiculousWorldGenerator implements IWorldGenerator {
      * @param chunkProvider : additionalData[2] {@link net.minecraft.world.chunk.IChunkProvider} that is requesting the world generation.
      *
      */
-    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider){
+    @Override
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
         /*if(world.getBiomeGenForCoords(chunkX, chunkZ) == UnrealBiomes.madness) {
             cyclopean.generateStructuresInChunk(world, world.rand, chunkX, chunkZ);
         }

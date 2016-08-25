@@ -1,40 +1,28 @@
 package fox.spiteful.ridiculous.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Ridiculous;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class ItemUnicornHorn extends ItemSword {
-    IIcon icon;
 
     public ItemUnicornHorn(){
         super(ToolMaterial.STONE);
         setCreativeTab(Ridiculous.tab);
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir) {
-        this.icon = ir.registerIcon("ridiculous:unihorn");
-    }
-
-    @Override
-    @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int par1) {
-        return this.icon;
     }
 
     @Override
@@ -43,7 +31,7 @@ public class ItemUnicornHorn extends ItemSword {
      */
     public EnumAction getItemUseAction(ItemStack par1ItemStack)
     {
-        return EnumAction.none;
+        return EnumAction.NONE;
     }
 
     @Override
@@ -65,20 +53,21 @@ public class ItemUnicornHorn extends ItemSword {
     }
 
     @Override
-    public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer player) {
-        player.swingItem();
+    public ActionResult<ItemStack> onItemRightClick(ItemStack itemstack, World world, EntityPlayer player, EnumHand hand) {
+        player.swingArm(EnumHand.MAIN_HAND);
         if(player != null && player.getActivePotionEffects().size() > 0 && !world.isRemote) {
-            player.curePotionEffects(new ItemStack(Items.milk_bucket));
+            player.curePotionEffects(new ItemStack(Items.MILK_BUCKET));
             itemstack.damageItem(1, player);
+            return new ActionResult(EnumActionResult.SUCCESS, itemstack);
         }
-        return itemstack;
+        return new ActionResult(EnumActionResult.PASS, itemstack);
     }
 
     @SideOnly(Side.CLIENT)
     @Override
     public void getSubItems(Item par1, CreativeTabs xCreativeTabs, List list) {
         ItemStack horn = new ItemStack(this);
-        horn.addEnchantment(Enchantment.smite, 4);
+        horn.addEnchantment(Enchantments.SMITE, 4);
         list.add(horn);
     }
 }

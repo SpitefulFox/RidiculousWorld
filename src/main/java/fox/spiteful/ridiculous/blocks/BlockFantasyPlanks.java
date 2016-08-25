@@ -1,40 +1,27 @@
 package fox.spiteful.ridiculous.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Ridiculous;
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class BlockFantasyPlanks extends Block {
     public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
-    @SideOnly(Side.CLIENT)
-    private IIcon[] icons;
 
     public BlockFantasyPlanks()
     {
-        super(Material.wood);
+        super(Material.WOOD);
         setHardness(2.0F);
         setResistance(5.0F);
-        setStepSound(soundTypeWood);
+        setSoundType(SoundType.WOOD);
         this.setCreativeTab(Ridiculous.tab);
-    }
-
-    /**
-     * Gets the block's texture. Args: side, meta
-     */
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        return this.icons[metadata % types.length];
     }
 
     /**
@@ -55,14 +42,4 @@ public class BlockFantasyPlanks extends Block {
             list.add(new ItemStack(item, 1, x));
     }
 
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister)
-    {
-        this.icons = new IIcon[types.length];
-
-        for (int i = 0; i < this.icons.length; ++i)
-        {
-            this.icons[i] = iconRegister.registerIcon("ridiculous:planks_" + types[i]);
-        }
-    }
 }

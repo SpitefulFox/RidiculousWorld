@@ -1,8 +1,7 @@
 package fox.spiteful.ridiculous.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
 import net.minecraft.block.Block;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RidiculousBlocks {
 
@@ -20,10 +19,11 @@ public class RidiculousBlocks {
     public static Block serpent;
     public static Block serpentRune;
     public static Block gloom;
-    public static Block chest;
 
     public static void blockBlockity(){
-        treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
+        boneDust = register(new BlockBoneDust(), "BoneDust");
+
+        /*treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
         treeLeaves = GameRegistry.registerBlock(new BlockFantasyLeaves(), ItemBlockLeaves.class, "RidiculousLeaves");
         spookyLog = GameRegistry.registerBlock(new BlockSpookyLog(), "SpookyLog");
         treeSaplings = GameRegistry.registerBlock(new BlockFantasySapling(), ItemBlockSapling.class,"RidiculousSapling");
@@ -39,8 +39,12 @@ public class RidiculousBlocks {
         gingerbread = GameRegistry.registerBlock(new BlockGingerbread(), "Gingerbread");
         serpent = GameRegistry.registerBlock(new BlockSerpent(), "Serpent");
         serpentRune = GameRegistry.registerBlock(new BlockSerpentRune(), "SerpentRune");
-        gloom = GameRegistry.registerBlock(new BlockGloom(), "Gloom");
-        chest = GameRegistry.registerBlock(new BlockChestRidiculous(), "Chest");
-        GameRegistry.registerTileEntity(TileEntityChestRidiculous.class, "ChestRidiculous");
+        gloom = GameRegistry.registerBlock(new BlockGloom(), "Gloom");*/
+    }
+
+    private static Block register(Block block, String name){
+        block.setRegistryName(name);
+        GameRegistry.register(block);
+        return block;
     }
 }

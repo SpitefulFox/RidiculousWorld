@@ -1,15 +1,8 @@
 package fox.spiteful.ridiculous.client;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.Loader;
 import fox.spiteful.ridiculous.CommonProxy;
 import fox.spiteful.ridiculous.Config;
-import fox.spiteful.ridiculous.blocks.BlockChestRidiculous;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
-import fox.spiteful.ridiculous.client.entities.*;
-import fox.spiteful.ridiculous.client.shaders.ShaderHelper;
-import fox.spiteful.ridiculous.entities.*;
 import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
 import net.minecraft.client.model.ModelSheep1;
 import net.minecraft.client.model.ModelSheep2;
@@ -22,7 +15,7 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
     public void doTheRenderThing(){
-        RenderingRegistry.registerEntityRenderingHandler(EntityFrankenstein.class, new RenderFrankenstein());
+        /*RenderingRegistry.registerEntityRenderingHandler(EntityFrankenstein.class, new RenderFrankenstein());
         RenderingRegistry.registerEntityRenderingHandler(EntityWarhorse.class, new RenderWarhorse());
         RenderingRegistry.registerEntityRenderingHandler(EntityPeep.class, new RenderPeep());
         RenderingRegistry.registerEntityRenderingHandler(EntityUnicorn.class, new RenderUnicorn());
@@ -44,6 +37,6 @@ public class ClientProxy extends CommonProxy {
         BlockChestRidiculous.render = RenderingRegistry.getNextAvailableRenderId();
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RidiculousBlocks.chest), new RenderItemChest());
 
-        ShaderHelper.initShaders();
+        ShaderHelper.initShaders();*/
     }
 }

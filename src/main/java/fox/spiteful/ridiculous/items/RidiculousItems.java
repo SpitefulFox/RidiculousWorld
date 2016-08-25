@@ -1,7 +1,7 @@
 package fox.spiteful.ridiculous.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class RidiculousItems {
 
@@ -17,7 +17,7 @@ public class RidiculousItems {
     public static Item cottonCandy;
 
     public static void itemize(){
-        candyCorn = new ItemRidiculousFood(2, 0.1F, false, "candycorn").setUnlocalizedName("CandyCorn");
+        /*candyCorn = new ItemRidiculousFood(2, 0.1F, false, "candycorn").setUnlocalizedName("CandyCorn");
         GameRegistry.registerItem(candyCorn, "CandyCorn");
         rustySickle = new ItemRustySickle().setUnlocalizedName("RustySickle");
         GameRegistry.registerItem(rustySickle, "RustySickle");
@@ -36,6 +36,12 @@ public class RidiculousItems {
         spawner = new ItemRidiculousSpawner();
         GameRegistry.registerItem(spawner, "Spawner");
         cottonCandy = new ItemRidiculousFood(2, 0.1F, false, "cotton_candy").setUnlocalizedName("CottonCandy");
-        GameRegistry.registerItem(cottonCandy, "CottonCandy");
+        GameRegistry.registerItem(cottonCandy, "CottonCandy");*/
+    }
+
+    private static Item register(Item item, String name){
+        item.setRegistryName(name);
+        GameRegistry.register(item);
+        return item;
     }
 }
