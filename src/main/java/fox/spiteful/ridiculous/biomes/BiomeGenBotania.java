@@ -1,44 +1,48 @@
 package fox.spiteful.ridiculous.biomes;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Config;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.biome.Biome;
+import fox.spiteful.ridiculous.compat.Compat;
+import fox.spiteful.ridiculous.entities.EntityUnicorn;
+import fox.spiteful.ridiculous.world.WorldGenTsundereTree;
+import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
+import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Random;
 
-public class BiomeGenBotania extends Biome {
+public class BiomeGenBotania extends BiomeGenBase {
 
-    //WorldGenAbstractTree livingwood = new WorldGenTsundereTree(false);
+    WorldGenAbstractTree livingwood = new WorldGenTsundereTree(false);
     WorldGenMinable livingrock;
 
-    public BiomeGenBotania(){
-        super(new BiomeProperties("Botanical Garden").setBaseHeight(0.125F).setHeightVariation(0.05F).setTemperature(0.8F).setRainfall(0.4F));
+    public BiomeGenBotania(int id){
+        super(id);
         this.theBiomeDecorator.treesPerChunk = 1;
         this.theBiomeDecorator.grassPerChunk = 2;
         this.theBiomeDecorator.mushroomsPerChunk = 0;
-
-        //this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityUnicorn.class, 8, 4, 4));
-        //if(Compat.botania)
+        setHeight(height_MidPlains);
+        this.spawnableCreatureList.add(new BiomeGenBase.SpawnListEntry(EntityUnicorn.class, 8, 4, 4));
+        if(Compat.botania)
             BiomeManager.addBiome(BiomeManager.BiomeType.WARM, new BiomeManager.BiomeEntry(this, Config.botaniaWeight));
         BiomeManager.addSpawnBiome(this);
         BiomeDictionary.registerBiomeType(this, BiomeDictionary.Type.MAGICAL, BiomeDictionary.Type.PLAINS, BiomeDictionary.Type.LUSH);
+        setBiomeName("Botanical Garden");
+        setColor(0xFF70F7);
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public int getGrassColorAtPos(BlockPos pos)
+    public int getBiomeGrassColor(int x, int y, int z)
     {
         return 0x00CA07;
     }
 
     @Override
-    @SideOnly(Side.CLIENT)
-    public int getFoliageColorAtPos(BlockPos pos)
+    public int getBiomeFoliageColor(int x, int y, int z)
     {
         return 0x00E107;
     }
@@ -46,14 +50,13 @@ public class BiomeGenBotania extends Biome {
     /**
      * takes temperature, returns color
      */
-    @Override
     @SideOnly(Side.CLIENT)
     public int getSkyColorByTemp(float wat)
     {
         return 0xFF76C4;
     }
 
-    /*public void decorate(World world, Random rand, int chunkX, int chunkZ)
+    public void decorate(World world, Random rand, int chunkX, int chunkZ)
     {
         this.theBiomeDecorator.decorateChunk(world, rand, this, chunkX, chunkZ);
 
@@ -92,6 +95,6 @@ public class BiomeGenBotania extends Biome {
             return livingwood;
         else
             return worldGeneratorTrees;
-    }*/
+    }
 
 }

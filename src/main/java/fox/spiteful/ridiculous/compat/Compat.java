@@ -1,5 +1,8 @@
 package fox.spiteful.ridiculous.compat;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.forbidden.DarkAspects;
 import fox.spiteful.ridiculous.Config;
 import fox.spiteful.ridiculous.Lumberjack;
 import fox.spiteful.ridiculous.blocks.BlockFancyCrafting;
@@ -7,13 +10,15 @@ import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.oredict.OreDictionary;
 import org.apache.logging.log4j.Level;
+import thaumcraft.api.ThaumcraftApi;
+import thaumcraft.api.aspects.Aspect;
+import thaumcraft.api.aspects.AspectList;
 
 public class Compat {
 
-    /*public static boolean teehee;
+    public static boolean teehee;
     public static boolean thaumic;
     public static boolean forbidden;
     public static boolean botania;
@@ -21,20 +26,20 @@ public class Compat {
     public static Block enderGoo;
     public static Block flower;
     public static Block livingrock;
-    public static Block livingwood;*/
+    public static Block livingwood;
 
     public static void preparatoryCompatification(){
-        /*teehee = Loader.isModLoaded("HardcoreEnderExpansion");
+        teehee = Loader.isModLoaded("HardcoreEnderExpansion");
         thaumic = Loader.isModLoaded("Thaumcraft") && Config.thaum;
         forbidden = Loader.isModLoaded("ForbiddenMagic") && Config.fm;
-        botania = Loader.isModLoaded("Botania") && Config.botania;*/
+        botania = Loader.isModLoaded("Botania") && Config.botania;
         if(Loader.isModLoaded("foxlib"))
             Lumberjack.log(Level.INFO, "#FuckTheSand");
     }
 
     public static void compatify()
     {
-        /*if(teehee){
+        if(teehee){
             enderGoo = GameRegistry.findBlock("HardcoreEnderExpansion", "ender_goo");
             if(enderGoo == null)
                 teehee = false;
@@ -120,6 +125,5 @@ public class Compat {
             if(livingwood == null)
                 botania = false;
         }
-        */
     }
 }

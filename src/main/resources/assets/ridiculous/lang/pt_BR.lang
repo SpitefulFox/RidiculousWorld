@@ -1,0 +1,48 @@
+# Blocks
+tile.ridiculous_log_spooky.name=Madeira Medonha
+tile.ridiculous_log_bubblegum.name=Madeira de Chiclete
+tile.ridiculous_log_shadow.name=Madeira das Sombras
+tile.ridiculous_leaves_spooky.name=Folhas Medonhas
+tile.ridiculous_leaves_bubblegum.name=Folhas de Chiclete
+tile.ridiculous_leaves_shadow.name=Folhas das Sombras
+tile.ridiculous_leaves_livingwood.name=Folhas Vivas
+tile.ridiculous_sapling_spooky.name=Muda Medonha
+tile.ridiculous_sapling_bubblegum.name=Muda de Chiclete
+tile.ridiculous_sapling_shadow.name=Muda das Sombras
+tile.ridiculous_sapling_livingwood.name=Muda de Madeira Viva
+tile.ridiculous_planks_spooky.name=Tábuas Medonhas
+tile.ridiculous_planks_bubblegum.name=Tábuas de Chiclete
+tile.ridiculous_planks_shadow.name=Tábuas das Sombras
+tile.stairs_spooky.name=Escadas de Madeira Medonha
+tile.stairs_bubblegum.name=Escadas de Madeira de Chiclete
+tile.stairs_shadow.name=Escadas de Madeira das Sombras
+tile.bonedust.name=Osso Esmagado
+tile.rockcandy.name=Rocha Doce
+tile.candycane.name=Bengala Doce
+tile.serpent.name=Serpentinita
+tile.serpent_rune.name=Serpentinita com Runas
+# Items
+item.CandyCorn.name=Milho Doce
+item.RustySickle.name=Foice Enferrujada
+item.ChocoEgg.name=Ovo de Chocolate
+item.UnicornRaw.name=Carne de Unicórnio Crua
+item.UnicornCooked.name=Filé de Unicórnio
+item.PeepRaw.name=Pintinho de Marshmallow
+item.PeepCooked.name=Pintinho Tostado
+item.UnicornHorn.name=Chifre de Unicórnio
+item.CottonCandy.name=Algodão-Doce
+# Entities
+entity.RidiculousWorld.Frankenstein.name=Monstro de Frankenstein
+entity.RidiculousWorld.Warhorse.name=Cavalo Esqueleto
+entity.RidiculousWorld.Peep.name=Pintinho de Marshmallow
+entity.RidiculousWorld.Unicorn.name=Unicórnio
+entity.RidiculousWorld.Mummy.name=Múmia
+entity.RidiculousWorld.Calavera.name=Caveira de Açúcar
+entity.RidiculousWorld.Gingerbread.name=Homem de Gengibre
+entity.RidiculousWorld.Shoggoth.name=Shoggoth
+entity.RidiculousWorld.Skeleton.name=Esqueleto
+entity.RidiculousWorld.Zombie.name=Zumbi
+entity.RidiculousWorld.ShadowSlime.name=Slime das Sombras
+entity.RidiculousWorld.CandySheep.name=Ovelha Doce
+# Misc
+itemGroup.ridiculous=Ridiculous World

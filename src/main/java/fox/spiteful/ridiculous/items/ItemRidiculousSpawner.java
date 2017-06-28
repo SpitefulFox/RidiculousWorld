@@ -1,21 +1,24 @@
 package fox.spiteful.ridiculous.items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fox.spiteful.ridiculous.entities.*;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
 public class ItemRidiculousSpawner extends Item
 {
+    private IIcon easter;
     private final int[] speckles = {0x2EAB25, 0xFFF557, 0x75FFFB, 0x04F8FF, 0xF8FCE1, 0xFFFFFF, 0x000000, 0xFFB2E9};
     private final int[] shell = {0x90621D, 0xFFF557, 0xFF80FF, 0xFFFFFF, 0xA98125, 0x110054, 0x3D3D3D, 0x51FFF4};
     private final String[] mobNames = {"RidiculousWorld.Frankenstein", "RidiculousWorld.Peep",
@@ -26,19 +29,41 @@ public class ItemRidiculousSpawner extends Item
     public ItemRidiculousSpawner()
     {
         super();
-        this.setCreativeTab(CreativeTabs.MISC);
+        this.setCreativeTab(CreativeTabs.tabMisc);
         this.setHasSubtypes(true);
+    }
+
+    @Override
+    public void registerIcons (IIconRegister iconRegister){
+        easter = iconRegister.registerIcon("ridiculous:easter_egg");
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public boolean requiresMultipleRenderPasses ()
+    {
+        return true;
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamageForRenderPass (int damage, int pass)
+    {
+        if(damage == 1)
+            return easter;
+        else
+            return Items.spawn_egg.getIconFromDamageForRenderPass(damage, pass);
     }
 
     @Override
     public String getItemStackDisplayName (ItemStack item)
     {
-        String s = ("" + I18n.translateToLocal(Items.SPAWN_EGG.getUnlocalizedName() + ".name")).trim();
+        String s = ("" + StatCollector.translateToLocal(Items.spawn_egg.getUnlocalizedName() + ".name")).trim();
         String s1 = mobNames[item.getItemDamage()];
 
         if (s1 != null)
         {
-            s = s + " " + I18n.translateToLocal("entity." + s1 + ".name");
+            s = s + " " + StatCollector.translateToLocal("entity." + s1 + ".name");
         }
 
         return s;
@@ -51,7 +76,18 @@ public class ItemRidiculousSpawner extends Item
             list.add(new ItemStack(id, 1, x));
     }
 
-    /*@Override
+    @Override
+    @SideOnly(Side.CLIENT)
+    public int getColorFromItemStack (ItemStack stack, int pass)
+    {
+        int damage = stack.getItemDamage();
+        if(damage == 1)
+            return 16777215;
+        else
+            return pass == 0 ? shell[damage] : speckles[damage];
+    }
+
+    @Override
     public boolean onItemUse (ItemStack stack, EntityPlayer player, World world, int posX, int posY, int posZ, int par7, float par8, float par9, float par10)
     {
         if (!world.isRemote)
@@ -126,5 +162,5 @@ public class ItemRidiculousSpawner extends Item
             entity.onSpawnWithEgg((IEntityLivingData)null);
             world.spawnEntityInWorld(entity);
         }
-    }*/
+    }
 }

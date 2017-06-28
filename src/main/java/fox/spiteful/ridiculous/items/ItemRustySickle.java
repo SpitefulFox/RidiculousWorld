@@ -1,16 +1,33 @@
 package fox.spiteful.ridiculous.items;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Ridiculous;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.util.IIcon;
 
 public class ItemRustySickle extends ItemSword {
+    IIcon icon;
 
     public ItemRustySickle(){
         super(ToolMaterial.IRON);
         setCreativeTab(Ridiculous.tab);
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister ir) {
+        this.icon = ir.registerIcon("ridiculous:rustysickle");
+    }
+
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconFromDamage(int par1) {
+        return this.icon;
     }
 
     @Override
@@ -19,7 +36,7 @@ public class ItemRustySickle extends ItemSword {
     */
     public EnumAction getItemUseAction(ItemStack par1ItemStack)
     {
-        return EnumAction.NONE;
+        return EnumAction.none;
     }
 
     @Override
@@ -37,6 +54,6 @@ public class ItemRustySickle extends ItemSword {
      */
     public boolean getIsRepairable(ItemStack par1ItemStack, ItemStack par2ItemStack)
     {
-        return par2ItemStack.getItem() == Items.IRON_INGOT ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
+        return par2ItemStack.getItem() == Items.iron_ingot ? true : super.getIsRepairable(par1ItemStack, par2ItemStack);
     }
 }
