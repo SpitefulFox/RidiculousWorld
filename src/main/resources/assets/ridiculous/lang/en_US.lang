@@ -22,6 +22,10 @@ tile.candycane.name=Candy Cane
 tile.serpent.name=Serpentinite
 tile.serpent_rune.name=Runed Serpentinite
 tile.chestRidiculous.name=Botanical Chest
+tile.blockLiquidTime.name=Temporal Anomaly
+tile.ridiculous_flowers_rose.name=Rose
+tile.ridiculous_flowers_cyan.name=Cyan Flower
+tile.ridiculous_flowers_peony.name=Peony
 # Items
 item.CandyCorn.name=Candy Corn
 item.RustySickle.name=Rusty Sickle
@@ -32,6 +36,7 @@ item.PeepRaw.name=Marshmallow Peep
 item.PeepCooked.name=Toasted Peep
 item.UnicornHorn.name=Unicorn Horn
 item.CottonCandy.name=Cotton Candy
+item.BucketOfTime.name=Temporal Anomaly in a Bucket
 # Entities
 entity.RidiculousWorld.Frankenstein.name=Frankenstein's Monster
 entity.RidiculousWorld.Warhorse.name=Skeleton Horse
@@ -45,6 +50,7 @@ entity.RidiculousWorld.Skeleton.name=Skeleton
 entity.RidiculousWorld.Zombie.name=Zombie
 entity.RidiculousWorld.ShadowSlime.name=Shadow Slime
 entity.RidiculousWorld.CandySheep.name=Candy Fleece
+entity.RidiculousWorld.Enderman.name=Enderman
 # Misc
 itemGroup.ridiculous=Ridiculous World
 commands.playerhead.usage=playerhead <playername> | Playername is case sensitive!

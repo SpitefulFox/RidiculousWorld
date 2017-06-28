@@ -1,8 +1,10 @@
 package fox.spiteful.ridiculous;
 
+import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.ReflectionHelper;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
+import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
 import fox.spiteful.ridiculous.entities.EntityWarhorse;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.enchantment.Enchantment;
@@ -18,8 +20,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 import java.lang.reflect.Field;
 import java.util.Calendar;
@@ -142,6 +146,14 @@ public class RWEventHandler {
             }
         }
 
+        if (event.entityLiving instanceof EntityZombie && event.entityLiving.worldObj.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.time){
+            for(EntityItem drop : event.drops){
+                ItemStack stack = drop.getEntityItem();
+                if(stack.getItem() == Items.rotten_flesh)
+                    drop.setEntityItemStack(new ItemStack(Items.feather, stack.stackSize));
+            }
+        }
+
         if (event.entityLiving instanceof EntityCreeper && event.recentlyHit && event.source.getEntity() != null
                 && event.source.getEntity() instanceof EntityPlayer)
         {
@@ -184,6 +196,20 @@ public class RWEventHandler {
         EntityItem entityitem = new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, drop);
         entityitem.delayBeforeCanPickup = 10;
         event.drops.add(entityitem);
+    }
+
+    @SubscribeEvent
+    public void fillBucket(FillBucketEvent event) {
+        if(event.target.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
+            if(event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ) == RidiculousBlocks.liquidTimeBlock && event.world.getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ) == 0) {
+                event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
+                event.result = new ItemStack(RidiculousItems.timeBucket);
+                event.setResult(Event.Result.ALLOW);
+                return;
+            }
+
+        }
+
     }
 
 }

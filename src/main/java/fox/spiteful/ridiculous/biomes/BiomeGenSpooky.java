@@ -76,7 +76,10 @@ public class BiomeGenSpooky extends BiomeGenBase {
              for(int j = 0; j < 6;j++) {
                  int x = chunkX + rand.nextInt(16) + 8;
                  int z = chunkZ + rand.nextInt(16) + 8;
-                 int y = rand.nextInt(world.getHeightValue(x, z) * 2);
+                 int height = world.getHeightValue(x, z);
+                 if(height <= 0)
+                     return;
+                 int y = rand.nextInt(height * 2);
                  for (int l = 0; l < 64; ++l) {
                      int i1 = x + rand.nextInt(8) - rand.nextInt(8);
                      int j1 = y + rand.nextInt(4) - rand.nextInt(4);

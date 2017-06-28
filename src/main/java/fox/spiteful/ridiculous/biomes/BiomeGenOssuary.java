@@ -21,14 +21,15 @@ import java.util.Random;
 import java.util.UUID;
 
 public class BiomeGenOssuary extends BiomeGenBase {
-    private final String[] heads = new String[] {"SpitefulFox", "Kihira", "LycaonX", "joshiejack", "Vazkii",
-        "nekosune", "tyguy21g", "Traxus_Co", "killajoke", "apuent", "direwolf20", "Mrvideogame101", "Azanor",
+    private final String[] heads = new String[] {"SpitefulFox", "Kihira", "LycaonX", "Vazkii",
+        "nekosune", "Traxus_Co", "killajoke", "apuent", "direwolf20", "Mrvideogame101", "Azanor",
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph",
-        "haighyorkie", "Drullkus", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
-        "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "boliver77", "ApSciLiara", "corjaantje",
+        "haighyorkie", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
+        "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "ApSciLiara", "corjaantje",
         "chylex", "Mithion", "MHF_Villager", "Pahimar", "RoffleToys", "DylanGK", "Othlon", "Rorax", "tlovetech",
         "OndraSter", "eyamaz", "TTFTCUTS", "bspkrs", "MysteriousAges", "PurpleMentat", "StoneWaves", "VikeStep",
-        "KodaichiZero", "Rodger", "JasenTamiia"
+        "KodaichiZero", "Rodger", "JasenTamiia", "BluSunrize", "Elucent", "CaptainSparklez", "Zepphod", "zlyfire",
+        "Abbadonsin", "Mvninn", "Hvginn", "_Flipz_"
     };
 
     public BiomeGenOssuary(int id)

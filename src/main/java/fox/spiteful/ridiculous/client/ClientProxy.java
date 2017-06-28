@@ -33,6 +33,7 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityDayZombie.class, new RenderZombie());
         RenderingRegistry.registerEntityRenderingHandler(EntityShadowSlime.class, new RenderShadowSlime());
         RenderingRegistry.registerEntityRenderingHandler(EntityCandySheep.class, new RenderCandySheep(new ModelSheep2(), new ModelSheep1(), 0.7F));
+        RenderingRegistry.registerEntityRenderingHandler(EntityOldEnderman.class, new RenderOldEnderman());
 
         if(Config.heads && !Loader.isModLoaded("foxlib")){
             TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);

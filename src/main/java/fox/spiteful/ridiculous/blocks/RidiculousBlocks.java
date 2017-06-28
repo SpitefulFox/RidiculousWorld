@@ -1,8 +1,15 @@
 package fox.spiteful.ridiculous.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.ridiculous.items.RidiculousItems;
 import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
 import net.minecraft.block.Block;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class RidiculousBlocks {
 
@@ -21,6 +28,10 @@ public class RidiculousBlocks {
     public static Block serpentRune;
     public static Block gloom;
     public static Block chest;
+    public static Block flower;
+
+    public static Fluid liquidTime;
+    public static Block liquidTimeBlock;
 
     public static void blockBlockity(){
         treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
@@ -42,5 +53,11 @@ public class RidiculousBlocks {
         gloom = GameRegistry.registerBlock(new BlockGloom(), "Gloom");
         chest = GameRegistry.registerBlock(new BlockChestRidiculous(), "Chest");
         GameRegistry.registerTileEntity(TileEntityChestRidiculous.class, "ChestRidiculous");
+        flower = GameRegistry.registerBlock(new BlockTimeFlower(), ItemBlockTimeFlower.class, "RidiculousFlower");
+
+        liquidTime = new Fluid("temporal_anomaly").setLuminosity(6);
+        FluidRegistry.registerFluid(liquidTime);
+        liquidTimeBlock = GameRegistry.registerBlock(new BlockTimeFluid(liquidTime), "Temporal_Anomaly");
+        FluidContainerRegistry.registerFluidContainer(new FluidStack(liquidTime, 1000), new ItemStack(RidiculousItems.timeBucket), new ItemStack(Items.bucket));
     }
 }
