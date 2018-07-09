@@ -24,12 +24,12 @@ public class BiomeGenOssuary extends BiomeGenBase {
     private final String[] heads = new String[] {"SpitefulFox", "Kihira", "LycaonX", "Vazkii",
         "nekosune", "Traxus_Co", "killajoke", "apuent", "direwolf20", "Mrvideogame101", "Azanor",
         "WayofFlowingTime", "Morvelaira", "Xephos", "Honeydew", "Israphel", "Herobrine", "Emoniph",
-        "haighyorkie", "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "SOTMead", "saice", "ako_the_builder",
+        "Mikeemoo", "bluedartpro", "KingLemmingCoFH", "saice", "ako_the_builder", "Ellpeck",
         "sirsengir", "florastar", "Sacheverell", "DanielleStarr", "Jabyvogux", "ApSciLiara", "corjaantje",
-        "chylex", "Mithion", "MHF_Villager", "Pahimar", "RoffleToys", "DylanGK", "Othlon", "Rorax", "tlovetech",
+        "chylex", "Mithion", "MHF_Villager", "Pahimar", "RoffleToys", "DylanGK", "Othlon", "tlovetech",
         "OndraSter", "eyamaz", "TTFTCUTS", "bspkrs", "MysteriousAges", "PurpleMentat", "StoneWaves", "VikeStep",
         "KodaichiZero", "Rodger", "JasenTamiia", "BluSunrize", "Elucent", "CaptainSparklez", "Zepphod", "zlyfire",
-        "Abbadonsin", "Mvninn", "Hvginn", "_Flipz_"
+        "Abbadonsin", "Mvninn", "Hvginn", "_Flipz_", "CandiceJoy", "amadornes", "LexManos", "iChun", "Minalien"
     };
 
     public BiomeGenOssuary(int id)
