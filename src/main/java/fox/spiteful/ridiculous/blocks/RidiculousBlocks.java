@@ -13,6 +13,7 @@ public class RidiculousBlocks {
     public static Block treeLeaves;*/
 
     public static Block spookyLog;
+    public static Block spookyLeaves;
 
     public static Block extraSpookyLog;
     public static Block treeSaplings;
@@ -36,6 +37,10 @@ public class RidiculousBlocks {
         spookyLog = new BlockFantasyLog().setRegistryName("spooky_log").setUnlocalizedName("spooky_log");
         ForgeRegistries.BLOCKS.register(spookyLog);
         ForgeRegistries.ITEMS.register(new ItemBlock(spookyLog).setRegistryName("spooky_log"));
+        spookyLeaves = new BlockFantasyLeaves().setRegistryName("spooky_leaves").setUnlocalizedName("spooky_leaves");
+        ForgeRegistries.BLOCKS.register(spookyLeaves);
+        ForgeRegistries.ITEMS.register(new ItemBlock(spookyLeaves).setRegistryName("spooky_leaves"));
+
         /*treeLeaves = GameRegistry.registerBlock(new BlockFantasyLeaves(), ItemBlockLeaves.class, "RidiculousLeaves");
         spookyLog = GameRegistry.registerBlock(new BlockSpookyLog(), "SpookyLog");
         treeSaplings = GameRegistry.registerBlock(new BlockFantasySapling(), ItemBlockSapling.class,"RidiculousSapling");

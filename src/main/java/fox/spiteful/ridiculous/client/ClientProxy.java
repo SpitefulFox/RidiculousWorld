@@ -23,6 +23,7 @@ public class ClientProxy extends CommonProxy {
         ModelLoader.setCustomModelResourceLocation(RidiculousItems.candyCorn, 0, new ModelResourceLocation(RidiculousItems.candyCorn.getRegistryName(), "inventory"));
 
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(RidiculousBlocks.spookyLog), 0, new ModelResourceLocation(RidiculousBlocks.spookyLog.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(RidiculousBlocks.spookyLeaves), 0, new ModelResourceLocation(RidiculousBlocks.spookyLeaves.getRegistryName(), "inventory"));
 
 
         //Lumberjack.log(Level.WARN, "REGISTERING MODEL LOLOLOLOLOL");
