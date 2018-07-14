@@ -1,21 +1,20 @@
 package fox.spiteful.ridiculous.blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import fox.spiteful.ridiculous.items.RidiculousItems;
-import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RidiculousBlocks {
 
-    public static Block treeLogs;
-    public static Block treeLeaves;
+    /*public static Block treeLog;
+    public static Block treeLeaves;*/
+
     public static Block spookyLog;
+
+    public static Block extraSpookyLog;
     public static Block treeSaplings;
     public static Block treePlanks;
     public static Block[] treeStairs;
@@ -34,8 +33,10 @@ public class RidiculousBlocks {
     public static Block liquidTimeBlock;
 
     public static void blockBlockity(){
-        treeLogs = GameRegistry.registerBlock(new BlockFantasyLog(), ItemBlockLog.class, "RidiculousLog");
-        treeLeaves = GameRegistry.registerBlock(new BlockFantasyLeaves(), ItemBlockLeaves.class, "RidiculousLeaves");
+        spookyLog = new BlockFantasyLog().setRegistryName("spooky_log").setUnlocalizedName("spooky_log");
+        ForgeRegistries.BLOCKS.register(spookyLog);
+        ForgeRegistries.ITEMS.register(new ItemBlock(spookyLog).setRegistryName("spooky_log"));
+        /*treeLeaves = GameRegistry.registerBlock(new BlockFantasyLeaves(), ItemBlockLeaves.class, "RidiculousLeaves");
         spookyLog = GameRegistry.registerBlock(new BlockSpookyLog(), "SpookyLog");
         treeSaplings = GameRegistry.registerBlock(new BlockFantasySapling(), ItemBlockSapling.class,"RidiculousSapling");
         treePlanks = GameRegistry.registerBlock(new BlockFantasyPlanks(), ItemBlockPlanks.class, "RidiculousPlanks");
@@ -58,6 +59,6 @@ public class RidiculousBlocks {
         liquidTime = new Fluid("temporal_anomaly").setLuminosity(6);
         FluidRegistry.registerFluid(liquidTime);
         liquidTimeBlock = GameRegistry.registerBlock(new BlockTimeFluid(liquidTime), "Temporal_Anomaly");
-        FluidContainerRegistry.registerFluidContainer(new FluidStack(liquidTime, 1000), new ItemStack(RidiculousItems.timeBucket), new ItemStack(Items.bucket));
+        FluidContainerRegistry.registerFluidContainer(new FluidStack(liquidTime, 1000), new ItemStack(RidiculousItems.timeBucket), new ItemStack(Items.bucket));*/
     }
 }

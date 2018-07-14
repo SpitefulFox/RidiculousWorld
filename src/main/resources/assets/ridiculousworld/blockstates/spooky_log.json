@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":    { "model": "spooky_log" },
+        "axis=z":     { "model": "spooky_log", "x": 90 },
+        "axis=x":     { "model": "spooky_log", "x": 90, "y": 90 },
+        "axis=none":   { "model": "spooky_bark" }
+    }
+}

@@ -1,7 +1,9 @@
 package fox.spiteful.ridiculous.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import fox.spiteful.ridiculous.Ridiculous;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 public class RidiculousItems {
 
@@ -18,11 +20,11 @@ public class RidiculousItems {
     public static Item timeBucket;
 
     public static void itemize(){
-        candyCorn = new ItemRidiculousFood(2, 0.1F, false, "candycorn").setUnlocalizedName("CandyCorn");
-        GameRegistry.registerItem(candyCorn, "CandyCorn");
-        rustySickle = new ItemRustySickle().setUnlocalizedName("RustySickle");
-        GameRegistry.registerItem(rustySickle, "RustySickle");
-        chocoEgg = new ItemRidiculousFood(3, 0.2F, false, "chocoegg").setUnlocalizedName("ChocoEgg");
+        candyCorn = new ItemFood(2, 0.1F, false).setUnlocalizedName("candycorn").setCreativeTab(Ridiculous.tab).setRegistryName("candycorn");
+        ForgeRegistries.ITEMS.register(candyCorn);
+        rustySickle = new ItemRustySickle();
+        ForgeRegistries.ITEMS.register(rustySickle);
+        /*chocoEgg = new ItemRidiculousFood(3, 0.2F, false, "chocoegg").setUnlocalizedName("ChocoEgg");
         GameRegistry.registerItem(chocoEgg, "ChocoEgg");
         unicornRaw = new ItemRidiculousFood(3, 0.3F, true, "unicorn_raw").setUnlocalizedName("UnicornRaw");
         GameRegistry.registerItem(unicornRaw, "UnicornRaw");
@@ -39,6 +41,6 @@ public class RidiculousItems {
         cottonCandy = new ItemRidiculousFood(2, 0.1F, false, "cotton_candy").setUnlocalizedName("CottonCandy");
         GameRegistry.registerItem(cottonCandy, "CottonCandy");
         timeBucket = new ItemTimeBucket().setUnlocalizedName("BucketOfTime");
-        GameRegistry.registerItem(timeBucket, "BucketOfTime");
+        GameRegistry.registerItem(timeBucket, "BucketOfTime");*/
     }
 }

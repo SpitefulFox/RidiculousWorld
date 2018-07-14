@@ -9,10 +9,8 @@ package fox.spiteful.ridiculous;
 import com.google.common.collect.Iterables;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommand;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
+import net.minecraft.client.Minecraft;
+import net.minecraft.command.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -20,37 +18,40 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.StringUtils;
+import net.minecraft.util.math.BlockPos;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public class CommandPlayerHead extends CommandBase {
 
     @Override
-    public String getCommandName() {
+    public String getName() {
         return "playerhead";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender commandSender) {
+    public String getUsage(ICommandSender commandSender) {
         return "commands.playerhead.usage";
     }
 
     @Override
-    public List addTabCompletionOptions(ICommandSender commandSender, String[] par2ArrayOfStr) {
-        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, MinecraftServer.getServer().getAllUsernames()) : null;
+    public List<String> getTabCompletions(MinecraftServer server, ICommandSender commandSender, String[] par2ArrayOfStr, @Nullable BlockPos targetPos) {
+        return par2ArrayOfStr.length == 1 ? getListOfStringsMatchingLastWord(par2ArrayOfStr, server.getOnlinePlayerNames()) : null;
     }
 
     @Override
-    public void processCommand(ICommandSender commandSender, String[] args) {
-        EntityPlayer player = commandSender.getEntityWorld().getPlayerEntityByName(commandSender.getCommandSenderName());
+    public void execute(MinecraftServer server, ICommandSender commandSender, String[] args) throws CommandException {
+        //EntityPlayer player = commandSender.getEntityWorld().getPlayerEntityByName(commandSender.getCommandSenderName());
+        EntityPlayer player = (EntityPlayer)commandSender.getCommandSenderEntity();
         if (args != null && player != null) {
             if (args.length == 0) {
-                player.entityDropItem(getHead(player.getGameProfile()), 1);
-                func_152373_a(commandSender, this, "commands.playerhead.success", player.getCommandSenderName(), player.getCommandSenderName());
+                player.entityDropItem(getHead(server, player.getGameProfile()), 1);
+                notifyCommandListener(commandSender, this, "commands.playerhead.success", player.getName(), player.getName());
             }
             else if (args.length > 0 && args[0].length() > 0) {
-                player.entityDropItem(getHead(new GameProfile(null, args[0])), 1);
-                func_152373_a(commandSender, this, "commands.playerhead.success", args[0], player.getCommandSenderName());
+                player.entityDropItem(getHead(server, new GameProfile(null, args[0])), 1);
+                notifyCommandListener(commandSender, this, "commands.playerhead.success", new Object[] {args[0], player.getName()});
             }
             else throw new WrongUsageException("commands.playerhead.usage", args);
         }
@@ -58,31 +59,31 @@ public class CommandPlayerHead extends CommandBase {
     }
 
     @Override
-    public int compareTo(Object o) {
+    public int compareTo(ICommand o) {
         return super.compareTo((ICommand) o);
     }
 
 
-    private ItemStack getHead(GameProfile owner) {
-        ItemStack itemStack = new ItemStack(Items.skull, 1, 3);
+    private ItemStack getHead(MinecraftServer server, GameProfile owner) {
+        ItemStack itemStack = new ItemStack(Items.SKULL, 1, 3);
         if (owner != null) {
             NBTTagCompound tag = new NBTTagCompound();
             NBTTagCompound gameProfileTag = new NBTTagCompound();
-            NBTUtil.func_152460_a(gameProfileTag, refreshGameProfile(owner));
+            NBTUtil.writeGameProfile(gameProfileTag, refreshGameProfile(server, owner));
             tag.setTag("SkullOwner", gameProfileTag);
             itemStack.setTagCompound(tag);
         }
         return itemStack;
     }
 
-    private GameProfile refreshGameProfile(GameProfile profile) {
+    private GameProfile refreshGameProfile(MinecraftServer server, GameProfile profile) {
         if (profile != null && !StringUtils.isNullOrEmpty(profile.getName())) {
             if (!profile.isComplete() || !profile.getProperties().containsKey("textures")) {
         //This would always need to get textures as textures aren't saved client side
-                GameProfile gameprofile = MinecraftServer.getServer().func_152358_ax().func_152655_a(profile.getName());
+                GameProfile gameprofile = server.getPlayerProfileCache().getGameProfileForUsername(profile.getName());
                 if (gameprofile != null) {
                     Property property = (Property) Iterables.getFirst(gameprofile.getProperties().get("textures"), (Object) null);
-                    if (property == null) gameprofile = MinecraftServer.getServer().func_147130_as().fillProfileProperties(gameprofile, true);
+                    if (property == null) gameprofile = server.getMinecraftSessionService().fillProfileProperties(gameprofile, true);
                     profile = gameprofile;
                 }
             }

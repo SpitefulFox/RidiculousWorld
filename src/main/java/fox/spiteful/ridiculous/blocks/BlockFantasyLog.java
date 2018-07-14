@@ -1,51 +1,73 @@
 package fox.spiteful.ridiculous.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.ridiculous.Ridiculous;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLog;
-import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-
-import java.util.List;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.IBlockState;
 
 public class BlockFantasyLog extends BlockLog {
-    public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
+    //public static final String[] types = new String[] {"spooky", "bubblegum", "shadow"};
 
     public BlockFantasyLog()
     {
         super();
-        this.setHardness(1.5F);
-        this.setResistance(5F);
-        this.setStepSound(Block.soundTypeWood);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(LOG_AXIS, BlockLog.EnumAxis.Y));
         this.setCreativeTab(Ridiculous.tab);
     }
 
+    @Override
     /**
-     * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)
+     * Convert the given metadata into a BlockState for this Block
      */
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs tab, List list)
+    public IBlockState getStateFromMeta(int meta)
     {
-        for(int x = 0;x < types.length;x++)
-            list.add(new ItemStack(item, 1, x));
+        IBlockState state = this.getDefaultState();
+
+        switch (meta & 0b1100)
+        {
+            case 0b0000:
+                state = state.withProperty(LOG_AXIS, BlockLog.EnumAxis.Y);
+                break;
+
+            case 0b0100:
+                state = state.withProperty(LOG_AXIS, BlockLog.EnumAxis.X);
+                break;
+
+            case 0b1000:
+                state = state.withProperty(LOG_AXIS, BlockLog.EnumAxis.Z);
+                break;
+
+            case 0b1100:
+                state = state.withProperty(LOG_AXIS, BlockLog.EnumAxis.NONE);
+                break;
+        }
+
+        return state;
     }
 
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister iconRegister)
+    @Override
+    /**
+     * Convert the BlockState into the correct metadata value
+     */
+    public int getMetaFromState(IBlockState state)
     {
-        this.field_150167_a = new IIcon[types.length];
-        this.field_150166_b = new IIcon[types.length];
-
-        for (int i = 0; i < this.field_150167_a.length; ++i)
+        switch ((BlockLog.EnumAxis)state.getValue(LOG_AXIS))
         {
-            this.field_150167_a[i] = iconRegister.registerIcon("ridiculous:" + "log" + "_" + types[i]);
-            this.field_150166_b[i] = iconRegister.registerIcon("ridiculous:" + "log" + "_" + types[i] + "_top");
+            case X: return 0b0100;
+            case Y: return 0b0000;
+            case Z: return 0b1000;
+            case NONE: return 0b1100;
         }
+        return 0;
+    }
+
+    @Override
+    protected BlockStateContainer createBlockState()
+    {
+        return new BlockStateContainer(this, new IProperty[] {LOG_AXIS});
     }
 
 }

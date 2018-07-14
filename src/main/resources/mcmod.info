@@ -1,6 +1,6 @@
 [
 {
-  "modid": "RidiculousWorld",
+  "modid": "ridiculousworld",
   "name": "Ridiculous World",
   "description": "A mod to make the Minecraft world a little more ridiculous.",
   "version": "${version}",
@@ -8,7 +8,7 @@
   "url": "",
   "updateUrl": "",
   "authorList": ["SpitefulFox"],
-  "credits": "xaero, Kihira, and Dylan4ever",
+  "credits": "xaero, Kihira, Dylan4ever, and Othlon",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

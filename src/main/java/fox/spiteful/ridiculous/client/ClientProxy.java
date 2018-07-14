@@ -1,28 +1,33 @@
 package fox.spiteful.ridiculous.client;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.Loader;
 import fox.spiteful.ridiculous.CommonProxy;
-import fox.spiteful.ridiculous.Config;
-import fox.spiteful.ridiculous.blocks.BlockChestRidiculous;
+import fox.spiteful.ridiculous.Lumberjack;
 import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
-import fox.spiteful.ridiculous.client.entities.*;
-import fox.spiteful.ridiculous.client.shaders.ShaderHelper;
-import fox.spiteful.ridiculous.entities.*;
-import fox.spiteful.ridiculous.tile.TileEntityChestRidiculous;
-import net.minecraft.client.model.ModelSheep1;
-import net.minecraft.client.model.ModelSheep2;
-import net.minecraft.client.renderer.entity.RenderSkeleton;
-import net.minecraft.client.renderer.entity.RenderZombie;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import fox.spiteful.ridiculous.items.RidiculousItems;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntitySkull;
-import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.relauncher.Side;
+import org.apache.logging.log4j.Level;
 
+//@Mod.EventBusSubscriber(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
-    public void doTheRenderThing(){
-        RenderingRegistry.registerEntityRenderingHandler(EntityFrankenstein.class, new RenderFrankenstein());
+
+
+    //@SubscribeEvent
+    public void doTheRenderThing(){//ModelRegistryEvent event){
+        ModelLoader.setCustomModelResourceLocation(RidiculousItems.rustySickle, 0, new ModelResourceLocation(RidiculousItems.rustySickle.getRegistryName(), "inventory"));
+        ModelLoader.setCustomModelResourceLocation(RidiculousItems.candyCorn, 0, new ModelResourceLocation(RidiculousItems.candyCorn.getRegistryName(), "inventory"));
+
+        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(RidiculousBlocks.spookyLog), 0, new ModelResourceLocation(RidiculousBlocks.spookyLog.getRegistryName(), "inventory"));
+
+
+        //Lumberjack.log(Level.WARN, "REGISTERING MODEL LOLOLOLOLOL");
+
+        /*RenderingRegistry.registerEntityRenderingHandler(EntityFrankenstein.class, new RenderFrankenstein());
         RenderingRegistry.registerEntityRenderingHandler(EntityWarhorse.class, new RenderWarhorse());
         RenderingRegistry.registerEntityRenderingHandler(EntityPeep.class, new RenderPeep());
         RenderingRegistry.registerEntityRenderingHandler(EntityUnicorn.class, new RenderUnicorn());
@@ -35,16 +40,10 @@ public class ClientProxy extends CommonProxy {
         RenderingRegistry.registerEntityRenderingHandler(EntityCandySheep.class, new RenderCandySheep(new ModelSheep2(), new ModelSheep1(), 0.7F));
         RenderingRegistry.registerEntityRenderingHandler(EntityOldEnderman.class, new RenderOldEnderman());
 
-        if(Config.heads && !Loader.isModLoaded("foxlib")){
-            TileEntityRendererDispatcher.instance.mapSpecialRenderers.remove(TileEntitySkull.class);
-            BlockSkullRenderer blockSkullRenderer = new BlockSkullRenderer();
-            ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySkull.class, blockSkullRenderer);
-        }
-
         ClientRegistry.bindTileEntitySpecialRenderer(TileEntityChestRidiculous.class, new RenderTileEntityChest());
         BlockChestRidiculous.render = RenderingRegistry.getNextAvailableRenderId();
         MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(RidiculousBlocks.chest), new RenderItemChest());
 
-        ShaderHelper.initShaders();
+        ShaderHelper.initShaders();*/
     }
 }

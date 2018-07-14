@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "ridiculousworld:blocks/log_spooky_top",
+        "side": "ridiculousworld:blocks/log_spooky"
+    }
+}

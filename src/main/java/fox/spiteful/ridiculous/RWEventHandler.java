@@ -1,11 +1,6 @@
 package fox.spiteful.ridiculous;
 
-import cpw.mods.fml.common.eventhandler.Event;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.relauncher.ReflectionHelper;
 import fox.spiteful.ridiculous.biomes.UnrealBiomes;
-import fox.spiteful.ridiculous.blocks.RidiculousBlocks;
-import fox.spiteful.ridiculous.entities.EntityWarhorse;
 import fox.spiteful.ridiculous.items.RidiculousItems;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -16,14 +11,16 @@ import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.lang.reflect.Field;
 import java.util.Calendar;
@@ -44,35 +41,35 @@ public class RWEventHandler {
     @SubscribeEvent
     public void onSpawn(EntityJoinWorldEvent event){
 
-        if(event.world.isRemote)
+        if(event.getWorld().isRemote)
             return;
-        NBTTagCompound tag = event.entity.getEntityData();
+        NBTTagCompound tag = event.getEntity().getEntityData();
         if(tag.getBoolean("ridiculous"))
             return;
         tag.setBoolean("ridiculous", true);
 
-        if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.spooky) {
-            if((event.entity instanceof EntityZombie || event.entity instanceof EntitySkeleton)&& randy.nextInt(12) == 1) {
-                event.entity.setCurrentItemOrArmor(4, new ItemStack(Blocks.lit_pumpkin, 1));
-                event.entity.setCurrentItemOrArmor(0, new ItemStack(RidiculousItems.rustySickle, 1));
-                ((EntityLiving)event.entity).setEquipmentDropChance(0, 0.2F);
+        if(event.getWorld().getBiome(new BlockPos(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posY), MathHelper.floor(event.getEntity().posZ))) == UnrealBiomes.spooky) {
+            if((event.getEntity() instanceof EntityZombie || event.getEntity() instanceof EntitySkeleton)){//&& randy.nextInt(12) == 1) {
+                event.getEntity().setItemStackToSlot(EntityEquipmentSlot.HEAD, new ItemStack(Blocks.LIT_PUMPKIN, 1));
+                event.getEntity().setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(RidiculousItems.rustySickle, 1));
+                ((EntityLiving)event.getEntity()).setDropChance(EntityEquipmentSlot.MAINHAND, 0.3F);
             }
-            else if(event.entity instanceof EntityWolf && randy.nextInt(4) != 1)
-                ((EntityWolf)event.entity).setAngry(true);
+            else if(event.getEntity() instanceof EntityWolf && randy.nextInt(4) != 1)
+                ((EntityWolf)event.getEntity()).setAngry(true);
         }
-        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.ossuary) {
-            if(event.entity instanceof EntitySkeleton && randy.nextInt(5) <= 3 &&
-                    ((EntityLiving)event.entity).getCanSpawnHere() &&
-                    event.world.canBlockSeeTheSky(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posY), MathHelper.floor_double(event.entity.posZ))){
-                EntityWarhorse steed = new EntityWarhorse(event.world);
-                steed.setLocationAndAngles(event.entity.posX, event.entity.posY, event.entity.posZ, event.entity.rotationYaw, event.entity.rotationPitch);
-                event.world.spawnEntityInWorld(steed);
-                event.entity.mountEntity(steed);
+        /*else if(event.getWorld().getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.ossuary) {
+            if(event.getEntity() instanceof EntitySkeleton && randy.nextInt(5) <= 3 &&
+                    ((EntityLiving)event.getEntity()).getCanSpawnHere() &&
+                    event.getWorld().canBlockSeeTheSky(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posY), MathHelper.floor(event.getEntity().posZ))){
+                EntityWarhorse steed = new EntityWarhorse(event.getWorld());
+                steed.setLocationAndAngles(event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, event.getEntity().rotationYaw, event.getEntity().rotationPitch);
+                event.getWorld().spawnEntityInWorld(steed);
+                event.getEntity().mountEntity(steed);
             }
         }
-        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.murica) {
-            if(event.entity instanceof EntitySheep){
-                EntitySheep sheepy = (EntitySheep)event.entity;
+        else if(event.getWorld().getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.murica) {
+            if(event.getEntity() instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.getEntity();
                 int freedom = randy.nextInt(3);
                 if(freedom == 0)
                     freedom = 0;
@@ -83,19 +80,19 @@ public class RWEventHandler {
                 sheepy.setFleeceColor(freedom);
             }
         }
-        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.botania) {
-            if(event.entity instanceof EntitySheep){
-                EntitySheep sheepy = (EntitySheep)event.entity;
+        else if(event.getWorld().getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.botania) {
+            if(event.getEntity() instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.getEntity();
                 if(randy.nextInt(3) <= 1)
                     sheepy.setFleeceColor(6);
                 else
                     sheepy.setFleeceColor(randy.nextInt(16));
             }
         }
-        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.madness) {
-            if (event.entity instanceof EntityEnderman && ((EntityEnderman)event.entity).getCanSpawnHere()
-                && event.world.rand.nextInt(20) < 1) {
-                EntityEnderman enderman = (EntityEnderman)event.entity;
+        else if(event.getWorld().getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.madness) {
+            if (event.getEntity() instanceof EntityEnderman && ((EntityEnderman)event.getEntity()).getCanSpawnHere()
+                && event.getWorld().rand.nextInt(20) < 1) {
+                EntityEnderman enderman = (EntityEnderman)event.getEntity();
                 try {
                     Field aggro = ReflectionHelper.findField(EntityEnderman.class, "isAggressive", "field_104003_g");
                     aggro.setAccessible(true);
@@ -105,86 +102,97 @@ public class RWEventHandler {
 
             }
         }
-        else if(event.world.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.shadow) {
-            if(event.entity instanceof EntitySheep){
-                EntitySheep sheepy = (EntitySheep)event.entity;
+        else if(event.getWorld().getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.shadow) {
+            if(event.getEntity() instanceof EntitySheep){
+                EntitySheep sheepy = (EntitySheep)event.getEntity();
                 if(randy.nextInt(30) <= 1)
                     sheepy.setFleeceColor(10);
                 else
                     sheepy.setFleeceColor(15);
             }
-        }
+        }*/
     }
 
     @SubscribeEvent
     public void onLivingDrops(LivingDropsEvent event)
     {
-        if(event.entityLiving instanceof IMob && halloween && event.recentlyHit && event.source.getEntity() != null
-            && event.source.getEntity() instanceof EntityPlayer && randy.nextInt(10) == 0){
+        if(event.getEntity() instanceof IMob && halloween && event.isRecentlyHit() && event.getSource().getTrueSource() != null
+            && event.getSource().getTrueSource() instanceof EntityPlayer && randy.nextInt(10) == 0){
             addDrop(event, new ItemStack(RidiculousItems.candyCorn, 1));
         }
 
-        if (event.entityLiving instanceof EntitySkeleton && event.recentlyHit && event.source.getEntity() != null
-                && event.source.getEntity() instanceof EntityPlayer)
+        if (event.getEntity() instanceof EntitySkeleton && event.isRecentlyHit() && event.getSource().getTrueSource() != null
+                && event.getSource().getTrueSource() instanceof EntityPlayer)
         {
-            ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();
+            ItemStack weap = ((EntityPlayer)event.getSource().getTrueSource()).getHeldItemMainhand();
 
-            if (weap != null && weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (3 + EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, weap)))
+            if (weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (10 + event.getLootingLevel()))
             {
-                addDrop(event, new ItemStack(Items.skull, 1, ((EntitySkeleton)event.entityLiving).getSkeletonType()));
+                addDrop(event, new ItemStack(Items.SKULL, 1));
             }
         }
 
-        if (event.entityLiving instanceof EntityZombie && event.recentlyHit && event.source.getEntity() != null
-                && event.source.getEntity() instanceof EntityPlayer)
+        if (event.getEntity() instanceof EntityWitherSkeleton && event.isRecentlyHit() && event.getSource().getTrueSource() != null
+                && event.getSource().getTrueSource() instanceof EntityPlayer)
         {
-            ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();
+            ItemStack weap = ((EntityPlayer)event.getSource().getTrueSource()).getHeldItemMainhand();
 
-            if (weap != null && weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (2 + 2 * EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, weap)))
+            if (weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (10 + event.getLootingLevel()))
             {
-                addDrop(event, new ItemStack(Items.skull, 1, 2));
+                addDrop(event, new ItemStack(Items.SKULL, 1, 1));
             }
         }
 
-        if (event.entityLiving instanceof EntityZombie && event.entityLiving.worldObj.getBiomeGenForCoords(MathHelper.floor_double(event.entity.posX), MathHelper.floor_double(event.entity.posZ)) == UnrealBiomes.time){
+        if (event.getEntity() instanceof EntityZombie && event.isRecentlyHit() && event.getSource().getTrueSource() != null
+                && event.getSource().getTrueSource() instanceof EntityPlayer)
+        {
+            ItemStack weap = ((EntityPlayer)event.getSource().getTrueSource()).getHeldItemMainhand();
+
+            if (weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (10 + 2 * event.getLootingLevel()))
+            {
+                addDrop(event, new ItemStack(Items.SKULL, 1, 2));
+            }
+        }
+
+        /*if (event.getEntity() instanceof EntityZombie && event.getEntity().worldObj.getBiome(MathHelper.floor(event.getEntity().posX), MathHelper.floor(event.getEntity().posZ)) == UnrealBiomes.time){
             for(EntityItem drop : event.drops){
                 ItemStack stack = drop.getEntityItem();
                 if(stack.getItem() == Items.rotten_flesh)
                     drop.setEntityItemStack(new ItemStack(Items.feather, stack.stackSize));
             }
-        }
+        }*/
 
-        if (event.entityLiving instanceof EntityCreeper && event.recentlyHit && event.source.getEntity() != null
-                && event.source.getEntity() instanceof EntityPlayer)
+        if (event.getEntity() instanceof EntityCreeper && event.isRecentlyHit() && event.getSource().getTrueSource() != null
+                && event.getSource().getTrueSource() instanceof EntityPlayer)
         {
-            ItemStack weap = ((EntityPlayer)event.source.getEntity()).getCurrentEquippedItem();
+            ItemStack weap = ((EntityPlayer)event.getSource().getTrueSource()).getHeldItemMainhand();
 
-            if (weap != null && weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (2 + 2 * EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, weap)))
+            if (weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(26) <= (10 + 2 * event.getLootingLevel()))
             {
-                addDrop(event, new ItemStack(Items.skull, 1, 4));
+                addDrop(event, new ItemStack(Items.SKULL, 1, 4));
             }
         }
 
-        if (event.entityLiving instanceof EntityPlayer)
+        if (event.getEntity() instanceof EntityPlayer)
         {
-            if(event.recentlyHit && event.source.getEntity() != null && event.source.getEntity() instanceof EntityPlayer) {
+            if(event.isRecentlyHit() && event.getSource().getTrueSource() != null && event.getSource().getTrueSource() instanceof EntityPlayer) {
 
-                ItemStack weap = ((EntityPlayer) event.source.getEntity()).getCurrentEquippedItem();
+                ItemStack weap = ((EntityPlayer) event.getSource().getTrueSource()).getHeldItemMainhand();
 
-                if (weap != null && weap.getItem() == RidiculousItems.rustySickle && randy.nextInt(11) <= (1 + EnchantmentHelper.getEnchantmentLevel(Enchantment.looting.effectId, weap))) {
-                    ItemStack head = new ItemStack(Items.skull, 1, 3);
+                if (weap.getItem() == RidiculousItems.rustySickle) {
+                    ItemStack head = new ItemStack(Items.SKULL, 1, 3);
                     NBTTagCompound nametag = new NBTTagCompound();
-                    nametag.setString("SkullOwner", ((EntityPlayer) event.entityLiving).getDisplayName());
+                    nametag.setString("SkullOwner", ((EntityPlayer) event.getEntity()).getDisplayNameString());
                     head.setTagCompound(nametag);
                     addDrop(event, head);
                 }
             }
-            else if(event.source.getEntity() != null
-                    && event.source.getEntity() instanceof EntityLiving && event.entityLiving.getHeldItem() != null
-                    && event.entityLiving.getHeldItem().getItem() == RidiculousItems.rustySickle) {
-                ItemStack head = new ItemStack(Items.skull, 1, 3);
+            else if(event.getSource().getTrueSource() != null
+                    && event.getSource().getTrueSource() instanceof EntityLiving
+                    && ((EntityLiving)event.getEntity()).getHeldItemMainhand().getItem() == RidiculousItems.rustySickle) {
+                ItemStack head = new ItemStack(Items.SKULL, 1, 3);
                 NBTTagCompound nametag = new NBTTagCompound();
-                nametag.setString("SkullOwner", ((EntityPlayer) event.entityLiving).getDisplayName());
+                nametag.setString("SkullOwner", ((EntityPlayer) event.getEntity()).getDisplayNameString());
                 head.setTagCompound(nametag);
                 addDrop(event, head);
             }
@@ -193,16 +201,16 @@ public class RWEventHandler {
 
     public void addDrop(LivingDropsEvent event, ItemStack drop)
     {
-        EntityItem entityitem = new EntityItem(event.entityLiving.worldObj, event.entityLiving.posX, event.entityLiving.posY, event.entityLiving.posZ, drop);
-        entityitem.delayBeforeCanPickup = 10;
-        event.drops.add(entityitem);
+        EntityItem entityitem = new EntityItem(event.getEntity().getEntityWorld(), event.getEntity().posX, event.getEntity().posY, event.getEntity().posZ, drop);
+        entityitem.setDefaultPickupDelay();
+        event.getDrops().add(entityitem);
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public void fillBucket(FillBucketEvent event) {
         if(event.target.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
-            if(event.world.getBlock(event.target.blockX, event.target.blockY, event.target.blockZ) == RidiculousBlocks.liquidTimeBlock && event.world.getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ) == 0) {
-                event.world.setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
+            if(event.getWorld().getBlock(event.target.blockX, event.target.blockY, event.target.blockZ) == RidiculousBlocks.liquidTimeBlock && event.getWorld().getBlockMetadata(event.target.blockX, event.target.blockY, event.target.blockZ) == 0) {
+                event.getWorld().setBlockToAir(event.target.blockX, event.target.blockY, event.target.blockZ);
                 event.result = new ItemStack(RidiculousItems.timeBucket);
                 event.setResult(Event.Result.ALLOW);
                 return;
@@ -210,6 +218,6 @@ public class RWEventHandler {
 
         }
 
-    }
+    }*/
 
 }

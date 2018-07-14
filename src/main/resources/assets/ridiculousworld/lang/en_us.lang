@@ -1,0 +1,57 @@
+# Blocks
+tile.spooky_log.name=Spooky Wood
+tile.ridiculous_log_bubblegum.name=Bubblegum Wood
+tile.ridiculous_log_shadow.name=Shadow Wood
+tile.ridiculous_leaves_spooky.name=Spooky Leaves
+tile.ridiculous_leaves_bubblegum.name=Bubblegum Leaves
+tile.ridiculous_leaves_shadow.name=Shadow Leaves
+tile.ridiculous_leaves_livingwood.name=Livingleaves
+tile.ridiculous_sapling_spooky.name=Spooky Sapling
+tile.ridiculous_sapling_bubblegum.name=Bubblegum Sapling
+tile.ridiculous_sapling_shadow.name=Shadow Sapling
+tile.ridiculous_sapling_livingwood.name=Livingwood Sapling
+tile.ridiculous_planks_spooky.name=Spooky Planks
+tile.ridiculous_planks_bubblegum.name=Bubblegum Planks
+tile.ridiculous_planks_shadow.name=Shadow Planks
+tile.stairs_spooky.name=Spooky Wood Stairs
+tile.stairs_bubblegum.name=Bubblegum Wood Stairs
+tile.stairs_shadow.name=Shadow Wood Stairs
+tile.bonedust.name=Crushed Bone
+tile.rockcandy.name=Rock Candy
+tile.candycane.name=Candy Cane
+tile.serpent.name=Serpentinite
+tile.serpent_rune.name=Runed Serpentinite
+tile.chestRidiculous.name=Botanical Chest
+tile.blockLiquidTime.name=Temporal Anomaly
+tile.ridiculous_flowers_rose.name=Rose
+tile.ridiculous_flowers_cyan.name=Cyan Flower
+tile.ridiculous_flowers_peony.name=Peony
+# Items
+item.candycorn.name=Candy Corn
+item.rustysickle.name=Rusty Sickle
+item.chocoegg.name=Chocolate Egg
+item.unicornraw.name=Raw Unicorn Meat
+item.unicorncooked.name=Unicorn Steak
+item.peepraw.name=Marshmallow Peep
+item.peepcooked.name=Toasted Peep
+item.unicornhorn.name=Unicorn Horn
+item.cottoncandy.name=Cotton Candy
+item.bucketoftime.name=Temporal Anomaly in a Bucket
+# Entities
+entity.ridiculousworld.frankenstein.name=Frankenstein's Monster
+entity.ridiculousworld.warhorse.name=Skeleton Horse
+entity.ridiculousworld.peep.name=Marshmallow Peep
+entity.ridiculousworld.unicorn.name=Unicorn
+entity.ridiculousworld.mummy.name=Mummy
+entity.ridiculousworld.calavera.name=Sugar Skull
+entity.ridiculousworld.gingerbread.name=Gingerbread Man
+entity.ridiculousworld.shoggoth.name=Shoggoth
+entity.ridiculousworld.skeleton.name=Skeleton
+entity.ridiculousworld.zombie.name=Zombie
+entity.ridiculousworld.shadowslime.name=Shadow Slime
+entity.ridiculousworld.candysheep.name=Candy Fleece
+entity.ridiculousworld.enderman.name=Enderman
+# Misc
+itemGroup.ridiculous=Ridiculous World
+commands.playerhead.usage=playerhead <playername> | Playername is case sensitive!
+commands.playerhead.success=Given a playerhead (%1$s) to %2$s
